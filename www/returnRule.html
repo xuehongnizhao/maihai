@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>returnRule</title>
+    <script src="js/include.js"></script>
+    <link>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    hr {
+        margin: 0.3em 0em;
+        padding: 0px;
+        border-top: 1px solid #e8e8e8;
+    }
+    
+    .item {
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav {
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav a {
+        line-height: 42px;
+        color: lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active {
+        position: relative;
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active:after {
+        position: absolute;
+        width: 50%;
+        height: 0;
+        bottom: 0;
+        left: 28%;
+        border: 1px solid deepskyblue;
+        content: "";
+        z-index: 1;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active a {
+        line-height: 42px;
+        color: deepskyblue;
+        background: #ffff;
+    }
+    .am-u-sm-12 span{
+    	display: block;
+    	width: 100%;
+    	line-height: 30px;
+    	font-size: 1.5rem;
+    	padding-right: 10px;
+    }
+    .am-u-sm-12 .xiao-title{
+    	font-weight: bold;
+    	line-height: 20px;
+    }
+    .am-u-sm-12 b{
+    	color:#595959;
+    	display: block;
+    	line-height: 26px;
+    	font-size: 1.5rem;
+    	margin-top: 5px;
+    	margin-bottom: 5px;
+    }
+    .am-u-sm-12 a{
+    	text-decoration:underline;
+    	font-weight: bold;
+    }
+    </style>
+</head>
+
+<body>
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title" style="font-size: 16px;">返现规则</h1>
+    </header>
+    
+    <div id="goodsDeatail" class="am-u-sm-12" style="background-color: white"></div>
+    
+    <div class="am-u-sm-12" style="background-color: white;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding-bottom:10px;margin-top: 10px;line-height: 3em;padding-right:0">
+        <b>第一种分润：消费分润35%</b>
+        <div class="am-u-sm-12" style="background-color: lightgray;height: 1px;margin-bottom: 10px;"></div>
+        <span>直接消费的人，拿35%；</span>
+    </div>
+    <div class="am-u-sm-12" style="background-color: white;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding-bottom:10px;margin-top: 10px;line-height: 3em;padding-right:0">
+        <b>第二种分润：分享分润20%</b>
+        <div class="am-u-sm-12" style="background-color: lightgray;height: 1px;margin-bottom: 10px;"></div>
+        <span>消费者把平台分享给别人，拿20%；</span>
+    </div>
+    <div class="am-u-sm-12" style="background-color: white;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding-bottom:10px;margin-top: 10px;line-height: 3em;padding-right:0">
+        <b>第三种分润：推荐分润1%；</b>
+        <div class="am-u-sm-12" style="background-color: lightgray;height: 1px;margin-bottom: 10px;"></div>
+        <span>（地推人员和商家）推荐商家入驻我们平台，就会获得1%的利润，永久有效。</span>
+    </div>
+    <div class="am-u-sm-12" style="background-color: white;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding-bottom:10px;margin-top: 10px;line-height: 3em;padding-right:0">
+        <b>第四种分润：管理分润（3%、4、%5%）</b>
+        <div class="am-u-sm-12" style="background-color: lightgray;height: 1px;margin-bottom: 10px;"></div>
+        <span>区代理：5%（全区所有商家利润的5%）</span>
+        <span>市代理：4%（全市所有商家利润的4%）</span>
+        <span>省代理：3%（全省所有商家利润的3%）</span>
+        
+    </div>
+    
+    
+    <script type="text/javascript">
+    var token = localStorage.getItem("token");
+    var userid = localStorage.getItem("userid");
+    jQuery(document).ready(function() {
+        loadData();
+    });
+
+    function loadData() {
+        $.ajax({
+            type: "post ",
+            url: baseurl("APPWODESHOUCANG.do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "mlld",
+            data: {
+                yonghuID: userid,
+                token: token
+            },
+            success: function(json) {
+                if (!checktoken(json)) {
+                    return;
+                }
+
+                if (json.success) {
+                    json.imgurl = imgurl;
+                    var html = template('s_mylove', json);
+                    $("#d_mylove").html(html);
+                } else {
+                    $('#errmsg').text(json.message);
+                    $('#my-alert').modal();
+
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试");
+                $('#my-alert').modal();
+
+            }
+        });
+    }
+
+    function cancelLove(shanghuID,e) {
+        $('#my-prompt').modal({
+            relatedTarget: this,
+            onConfirm: function(e) {
+                $.ajax({
+                    type: "post ",
+                    url: baseurl("APPDIANPUSHOUCANG.do"),
+                    dataType: "jsonp",
+                    jsonp: "callback",
+                    jsonpCallback: "mlcl",
+                    data: {
+                        shanghuID: shanghuID,
+                        yonghuID: userid,
+                        token: token
+                    },
+                    success: function(json) {
+                        if (json.success) {
+                            $('#errmsg').text("成功取消收藏");
+                            $('#my-alert').modal();
+                            loadData();
+                        } else {
+                            $('#errmsg').text(json.message);
+                            $('#my-alert').modal();
+
+                        }
+                    },
+                    error: function() {
+
+
+                    }
+                });
+            },
+            onCancel: function(e) {
+
+            }
+        });
+        stopBubble(e);
+    }
+    function goToShops(shanghuID,e) {
+        window.location.href = "shops.html?shanghuID="+shanghuID;
+        stopBubble(e);
+    }
+
+    function stopBubble(e) {
+    var evt = e || window.event;
+    evt.stopPropagation ? evt.stopPropagation() : (evt.cancelBubble = true);
+}
+    </script>
+</body>
+
+</html>

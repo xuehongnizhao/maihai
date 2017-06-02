@@ -1,0 +1,364 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>register</title>
+    <script src="js/include.js"></script>
+    <link>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    
+    hr {
+        margin: 0.3em 0em;
+        padding: 0px;
+        border-top: 1px solid #e8e8e8;
+    }
+    
+    .item {
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    input[type=checkbox],
+    input[type=radio] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 13px;
+        height: 13px;
+        margin: 0;
+        cursor: pointer;
+        vertical-align: bottom;
+        background: #fff;
+        border: 1px solid B9BBBE;
+        -webkit-border-radius: 1px;
+        -moz-border-radius: 1px;
+        border-radius: 1px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        position: relative;
+    }
+    
+    input[type=checkbox]:active,
+    input[type=radio]:active {
+        border: none;
+        background: #ebebeb;
+    }
+    
+    input[type=checkbox]:hover {
+        border: none;
+    }
+    
+    input[type=checkbox] {
+        border: none;
+        width: 20px;
+        height: 20px;
+        content: url('img/normal_addr2.png');
+        background: transparent;
+    }
+    
+    input[type=checkbox]:checked,
+    input[type=radio]:checked {
+        z-index: 100;
+        width: 20px;
+        height: 20px;
+        content: url('img/default_addr2.png');
+    }
+    
+    input[type=checkbox]:checked::after {
+        width: 20px;
+        height: 20px;
+        content: url('img/default_addr2.png');
+        display: block;
+    }
+    
+    input[type=checkbox]:focus {
+        width: 20px;
+        height: 20px;
+        outline: none;
+        border-color: #4d90fe;
+    }
+    .icon-fanhuijiantou1,
+    .am-header .am-header-title{
+    	color:#fff;
+    }
+    .am-u-sm-4{
+    	overflow: hidden;
+    }
+    .am-u-sm-4 span{
+    	font-size: 1.4rem;
+    	float:left;
+    }
+    .am-u-sm-4 i{
+    	float:right;
+    	color:#c6c6c6;
+    	font-size: 1rem;
+    	padding-right:10px;
+    	font-weight: bold;
+    	display: inherit;
+    	margin-top:2px
+    }
+    label{
+    	font-weight: normal;
+    }
+    </style>
+</head>
+
+<body>
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed zhuye-title">
+        <div class="am-header-left am-header-nav">
+			<a href="javascript:mi_exit(-1);" style="text-align: left">
+				<i class="iconfont icon-fanhuijiantou1"></i>
+			</a>
+		</div>
+        <h1 class="am-header-title" style="font-size: 16px;">注册</h1>
+        
+    </header>
+    <div class="am-g" style="background-color: white;height: 3em;width: 100%;padding:0 5px;border-bottom:1px solid #e5e5e5">
+        <div class="am-u-sm-4" style="font-size: 16px;padding: 13px 0 0 0">
+            <span id="step1" style="color:#3291f9;">1.输入手机号</span><i class="iconfont icon-fanhuijiantou"></i>
+        </div>
+        <div class="am-u-sm-4" style="font-size: 16px;padding: 13px 0 0 0">
+            <span id="step2" style="color: gray;">2.输入验证码</span><i class="iconfont icon-fanhuijiantou"></i>
+        </div>
+        <div class="am-u-sm-4" style="font-size: 16px;padding: 13px 0 0 0">
+            <span id="step3" style="color: gray;">3.输入密码</span><i class="iconfont icon-fanhuijiantou" style="padding-right: 0;"></i>
+        </div>
+    </div>
+    <div style="margin-top: 1em;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5">
+        <input id="inputText" type="number" name="" placeholder=" 请输入您的手机号" style="height: 3em;text-indent:20px;font-size:1.5rem;width: 100%;border:none;outline: none;">
+    </div>
+    <div id="getCode" style=" margin: 0em; padding: 0 1em;margin-top: 1em;" class="am-u-sm-12">
+        <input type="button" name="" value="获取验证码" onclick="getCode()" class="am-btn am-btn-sm am-fl" style="border-radius: 6px;border: none;width: 100%;height: 3em; font-size: 1em; color:#3291f9; outline: none;background-color:#d8ebff;background-size: cover;background-repeat: no-repeat;">
+    </div>
+    <div id="confirmCode" type="number" style="margin: 0em; padding: 0 1em;margin-top:1em;" class="am-u-sm-12" hidden>
+        <input type="button" name="" value="确认验证码" onclick="confirmCode()" class="am-btn am-btn-sm am-fl" style="border-radius: 6px;border: none;width: 100%;height: 3em; font-size: 1em; color: #3291f9; outline: none;background-color: #d8ebff;background-size: cover;background-repeat: no-repeat;">
+    </div>
+    <div id="done" style=" margin: 0em; padding: 0 1em;margin-top:1em;" class="am-u-sm-12" hidden>
+        <input type="button" name="" value="完成注册" onclick="done()" class="am-btn am-btn-sm am-fl" style="border-radius: 6px;border: none;width: 100%;height: 3em; font-size: 1em; color: #3291f9; outline: none;background-color:#d8ebff;background-size: cover;background-repeat: no-repeat;">
+    </div>
+    <div style="font-size: 14px;margin-top: 1em" class="am-u-sm-12">
+    	<label>
+	        <input id="confirmagreement" type="checkbox" name="" style="margin-left:5px;"> <span>我已阅读并同意</span><a href="main.html" style="color:#589ff7">《"买嗨"用户协议》</a>
+	    </label>
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsg"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var phoneNumber = 0;
+
+    function getCode() {
+        $("#getCode").attr("disabled","true");
+
+        if (checkAgreement()) {
+            phoneNumber = $('#inputText').val();
+            checkMobile(phoneNumber);
+        }
+    }
+
+    function checkMobile(phoneNumber) {
+        if (!(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test(phoneNumber))) {
+            $('#errmsg').text("请输入正确的手机号");
+            $('#my-alert').modal();
+            return false;
+        } else {
+            checkNumberReuse(phoneNumber);
+        }
+
+    }
+
+    function checkAgreement() {
+        if ($('#confirmagreement').is(':checked')) {
+            return true;
+        } else {
+            $('#errmsg').text("请阅读并同意“优惠宝”用户协议");
+            $('#my-alert').modal();
+            return false;
+        }
+
+    }
+
+    function checkNumberReuse(phoneNumber) {
+        $("#getCode").attr("disabled","true");
+        $.ajax({
+            type: "post",
+            url: baseurl("APPREGISTER.do"),
+            data: {
+                "phone": phoneNumber,
+            },
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "cnr",
+            success: function(data) {
+                if (data.success) {
+                    sendCode()
+                    return;
+                } else {
+                    $('#errmsg').text(data.message);
+                    $('#my-alert').modal();
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试");
+                $('#my-alert').modal();
+
+            }
+        });
+
+    }
+
+    function sendCode() {
+        $.ajax({
+            type: "post",
+            url: baseurl("APPCREATEYANZHENGMA.do"),
+            data: {
+                "phone": phoneNumber,
+                "yanzhengma": $('#inputText').val()
+
+            },
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "cc",
+            success: function(data) {
+                if (data.success) {
+                    $('#getCode').hide()
+                    $('#confirmCode').show()
+                    $('#step1').css("color", "gray")
+                    $('#step2').css("color", "#3291fd")
+                    $('#inputText')[0].placeholder = "请输入您获取的验证码"
+                    $('#inputText').val("")
+                    return;
+                } else {
+
+                    $('#errmsg').text(data.message);
+                    $('#my-alert').modal();
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试");
+                $('#my-alert').modal();
+
+            }
+        });
+
+    }
+
+    function confirmCode() {
+        if (checkAgreement()) {
+            if ($('#inputText').val() == "") {
+
+                    $('#errmsg').text("验证码不能为空");
+                    $('#my-alert').modal();
+
+            }else{
+                sendToConfirm();
+            }
+
+        }
+
+    }
+
+    function sendToConfirm() {
+        $.ajax({
+            type: "post",
+            url: baseurl("APPYANZHENGYANZHENGMA.do"),
+            data: {
+                "phone": phoneNumber,
+                "yanzhengma": $('#inputText').val(),
+            },
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "cc",
+            success: function(data) {
+                if (data.success) {
+                    $('#confirmCode').hide()
+                    $('#done').show()
+                    $('#step2').css("color", "gray")
+                    $('#step3').css("color", "lightskyblue")
+                    $('#inputText')[0].placeholder = "请输入您的密码"
+                    $('#inputText').val("")
+
+                } else {
+
+                    $('#errmsg').text(data.message);
+                    $('#my-alert').modal();
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试");
+                $('#my-alert').modal();
+
+            }
+        });
+    }
+
+
+    function done() {
+        if (checkAgreement()) {
+            $.ajax({
+                type: "post",
+                url: baseurl("APPREGISTERMIMA.do"),
+                data: {
+                    "phone": phoneNumber,
+                    "passwd": $('#inputText').val()
+                },
+                dataType: "jsonp",
+                jsonp: "callback",
+                jsonpCallback: "d",
+                success: function(data) {
+                    if (data.success) {
+                        localStorage.setItem("token",data.token);
+                        localStorage.setItem("userid",data.yonghuID);
+                        window.location.href="main.html";
+                    return;
+                    } else {
+
+                        $('#errmsg').text(data.message);
+                        $('#my-alert').modal();
+                    }
+                },
+                error: function() {
+                    $('#errmsg').text("网络通讯错误,请稍后重试");
+                    $('#my-alert').modal();
+
+                }
+            });
+
+        }
+    }
+    </script>
+</body>
+
+</html>

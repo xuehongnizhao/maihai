@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<style type="text/css">
+</style>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>comment</title>
+    <script src="js/include.js"></script>
+    <link>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-btn {
+        border-radius: 6px;
+        border: none;
+        width: 100%;
+        height: 3em;
+        font-size: 1em;
+        color: white;
+        outline: none;
+        background-color: lightskyblue;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    
+    textarea::-webkit-input-placeholder {
+        color: #aab2bd;
+        font-size: 12px;
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title" style="font-size: 16px;">昵称</h1>
+    </header>
+    <div class="am-u-sm-g" style="height: 3em;margin-top: 5px">
+        <textarea id="commentText" placeholder="输入您的昵称" maxlength=100 style="border:none;outline: none;height: 3em;width: 100%;resize:none;line-height: 3em"></textarea>
+    </div>
+    <div class="am-u-sm-12" style="height: 2em;margin-top: 5px;color: gray;font-size: 12px">以中文或英文字母开头，限4-16个字符，一个汉字为两个字符</div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsg">修改成功</a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" data-am-modal-confirm id="am-icon-close">确定</span>
+            </div>
+        </div>
+    </div>
+    <div style=" margin: 0em; padding: 0 1em;;margin-top: 2em;" class="am-u-sm-12">
+        <input type="button" name="" value="确 定" onclick="done()" class="am-btn am-btn-sm am-fl" style="outline: none;">
+    </div>
+    <script type="text/javascript">
+    var token = localStorage.getItem("token");
+    var userid = localStorage.getItem("userid");
+    var dingdanID = getParameter("dingdanID");
+    var goodsID = getParameter("goodsID");
+
+    function done() {
+        var commentText = $("#commentText").val()
+        if (stringNull(commentText)) {
+            showalert("请填写您的昵称")
+            return;
+        }
+        commentText = encodeURI(commentText);
+        $.ajax({
+            type: "post ",
+            url: baseurl(".do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "cd",
+            data: {
+                yonghuID: userid,
+                token: token,
+                dingdanID: dingdanID,
+                pinglunneirong: commentText,
+                shangpinID: goodsID,
+
+            },
+            success: function(json) {
+                if (!checktoken(json)) {
+                    return;
+                }
+                if (json.success) {
+                    $('#my-alert').modal({
+                        relatedTarget: this,
+                        onConfirm: function(e) {
+                            window.history.back();
+                        },
+                        onCancel: function(e) {
+
+                        }
+                    });
+                } else {
+                    showalert(json.message)
+                }
+
+
+
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试");
+                $('#my-alert').modal();
+
+            }
+        });
+    }
+    </script>
+</body>
+
+</html>

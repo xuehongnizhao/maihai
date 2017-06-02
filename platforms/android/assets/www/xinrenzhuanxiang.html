@@ -1,0 +1,275 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>jiazu</title>
+    <script src="js/include.js"></script>
+    <link>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .zhuye-title {
+	background: none
+}
+    .line {
+	border: none;
+	border-top: 1px solid #b8b1a4;
+	height: 1px;
+	width: 100%;
+	margin-top: 1em;
+}
+
+.mi-black {
+	color: #4489ce;
+	background: white;
+	outline: none;
+	border: white 1px solid;
+	border-top: #dddddd 1px solid;
+}
+
+.line1 {
+	border: none;
+	border-top: 1px solid #ccc;
+	height: 1px;
+	width: 100%;
+	margin-top: 0.3em;
+	margin-bottom: 0.5em;
+}
+
+#tcColor {
+	color: #333333;
+}
+
+#testColor {
+	color: #333333;
+	font-size: 15px;
+}
+
+.am-offcanvas-bar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 1091;
+	width: 75%;
+	max-width: 100%;
+	background: #f8f8f8;
+	border: none;
+	overflow-y: auto;
+	/* scrollable */
+	-webkit-overflow-scrolling: touch;
+	/* scrollable */
+	-webkit-transition: -webkit-transform 0.3s ease-in-out;
+	transition: transform 0.3s ease-in-out;
+	-webkit-transform: translateX(-100%);
+	-ms-transform: translateX(-100%);
+	transform: translateX(-100%);
+}
+
+.am-offcanvas-bar:after {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	width: 1px;
+	background: transparent;
+}
+
+.am-fr {
+	float: left;
+}
+
+.am-header-fixed {
+	position: absolute;
+}
+
+.am-slider-d1 {
+	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+	/* Direction Nav */
+}
+
+.loading .am-slider-d1 .am-viewport {
+	max-height: 300px;
+}
+
+.am-slider-d1 .am-slider-desc {
+	padding: 8px 35px;
+	width: 100%;
+	color: black;
+	background-color: white;
+}
+
+.am-topbar-inverse {
+	background-color: #f5f3f4;
+	border-color: #f5f3f4;
+}
+
+.am-navbar .am-navbar-nav {
+	background-color: #f5f3f4;
+}
+
+.am-modal-actions-group {
+	margin: 0px;
+}
+
+.data-am-selected {
+	width: 33%;
+	float: left;
+}
+
+.icon-sousuo {
+	float: left;
+	margin-top: 2px;
+	color: #fff;
+	margin-left: 20px;
+	margin-right: 10px;
+}
+
+.icon-fanhuijiantou1 {
+	color: #fff
+}
+
+.icon-dingwei {
+	color: #fff;
+	font-size: 2rem;
+}
+
+#d-leixing {
+	background: #fff;
+	padding-top: 20px;
+	margin-top: 10px;
+	
+}
+
+#d-huodongList {
+	background: #fff;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding: 0;
+}
+
+#d-shanghulist {
+	padding: 0;
+	margin-bottom: 61px;
+}
+
+.am-u-sm-12 .img-leixing {
+	width: 65%;
+	max-width: 50px;
+}
+
+.am-u-sm-12 .leixing-mingzi {
+	padding-bottom: 10px;
+	padding-top: 5px;
+	font-size: 1.4rem;
+}
+
+.icon-ding {
+	float: left;
+	color: #fbb111;
+	margin-right: 5px
+}
+
+.title {
+	background: #fff;
+	text-align: center;
+	color: #4384c6;
+	border-bottom: 1px solid #e5e5e5;
+	padding: 10px 0;
+	font-size: 1.4rem;
+}
+
+    .am-table>thead>tr>th, .am-table>tbody>tr>th, 
+    .am-table>tfoot>tr>th, .am-table>thead>tr>td, .am-table>tbody>tr>td, .am-table>tfoot>tr>td {
+        border-top: 0px solid #ddd;
+    }
+    </style>
+</head>
+
+<body style="background-color: #ffffcc;">
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed zhuye-title">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1" style=""></i>
+            </a>
+        </div>      
+    </header>
+    <div id="d_mylove" class="am-u-sm-12" style="margin-top: -49px;padding: 0">
+       <img class="am-img-responsive" alt="" src="img/xinren01.png">
+    </div>
+	
+	<div class="am-u-sm-12" style="    padding-left: 3rem;padding-right: 3rem;">
+		 <span style="font-size: 14px">1、不能活动仅限未注册新用户参加;</span>
+        <br>
+        <span style="font-size: 14px">2、新用户注册均可获得积分;</span>
+        <br>
+        <span style="font-size: 14px">3、积分可兑换商品；</span>
+		<div class="am-u-sm-6" style="float: right;" onclick="zhuce()">
+			 <img class="am-img-responsive" alt="" src="img/xinren03.png">
+		</div>
+	</div>
+	
+	
+    
+   	<div id="" class="am-u-sm-12" style="padding: 0;margin-bottom: 4em;">
+       <img class="am-img-responsive" alt="" src="img/xinren02.png">
+    </div>
+    <div class="am-u-sm-12"  id="fenxiang" style="height: 3em" hidden>
+    	<div class="am-u-sm-6">微信</div>
+    	<div class="am-u-sm-6">朋友圈</div>
+    	<div class="am-u-sm-12" style="text-align: center;">
+             <span style="color:#0e90d2;" data-am-modal-cancel>取消</span>
+         </div>   
+    </div>
+    
+    <header id="hid2" class="am-topbar am-topbar-inverse am-topbar-fixed-bottom " style="border-top: 0px #dfdfdf solid ; background-color:#ffffcc;">
+			<div data-am-widget="navbar" class="am-navbar  am-navbar-default " onclick="zhuce()" style="bottom: 10px;">
+				<img class="am-img-responsive" alt="" src="img/ad1.png" style="height: inherit;margin-left: 25%;">
+			</div>
+	</header>
+    
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsg"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var token = localStorage.getItem("token");
+    var userid = localStorage.getItem("userid");
+    jQuery(document).ready(function() {
+        
+    });
+    
+    
+    function fenxiang() {
+		$('#fenxiang').show();
+	}
+    function jiazushuoming() {
+    	$('#errmsg').text("收藏成功");
+        $('#my-alert').modal();
+	}
+    function zhuce() {
+    	 window.location.href = "register.html";
+	}
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>exchangerecord</title>
+    <script src="js/include.js"></script>
+    <link>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    hr {
+        margin: 0.3em 0em;
+        padding: 0px;
+        border-top: 1px solid #e8e8e8;
+    }
+    
+    .item {
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav {
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav a {
+        line-height: 42px;
+        color: lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active {
+        position: relative;
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active:after {
+        position: absolute;
+        width: 50%;
+        height: 0;
+        bottom: 0;
+        left: 28%;
+        border: 1px solid deepskyblue;
+        content: "";
+        z-index: 1;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active a {
+        line-height: 42px;
+        color: deepskyblue;
+        background: #ffff;
+    }
+    </style>
+</head>
+
+<body>
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">兑换记录</h1>
+    </header>
+    <div class="am-g" id="d_recordList">
+    </div>
+    <script type="text/html" id="s_recordList">
+        {{if duihuanjilulist.length >0}}
+        {{each duihuanjilulist as val i}}
+        <div onclick="goToOrderDetail('{{val.dingdanID}}')" class="am-g" style="background-color: white;border-bottom:1px solid #e5e5e4;margin-top: 1px;padding: 5px">
+            <div class="am-u-sm-5" style="height:8rem">
+                <img style="width:100%;border:none;margin-top:14px;height: 6rem;" src="{{imgurl+val.tupiandizhi}}">
+            </div>
+            <div class="am-u-sm-7">
+                <b style="color:#000;font-size: 1.2em; line-height: 1.5em;height: 1.5em;float:left;margin-bottom:5px;margin-top:8px">{{val.mingcheng}}</b>
+
+                <div style="line-height:2em;clear: both;font-size: 10px">
+                    <div style="font-size: 14px;color:#999999;"><span>兑换积分:</span><span style="color: red;">{{val.shiyongjifen}}</span></div>
+
+                </div>
+                <div style="line-height:2em;clear: both;font-size: 10px">
+                    <div style="font-size: 14px;color:#999999;"><span>兑换日期:</span><span style="color: #999999;">{{val.xiadanriqi}}</span></div>
+                </div>
+
+                <div style="line-height:1em;height: 1em "></div>
+            </div>
+        </div>
+        {{/each}}
+        
+        {{else}}
+        <div class="zanwu">暂无兑换记录</div>
+        {{/if}}
+        
+    </script>
+    <script type="text/javascript">
+    var token = localStorage.getItem("token");
+    var userid = localStorage.getItem("userid");
+    jQuery(document).ready(function() {
+        loadData();
+    });
+
+    function loadData() {
+        $.ajax({
+            type: "post ",
+            url: baseurl("APPDUIHUANJILU.do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "ecld",
+            data: {
+                yonghuID: userid,
+                token: token
+            },
+            success: function(json) {
+                if (!checktoken(json)) {
+                    return;
+                }
+                if (json.success) {
+                    json.imgurl = imgurl;
+                    var html = template('s_recordList', json);
+                    $("#d_recordList").html(html);
+                } else {
+                    $('#errmsg').text(json.message);
+                    $('#my-alert').modal();
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试");
+                $('#my-alert').modal();
+
+            }
+        });
+    }
+
+    function goToOrderDetail(orderID) {
+
+        window.location.href = "orderdetail.html?orderID=" + orderID;
+    }
+    </script>
+</body>
+
+</html>

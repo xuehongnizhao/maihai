@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <ViewFlipper
+        android:id="@+id/view_flipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:flipInterval="1000"
+        android:inAnimation="@anim/left_in"
+        android:outAnimation="@anim/left_out"
+        android:persistentDrawingCache="animation" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" 
+            android:background="@drawable/ydy_750_1">
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" 
+            android:background="@drawable/ydy_750_2">
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/last_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" 
+            android:background="@drawable/ydy_750_3">
+        </LinearLayout>
+    </ViewFlipper>
+
+</LinearLayout>

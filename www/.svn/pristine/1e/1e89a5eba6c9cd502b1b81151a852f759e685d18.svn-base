@@ -1,0 +1,249 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>jiazu</title>
+    <script src="js/include.js"></script>
+    <link>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    hr {
+        margin: 0.3em 0em;
+        padding: 0px;
+        border-top: 1px solid #e8e8e8;
+    }
+    .yhb-title {
+	background:#fff;
+}
+    
+    
+    .item {
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav {
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav a {
+        line-height: 42px;
+        color: lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active {
+        position: relative;
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active:after {
+        position: absolute;
+        width: 50%;
+        height: 0;
+        bottom: 0;
+        left: 28%;
+        border: 1px solid deepskyblue;
+        content: "";
+        z-index: 1;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active a {
+        line-height: 42px;
+        color: deepskyblue;
+        background: #ffff;
+    }
+    .am-table>thead>tr>th, .am-table>tbody>tr>th, 
+    .am-table>tfoot>tr>th, .am-table>thead>tr>td, .am-table>tbody>tr>td, .am-table>tfoot>tr>td {
+        border-top: 0px solid #ddd;
+    }
+    </style>
+</head>
+
+<body>
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1" style=""></i>
+            </a>
+        </div>
+        <h1 class="am-header-title" style="font-size: 16px;color: black">家族成员</h1>
+        <div class="am-header-right am-header-nav" onclick="jiazushuoming()">
+            <p  style="text-align: left;color: #fff">
+            	    家族说明
+            </p>
+        </div>
+        
+    </header>
+    <div class="am-u-sm-12" style="background-color: #ffffff;">
+		<div class="am-u-sm-6" style="border-right: 1px solid #efeeea;margin-top: 10px;margin-bottom: 10px;">
+			<div class="am-u-sm-12">我的成员</div>
+			<div class="am-u-sm-12"><span id = "jiazu" style="color: #ff0000"></span>位</div>
+		</div>
+		<div class="am-u-sm-6" style="margin-top: 10px;margin-bottom: 10px;">
+			<div class="am-u-sm-12">带来收益</div>
+			<div class="am-u-sm-12"><span id = "shouyi" style="color: #ff0000"></span>积分</div>
+		</div>
+	
+	</div>
+	<div id="t-lei">
+	
+	
+	</div>
+	  
+	  
+	<div class="am-modal-actions" id="modal_city" style="max-height: 80%;overflow:auto;">
+                <div class="am-modal-actions-group margin">
+                    <ul id="u-list" class="am-list">
+                        <li style = "height:3em;line-height:3em;border-bottom:1px #ededed solid;border-top:none;" onclick="weixin()"> 
+                        <span style = "display:block;">微信</span>
+                        </li>
+                        <li style = "height:3em;line-height:3em;border-bottom:1px #ededed solid;border-top:none;" onclick="pengyou()"> 
+                        <span style = "display:block;">朋友圈</span>
+                        </li>
+                        <li style="border: none;">
+                        	<button class="am-btn am-btn-secondary am-btn-block" style = "height:3em;background:white;color:#4489ce;border:none;" onclick="closemodal()">
+                        	取消</button>
+                        </li>
+                    </ul>
+                </div>
+     </div>
+    <header id="hid2" class="am-topbar am-topbar-inverse am-topbar-fixed-bottom " style="border-top: 1px #dfdfdf solid ; background-color;">
+			<div data-am-widget="navbar" class="am-navbar  am-navbar-default " onclick="fenxiang()">
+				<img class="am-img-responsive" alt="" src="img/cy.png" style="height: inherit;">
+			</div>
+	</header>
+    
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsg"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    
+     <script id='s-leixing' type="text/html">
+				{{if chengyuanlist.length > 0}}
+					<div class="am-u-sm-12" style="background-color: #ffffff;margin-top: 1em" id="t-lei">
+						<table class="am-table">  							
+					<thead>
+        				<tr>
+            				<th>招收日期</th>
+            				<th>成员ID</th>
+            				<th>带来收入</th>
+       	 				</tr>
+    				</thead>
+				<tbody>
+				{{each chengyuanlist as val i}}  
+					
+    				<tr style="border: none;">
+						<td>{{val.createDate}}</td>
+						<td>{{val.phone}}</td>
+						<td style="color:#ff0000">{{val.jifen}}</td>
+					</tr>					
+				{{/each}}
+				</tbody>
+				</table>
+					</div>
+				{{else}}
+					<div class="am-g" style="text-align: center; color: gray;height: 3em;line-height: 3em;">暂无成员</div>
+				{{/if}}
+	</script>
+    <script type="text/javascript">
+    var token = localStorage.getItem("token");
+    var userid = localStorage.getItem("userid");
+    jQuery(document).ready(function() {
+    	jiazu();
+    	jiazushouyi();
+    });
+    
+    
+    function fenxiang() {
+    	$('#modal_city').modal();
+	}
+    function jiazushuoming() {
+    	$('#errmsg').text("收藏成功");
+        $('#my-alert').modal();
+	}
+    
+    function jiazu() {
+        $.ajax({
+            type: "post",
+            url: baseurl("APPZHUANGDAJIAZU.do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "ld",
+            data: {
+            	yonghuID: userid,
+            	token:token
+            },
+            success: function(json) {
+            	$("#jiazu").html(json.list[0].shuliang);
+				 $("#shouyi").html(json.list[0].shouyi);
+                
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试 ");
+                $('#my-alert').modal();
+            }
+        });
+    };
+    
+    function jiazushouyi() {
+        $.ajax({
+            type: "post",
+            url: baseurl("APPJIAZUCHENGYUAN.do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "idld",
+            data: {
+            	yonghuID: userid,
+            	token:token
+            },
+            success: function(json) {
+            	var html = template('s-leixing', json);
+				$("#t-lei").html(html);
+                
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试 ");
+                $('#my-alert').modal();
+            }
+        });
+    };
+    function closemodal() {
+    	$('#modal_city').modal('close');
+    }
+
+    </script>
+</body>
+
+</html>

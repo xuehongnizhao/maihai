@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>changeMyInfo</title>
+    <script src="js/include.js"></script>
+    <link>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    hr {
+        margin: 0.3em 0em;
+        padding: 0px;
+        border-top: 1px solid #e8e8e8;
+    }
+    
+    .item {
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    .am-header-nav {
+        float: right;
+        margin-top: 7px;
+        margin-right: 10px
+    }
+    
+    .am-header-nav span {
+        right: 7px;
+        top: 10px
+    }
+    
+    .am-img-thumbnail {
+        border: 5px solid #b2d7ff;
+        width: 74px;
+        height: 74px;
+        float: right;
+    }
+    </style>
+</head>
+
+<body>
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">个人信息</h1>
+    </header>
+    <div class="doc-group" style=" margin-top: 5px;background-color: white;border-bottom:1px solid #e5e5e5;border-top:1px solid #e5e5e5 ">
+        <div id="p " style="margin-left:1em;height:4em;line-height:4em;color: black " onclick="changeImg() ">
+            头像
+            <i class="iconfont icon-fanhuijiantou "></i>
+            <img src="http://114.215.40.197/IMG/touxiang.jpg" id="img" style="height:3em;width: 3em;margin-top: 0.5em;float: right;">
+        </div>
+    </div>
+    <div class="doc-group" style="background-color: white;border-bottom:1px solid #e5e5e5">
+        <div style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="changNickName() ">
+            昵称
+            <i class="iconfont icon-fanhuijiantou"></i>
+            <span style="">你好</span>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white; border-bottom:1px solid #e5e5e5 ">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="changeBirthday() ">
+            生日
+            <i class="iconfont icon-fanhuijiantou "></i>
+            <span style="">1991/12/12</span>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white; border-bottom:1px solid #e5e5e5 ">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="changeSignature() ">
+            个性签名
+            <i class="iconfont icon-fanhuijiantou "></i>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white; border-bottom:1px solid #e5e5e5 ">
+        <div style="margin-left:1em;height:6em;line-height:2em;color: gray ">
+            一个没有梦想的人和无忧无虑有什么区别
+        </div>
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsg"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript ">
+    var token = localStorage.getItem("token");
+    var userid = localStorage.getItem("userid");
+
+    jQuery(document).ready(function() {
+
+        loadData();
+    });
+
+
+    function loadData() {
+
+    }
+
+    function changeImg() {
+
+    }
+
+    function changNickName() {
+        window.location.href = "changeNickName.html";
+    }
+
+    function changeBirthday() {
+        window.location.href = "birthday.html";
+    }
+
+    function changeSignature() {
+        window.location.href = "changeSignature.html";
+    }
+    </script>
+</body>
+
+</html>

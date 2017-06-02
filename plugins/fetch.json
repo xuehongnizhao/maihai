@@ -1,0 +1,86 @@
+{
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-dialogs": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-dialogs@~1.2.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-splashscreen": {
+        "source": {
+            "type": "local",
+            "path": "../../../world-android/plugins/cordova-plugin-splashscreen"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-baidumaplocation": {
+        "source": {
+            "type": "local",
+            "path": "../../cordova-plugin-baidumaplocation"
+        },
+        "is_top_level": true,
+        "variables": {
+            "ANDROID_KEY": "RpFho4R7RFmvb8WMknjZG6mzxmKpFiu0",
+            "IOS_KEY": "pPrZsRDa0I2ujdS1rvMUtGeOv0TYRz7g"
+        }
+    },
+    "cordova-plugin-file": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-file@~4.1.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-device": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-device@~1.1.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "com.percolatestudio.cordova.fileupload": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/percolatestudio/cordova-plugin-file-upload.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "xu.li.cordova.wechat": {
+        "source": {
+            "type": "local",
+            "path": "../xu.li.cordova.wechat"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cn.jpush.phonegap.JPushPlugin": {
+        "source": {
+            "type": "local",
+            "path": "../cn.jpush.phonegap.JPushPlugin"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-camera": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-camera@~2.1.0"
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}
