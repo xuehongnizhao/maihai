@@ -100,7 +100,8 @@
         font-size: 12px;
         margin-top: 4px;
     }
-    .shouhuoxinxi{
+    
+    .shouhuoxinxi {
         background-color: white;
         font-size: 14px;
     }
@@ -204,7 +205,7 @@
     </div>
     <header id="hid2" class="am-topbar am-topbar-inverse am-topbar-fixed-bottom " style="background: none;border:none;bottom:10px">
         <div style=" margin: 0em; padding: 0 1em;margin-top: 2.5em;" class="am-u-sm-12">
-            <input type="button" name="" value="马上兑换" onclick="goToExchange()" class="am-btn am-btn-sm am-fl" style="border-radius: 6px;border: none;width: 100%;height: 3em; font-size: 1em; color: white; outline: none;background-color:#ff6000;background-size: cover;background-repeat: no-repeat;">
+            <input type="button" name="" value="马上兑换" onclick="goToExchange()" class="am-btn am-btn-sm am-fl" style="border-radius: 6px;border: none;width: 100%;height: 3em; font-size: 1em; color: white; outline: none;background-color:#c62d1e;background-size: cover;background-repeat: no-repeat;">
         </div>
     </header>
     <script type="text/javascript">
@@ -304,7 +305,7 @@
     }
 
     function goToExchange() {
-        if (stringNull($("#phone").html()) || stringNull($("#contact").html())|| stringNull($("#addr").html())) {
+        if (stringNull($("#phone").html()) || stringNull($("#contact").html()) || stringNull($("#addr").html())) {
             $('#errmsg').text("请检查您的收货地址");
             $('#my-alert').modal();
             return;
@@ -322,8 +323,6 @@
     }
 
     function confirmPay() {
-
-
         $.ajax({
             type: "post",
             url: baseurl("APPJIFENSHANGCHENGGOUMAI.do"),
@@ -333,7 +332,10 @@
             data: {
                 shangpinID: goodsID,
                 yonghuID: userid,
-                token: token
+                token: token,
+                lianxiren: $("#contact").html(),
+                lianxidizhi: $("#addr").html(),
+                lianxidianhua: $("#phone").html()
             },
             success: function(json) {
                 if (!checktoken(json)) {

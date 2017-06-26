@@ -16,30 +16,44 @@
     <link href="css/style.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
     var onDeviceReady = function() {
-        console.log("+++++++++++++=2");
-        localStorage.setItem("myLongitude", 126.7025549470489);
-        localStorage.setItem("myLatitude", 45.76074169535599);
+        window.localStorage.setItem("myLongitude", 126.7025549470489);
+        window.localStorage.setItem("myLatitude", 45.76074169535599);
+        if (typeof(cityCode) == 'undefined' || cityCode == '' || cityCode == null) {
+            window.localStorage.setItem('cityCode', 230100);
+            cityCode = window.localStorage.getItem('cityCode');
+            window.localStorage.setItem('cityName', '哈尔滨市');
+            $("#address").html('哈尔滨市');
+        }
         document.addEventListener("backbutton", showConfirm, false);
         baidumap_location.getCurrentPosition(function(result) {
             console.log(JSON.stringify(result));
-            localStorage.setItem("myLongitude", result.longitude);
-            localStorage.setItem("myLatitude", result.latitude);
-            myLongitude = localStorage.getItem("myLongitude");
-            myLatitude = localStorage.getItem("myLatitude");
+            window.localStorage.setItem("myLongitude", result.longitude);
+            window.localStorage.setItem("myLatitude", result.latitude);
+            myLongitude = window.localStorage.getItem("myLongitude");
+            myLatitude = window.localStorage.getItem("myLatitude");
             getTuList();
             // alert(JSON.stringify(result));
 
         }, function(error) {
+            myLongitude = window.localStorage.getItem("myLongitude");
+            myLatitude = window.localStorage.getItem("myLatitude");
 
+            getTuList();
         }, [{
             timeout: 3000
         }]);
+
         cordova.getAppVersion.getVersionCode(function(version) {
             checkUpdate(version);
         });
         console.log("JPushPlugin:Device ready!")
         initiateUI();
     }
+       jQuery(document).ready(function() {
+        setTimeout('getTuList()',20);
+          
+        });
+
     var onGetRegistradionID = function(data) {
         try {
             console.log("JPushPlugin:registrationID is " + data)
@@ -293,13 +307,6 @@
         float: left;
     }
     
-    .icon-sousuo {
-        float: left;
-        margin-top: 2px;
-        color: #C0C0C0;
-        margin-left: 20px;
-        margin-right: 10px;
-    }
     
     .am-header-left p {
         float: left;
@@ -307,7 +314,7 @@
     }
     
     .am-header-left i {
-        font-size: 1px;
+        font-size: 12px;
         float: left;
         color: #fff;
         margin-left: 5px;
@@ -352,41 +359,61 @@
     .title {
         background: #fff;
         text-align: center;
-        color: #4384c6;
+        color: #646464;
         border-bottom: 1px solid #e5e5e5;
         padding: 10px 0;
         font-size: 1.4rem;
     }
+    .icon-sousuo {
+    float: left;
+    margin-top: 2px;
+    color: #C0C0C0;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+    .xiaoxi {
+    position: absolute;
+    top: -2px;
+    right: 10px;
+    background: #ff3f00;
+    color: #fff;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    line-height: 22px;
+    text-align: center;
+    border: 2px solid #fff;
+}
+.am-slider-a1 .am-control-nav li a.am-active {
+    background-color: #d74d2d;
+    border: 1px solid #d74d2d;
+}
+
     </style>
 </head>
 
 <body>
     <!-- Header -->
-    <header data-am-widget="header" class="am-header am-header-default am-header-fixed zhuye-title">
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed zhuye-title" style="position: fixed;">
         <div class="am-header-left am-header-nav" onclick="citychoose()">
             <p id="address" style="font-size: 14px">哈尔滨市</p>
             <i class="iconfont icon-quyudingweijiantou"></i>
         </div>
-        <div style="margin-left:7rem;margin-right:3rem;line-height:30px;background: #fff;overflow:hidden;border-radius: 30px;margin-top:8px" onclick="search()">
+        <div style="margin-left:30%;margin-right:3rem;line-height:30px;background: #fff;overflow:hidden;border-radius: 30px;margin-top:8px" onclick="search()">
             <i class="iconfont icon-sousuo"></i>
-            <div style="height: 30px;line-height: 30px; color: #C0C0C0;font-size: 14px;">关键词</div>
+            <div style="height: 32px;line-height: 32px; color: #C0C0C0;font-size: 14px;">关键词</div>
         </div>
-        <div id="message" class="am-header-right am-header-nav">
+        <div id="message" class="am-header-right am-header-nav" >
             <i class="iconfont icon-xiaoxi"></i>
-            <span style=""></span>
+            <span id="xiaoxi" hidden></span>
             <!--已经display: none -->
         </div>
     </header>
-    <div class="am-u-sm-12" id="d-leixing">
-        <script id='s-leixing' type="text/html">
-            {{each fenleilist as val i}}
-            <div class="am-u-sm-3" align="center" style="float: left;padding: 0;" onclick="main2('{{val.fenleiID}}')">
-                <img src="{{imgurl+val.tupiandizhi}}" class="img-leixing">
-                <p class="leixing-mingzi">{{val.fenleimingcheng}}</p>
-            </div>
-            {{/each}}
-        </script>
-    </div>
+    <div data-am-widget="slider" id="yhb-fenlei" class="am-slider am-slider-a1" data-am-slider='{&quot;directionNav&quot;:false}' style="background-color: white;">
+    <ul id="l_fenlei" class="am-slides">
+
+    </ul>
+</div>
     <div id="d-huodongList" class="am-u-sm-12">
         <script id='s-huodongList' type="text/html">
             {{each HuodongList as val i}} {{if i%2 ==0}} {{if val.huodongID == null || val.huodongID == ""}}
@@ -413,12 +440,12 @@
         <script id='s-shanghulist' type="text/html">
             {{each shanghulist as val i}}
             <div class="am-g" onclick="goToRiceDetail('{{val.shanghuID}}')" style="background-color: white;border-bottom:1px solid #e5e5e4;border-radius: 4px;">
-                <div class="am-u-sm-4" style="height:8rem">
-                    <img style="width:100%;height:6rem;border:none;margin-top:14px;" src="{{imgurl+val.tupiandizhi}}">
+                <div class="am-u-sm-3">
+                    <img style="width:100%;border:none;margin-top:12px;margin-bottom: 12px;" src="{{imgurl+val.tupiandizhi}}">
                 </div>
-                <div class="am-u-sm-8" style="padding:0 0 0 0.5em;">
-                    <div style="color:#000;font-size: 14px; height: 1.5em;float:left;margin-bottom:5px;margin-top:8px">{{val.dianpumingcheng}}</div>
-                    <span style="font-size: 1em;color:#999999;float: right;margin-right: 10px;margin-top:10px">{{val.juli}}</span>
+                <div class="am-u-sm-9" style="padding:0;margin-top: 3px;">
+                    <div style="color:#000;font-size:16px; height: 1.5em;float:left;margin-top:10px;margin-bottom: 4px;">{{val.dianpumingcheng}}</div>
+                    <span style="font-size: 0.8em;color:#999999;float: right;margin-right: 10px;margin-top:10px">{{val.juli}}</span>
                     <div style="line-height: 1em;clear: both;margin-bottom:5px">
                         <span style="font-size: 0.8em;color: red;">{{val.jine}}元可抵扣{{val.jifen}}积分</span>
                     </div>
@@ -436,8 +463,8 @@
             <ul class="am-navbar-nav am-cf am-avg-sm-4">
                 <li>
                     <a href="javascript:void(0);" class="">
-                        <i class="iconfont icon-shouye-fill" style="color:#4384c6"></i>
-                        <span class="am-navbar-label" style="color: #4384c6; font-size: 12px; margin-top: 0.1em">首页</span>
+                        <i class="iconfont icon-shouye-fill" style="color:#d74d2d"></i>
+                        <span class="am-navbar-label" style="color: #d74d2d; font-size: 12px; margin-top: 0.1em">首页</span>
                     </a>
                 </li>
                 <li>
@@ -472,6 +499,7 @@ var userid = window.localStorage.getItem('userid');
 var token = window.localStorage.getItem('token');
 var cityCode = window.localStorage.getItem('cityCode');
 var city = window.localStorage.getItem('cityName');
+var pageNO = 1;
 $("#address").html(city);
 if (userid == null || userid == "null") {
     isLogin = false;
@@ -481,18 +509,43 @@ if (userid == null || userid == "null") {
     }
 } else {
     isLogin = true;
+    getXiao();
 }
+window.onscroll = function(){
+	　　if(getScrollTop() + getWindowHeight() == getScrollHeight()){
+	　　　　	pageNO++;
+	　　　　	getTuList();
+	　　}
+	};
 
-jQuery(document).ready(function() {
-    if (typeof(cityCode) == 'undefined' || cityCode == '' || cityCode == null) {
-        window.localStorage.setItem('cityCode', 230100);
-        cityCode = window.localStorage.getItem('cityCode');
-        window.localStorage.setItem('cityName', '哈尔滨');
-        $("#address").html('哈尔滨');
-    }
-    console.log("+++++++++++++=1");
-    getTuList();
-});
+function getXiao() {
+
+    $.ajax({
+        type: "post",
+        url: baseurl("APPSHOUYEXIAOXI.do"),
+        dataType: "jsonp",
+        data: {
+             xuniyonghu: userid,
+             token: token
+        },
+        jsonp: "callback",
+        jsonpCallback: "dir",
+        success: function(json) {
+            if(!checktoken(json)){
+                return; 
+            }
+            if(json.weidustatus == "0"){
+                $('#xiaoxi').show();
+            }
+            
+            
+        },
+        error: function() {
+
+        }
+    });
+
+}
 
 function getTuList() {
 
@@ -501,6 +554,7 @@ function getTuList() {
         url: baseurl("APPSHOUYE.do"),
         dataType: "jsonp",
         data: {
+        	"pageNO": pageNO,
             "cityCode": cityCode,
             "jingdu": myLongitude,
             "weidu": myLatitude
@@ -511,12 +565,66 @@ function getTuList() {
             json.imgwidth = screen.width / 2;
             json.imgheight = screen.width / 4;
             json.imgurl = imgurl;
-            var html = template('s-leixing', json);
-            $("#d-leixing").html(html);
             var html = template('s-huodongList', json);
             $("#d-huodongList").html(html);
             var html = template('s-shanghulist', json);
-            $("#d-shanghulist").html(html);
+            var a = $("#d-shanghulist").html();
+            $("#d-shanghulist").html(a+html);           
+            var fenleilist = json.fenleilist;
+            var str = "";
+            json.fenleilist.forEach(function(e,index) {
+                if(index %8 == 0 ){
+                    str  += "<li><div class='am-u-sm-12' style='margin-top: 10px;padding-top: 20px;padding-bottom: 20px;'> ";
+                    str += "<div class='am-u-sm-3' align='center' style='float: left;padding: 0;' onclick=main2('"+e.fenleiID+"')>"
+                            +"<img src='"+imgurl+e.tupiandizhi+"' class='img-leixing'>"
+                            +"<p class='leixing-mingzi'>"+e.fenleimingcheng+"</p></div>";
+                    
+                }else if(index %8 == 7){
+                    str +="<div class='am-u-sm-3' align='center' style='float: left;padding: 0;' onclick=main2('"+e.fenleiID+"')>"
+                            +"<img src='"+imgurl+e.tupiandizhi+"' class='img-leixing'>"
+                            +"<p class='leixing-mingzi'>"+e.fenleimingcheng+"</p></div>"
+                    str += "</div></li>";
+                }else{
+                    str +="<div class='am-u-sm-3' align='center' style='float: left;padding: 0;' onclick=main2('"+e.fenleiID+"')>"
+                            +"<img src='"+imgurl+e.tupiandizhi+"' class='img-leixing'>"
+                            +"<p class='leixing-mingzi'>"+e.fenleimingcheng+"</p></div>";
+                }
+                
+                
+            });
+            $("#l_fenlei").append(str);
+            $('#yhb-fenlei').flexslider(
+                    {
+                        slideshow: false,
+                        directionNav : false,
+                        controlNav : true,
+                        //playAfterPaused : 1000000,
+                        before : function(slider) {
+                            if (slider._pausedTimer) {
+                                window
+                                        .clearTimeout(slider._pausedTimer);
+                                slider._pausedTimer = null;
+                            }
+                        },
+                        after : function(slider) {
+                            var pauseTime = slider.vars.playAfterPaused;
+                            if (pauseTime
+                                    && !isNaN(pauseTime)
+                                    && !slider.playing) {
+                                if (!slider.manualPause
+                                        && !slider.manualPlay
+                                        && !slider.stopped) {
+                                    slider._pausedTimer = window
+                                            .setTimeout(
+                                        function() {
+                                                slider.play();
+                                                    },
+                                        pauseTime);
+                                }
+                            }
+                        }
+                    // 设置其他参数
+                    });
         },
         error: function() {
 
@@ -526,7 +634,12 @@ function getTuList() {
 }
 
 function main2(fenleiID) {
-    window.location.href = "main2page.html?fenleiID=" + fenleiID;
+    if(fenleiID == "maihai"){
+        window.location.href = "search.html";
+    }else{
+        window.location.href = "main2page.html?fenleiID=" + fenleiID;
+    }
+    
 }
 
 function goToRiceDetail(shanghuID) {
@@ -536,6 +649,9 @@ function goToRiceDetail(shanghuID) {
 function search() {
     window.location.href = "search.html";
 }
+$('#message').click(function(){
+    window.location.href = "message.html";
+});
 
 function citychoose() {
     window.location.href = "searchCity.html";

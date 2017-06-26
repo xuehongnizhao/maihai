@@ -3,7 +3,7 @@
 <plist version="1.0">
   <dict>
     <key>CFBundleDevelopmentRegion</key>
-    <string>English</string>
+    <string>zh_CN</string>
     <key>CFBundleDisplayName</key>
     <string>${PRODUCT_NAME}</string>
     <key>CFBundleExecutable</key>
@@ -30,10 +30,6 @@
     <string>0.0.1</string>
     <key>LSRequiresIPhoneOS</key>
     <true/>
-    <key>NSMainNibFile</key>
-    <string></string>
-    <key>NSMainNibFile~ipad</key>
-    <string></string>
     <key>UIRequiresFullScreen</key>
     <true/>
     <key>UIInterfaceOrientation</key>
@@ -61,10 +57,38 @@
       <string>pPrZsRDa0I2ujdS1rvMUtGeOv0TYRz7g</string>
     </dict>
     <key>NSCameraUsageDescription</key>
-    <string></string>
+    <string>扫描二维码</string>
     <key>NSPhotoLibraryUsageDescription</key>
-    <string></string>
+    <string>使用相册</string>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string></string>
+    <key>NSContactsUsageDescription</key>
+    <string>使用通讯录</string>
+    <key>LSApplicationCategoryType</key>
+    <string></string>
+    <key>CFBundleURLTypes</key>
+    <array>
+      <dict>
+        <key>CFBundleURLName</key>
+        <string>alipay</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>ali2017052607353342</string>
+        </array>
+      </dict>
+      <dict>
+        <key>CFBundleURLName</key>
+        <string>weixin</string>
+        <key>CFBundleURLSchemes</key>
+        <array>
+          <string>wx26ffe4a65c004585</string>
+        </array>
+      </dict>
+    </array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>weixin</string>
+      <string>wechat</string>
+    </array>
   </dict>
 </plist>

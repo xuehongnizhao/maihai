@@ -66,14 +66,14 @@
         height: 0;
         bottom: 0;
         left: 28%;
-        border: 1px solid deepskyblue;
+        border: 1px solid #d74d2d;
         content: "";
         z-index: 1;
     }
     
     .am-tabs-d2 .am-tabs-nav>.am-active a {
         line-height: 42px;
-        color: deepskyblue;
+        color:#d74d2d;
         background: #ffff;
     }
     
@@ -98,19 +98,22 @@
         margin-left: 1.5rem;
     }
     
-    .am-list .jiage {
-        float: right;
+    .am-list .zhuangtai {
         font-size: 1.6rem;
         font-weight: bold;
         color: #ff8d52;
-        margin-right: 10px;
-        margin-top: 15px;
+         text-align: right;
     }
     
     .czmc {
         float: left;
         margin-top: 10px;
         margin-left: 15px
+    }
+    .czmz {
+        float: right;
+        margin-top: 10px;
+        margin-right: 15px
     }
     
     .czmc p {
@@ -125,6 +128,150 @@
     .czmc p:last-child {
         color: #b5b5b5
     }
+    .am-form select, 
+    .am-form textarea, 
+    .am-form input[type=text], 
+    .am-form input[type=password], 
+    .am-form input[type=datetime], 
+    .am-form input[type=datetime-local], 
+    .am-form input[type=date], 
+    .am-form input[type=month], 
+    .am-form input[type=time], 
+    .am-form input[type=week], 
+    .am-form input[type=number], 
+    .am-form input[type=email], 
+    .am-form input[type=url], 
+    .am-form input[type=search], 
+    .am-form input[type=tel], 
+    .am-form input[type=color], 
+    .am-form-field {
+	    display: block;
+	    width: 50%;
+	    padding: .625em;
+	    font-size: 1.6rem;
+	    font-weight: bold;
+	    line-height: 1.2rem;
+	    color: #555;
+	    vertical-align: middle;
+	    background-color: #fff;
+	    background-image: none;
+	    border:none;
+	    border-radius: 0;
+	    -webkit-appearance: none;
+	    -webkit-transition:none;
+	    transition:none;
+	}
+	.am-form select:focus,
+	.am-form textarea:focus,
+	.am-form input[type=text]:focus,
+	.am-form input[type=password]:focus,
+	.am-form input[type=datetime]:focus,
+	.am-form input[type=datetime-local]:focus,
+	.am-form input[type=date]:focus,
+	.am-form input[type=month]:focus,
+	.am-form input[type=time]:focus,
+	.am-form input[type=week]:focus,
+	.am-form input[type=number]:focus,
+	.am-form input[type=email]:focus,
+	.am-form input[type=url]:focus,
+	.am-form input[type=search]:focus,
+	.am-form input[type=tel]:focus,
+	.am-form input[type=color]:focus,
+	.am-form-field:focus {
+		-webkit-box-shadow:none;
+		box-shadow: none
+	}
+	.am-input-lg{
+		border-bottom: 1px solid #ccc;
+	}
+	.am-form-group{
+		width: 100%;
+		margin-bottom: 0;
+	}
+	.am-radio-inline{
+		width: 100%;
+		margin-left:0;
+		border-bottom:1px solid #e4e4e4;
+		padding:10px 15px
+	}
+	.am-radio-inline i{
+		font-size: 2.5rem;
+	}
+	.am-radio-inline i,
+	.am-radio-inline div{
+		float:left;
+		margin-right:1rem
+	}
+	.am-radio-inline div{
+		font-size: 2rem;
+		color:#767676;
+	}
+	
+	input[type=checkbox],
+    input[type=radio] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        margin-top: 8px;
+        cursor: pointer;
+        vertical-align: bottom;
+        background: #fff;
+        border: 1px solid B9BBBE;
+        -webkit-border-radius: 1px;
+        -moz-border-radius: 1px;
+        border-radius: 1px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        position: relative;
+        content: url('img/normal_addr3.png');
+    }
+    
+    input[type=checkbox]:active,
+    input[type=radio]:active {
+        border: none;
+        background: #ebebeb;
+    }
+    
+    input[type=checkbox]:hover {
+        border: none;
+    }
+    
+    input[type=checkbox] {
+        border: none;
+        width: 20px;
+        height: 20px;
+        content: url('img/normal_addr3.png');
+        background: transparent;
+    }
+    
+    input[type=checkbox]:checked,
+    input[type=radio]:checked {
+        z-index: 100;
+        width: 20px;
+        height: 20px;
+        content: url('img/default_addr3.png');
+    }
+    
+    input[type=checkbox]:checked::after {
+        width: 20px;
+        height: 20px;
+        content: url('img/default_addr3.png');
+        display: block;
+    }
+    
+    input[type=checkbox]:focus {
+        width: 20px;
+        height: 20px;
+        outline: none;
+        border-color: #4d90fe;
+    }
+    .am-btn-primary{
+    	background: none;
+    	border:0
+    }
+    
     </style>
 </head>
 
@@ -136,18 +283,29 @@
             </a>
         </div>
         <h1 class="am-header-title">分润明细</h1>
-        <a id="message" class="am-header-right am-header-nav" onclick="zhuanru()">
-          	转入余额
-        </a>
+        
+        <div class="am-header-right am-header-nav" >
+        		<div class="am-dropdown" data-am-dropdown>
+  			<button class="am-btn am-btn-primary am-dropdown-toggle" data-am-dropdown-toggle style="background-image: none;background-color: white;color: #d74d2d;border-color: #white;border-radius: 2px;">操作 <i class="am-icon-caret-down"></i></button>
+  			<ul class="am-dropdown-content">   			
+    			<li><div onclick="zhuanru()" style="border-bottom:1px solid #dedede;text-align: center;">转入余额</div></li>
+				<li><div onclick="tixian()" style="text-align: center;">提现</div></li>
+  			</ul>
+				</div>
+        </div>
     </header>
    <div class="am-u-sm-12" style="background-color: #ffffff;">
-		<div class="am-u-sm-6" style="border-right: 1px solid #efeeea;margin-top: 10px;margin-bottom: 10px;">
+		<div class="am-u-sm-4" style="border-right: 1px solid #efeeea;margin-top: 10px;margin-bottom: 10px;">
 			<div class="am-u-sm-12">总利润</div>
-			<div class="am-u-sm-12"><span id = "zongjia" style="color: #ff0000"></span>元</div>
+			<div class="am-u-sm-12"><span id = "zongjia" style="color: #ff0000"></span></div>
 		</div>
-		<div class="am-u-sm-6" style="margin-top: 10px;margin-bottom: 10px;">
+		<div class="am-u-sm-4" style="border-right: 1px solid #efeeea;margin-top: 10px;margin-bottom: 10px;">
+			<div class="am-u-sm-12">剩余</div>
+			<div class="am-u-sm-12"><span id = "shengyu" style="color: #ff0000"></span></div>
+		</div>
+		<div class="am-u-sm-4" style="margin-top: 10px;margin-bottom: 10px;">
 			<div class="am-u-sm-12">总提现</div>
-			<div class="am-u-sm-12"><span id = "tixian" style="color: #ff0000"></span>元</div>
+			<div class="am-u-sm-12"><span id = "tixian" style="color: #ff0000"></span></div>
 		</div>
 	
 	</div>
@@ -169,11 +327,13 @@
                                 <p>{{val.dongzuo}}</p>
                                 <p>{{val.createDate}}</p>
                             </div>
-                            <p class="jiage">+{{val.fanxianjine}}</p>
+							<div>
+								<p class="jiage" style="float: right;font-size: 1.6rem;font-weight: bold;color: #ff8d52;margin-right: 10px;margin-top: 10px;">+{{val.fanxianjine}}</p>
+							</div>                            
                         </li>
                         {{/each}}
                          {{else}}
-                        <div class="zanwu">暂无充值记录</div>
+                        <div class="zanwu">暂无分润记录</div>
                         {{/if}}
                     </script>
                 </div>
@@ -185,11 +345,14 @@
                         {{each zhichulist as val i}}
                         <li>
                             <div class="czmc">
-                                <p>支出</p>
+                                <p>{{val.dongzuo}}</p>
                                 <p>{{val.createDate}}</p>
                             </div>
-                            <p class="jiage">-{{val.zhichu}}</p>
-                        </li>
+							<div class="czmz">
+                            <p class="jiage" style="font-size: 1.6rem;font-weight: bold;color: #ff8d52;text-align: right;">{{val.fanxianjine}}</p>
+							<p class="zhuangtai">{{val.tixianleixing}}</p>
+                        	</div>
+						</li>
                         {{/each}}
                         {{else}}
                         <div class="zanwu">暂无转入余额记录</div>
@@ -210,13 +373,102 @@
             </div>
         </div>
     </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert1">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsg1"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" onclick="reloadData()">确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-weixin">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsgweixin"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" onclick="bdweixin()">确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-zhifubao">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsgzhifubao"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" onclick="bdzhifubao()">确定</span>
+            </div>
+        </div>
+    </div>
     <div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
         <div class="am-modal-dialog">
-            <div class="am-modal-hd">是否转入余额</div>
-            <div class="am-modal-bd">  	
-      		<input id="jinea" type="text" class="am-modal-prompt-input" maxlength="11" placeholder="转出金额(必填)" 
-      		onkeyup='this.value=this.value.replace(/\D/gi,"")' style="margin-top:16px;border:1px solid #dfdfdf;
-      		width:230px;height:40px;border-radius:2px;color:#646464">
+            <div class="am-modal-hd">请输入金额</div>
+            <div class="am-modal-bd">
+            <input id='jinea' name= "price" onkeyup= "if(!/^\d{0,12}\.{0,1}(\d{1,2})?$/.test(this.value)){this.value='';}"style="margin-top:16px;border:1px solid #dfdfdf;
+      		width:230px;height:40px;border-radius:2px;color:#646464;outline: none;  box-shadow: none;height: 3em;">  	
+      		
+    		</div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-confirm>确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="my-tixian">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">请输入金额</div>
+            <div class="am-modal-bd">
+            <input id='tixianjine'
+					onkeyup= "if(!/^\d{0,12}\.{0,1}(\d{1,2})?$/.test(this.value)){this.value='';}"style="margin-top:16px;border:1px solid #dfdfdf;
+      		width:230px;height:40px;border-radius:2px;color:#646464;outline: none;  box-shadow: none;height: 3em;">  	
+      		
+    		</div>
+    		<div class="am-g" style="background-color: white;">
+				<div id="name1" style="color:#767676;font-size: 2rem;margin-bottom: 1rem;">提现方式</div>
+		<div class="am-form-group">
+			<label class="am-radio-inline" style="margin-left:0;">
+				<i class="iconfont icon-weixin"></i><div>微信</div>
+			    <input type="radio"  value="" name="docInlineRadio" style="float:right;border: none;" onclick="payType('weixin')"> 
+			</label>
+			<label class="am-radio-inline" style="margin-left:0;border-bottom:none">
+				<i class="iconfont icon-zhifubao"></i><div>支付宝</div>
+			    <input type="radio"  value="" name="docInlineRadio" style="float:right;border: none;" onclick="payType('zhifubao')"> 
+			</label>
+		</div>
+	</div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-confirm>确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="my-bdweixin">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">请输入微信账号</div>
+            <div class="am-modal-bd">
+            <input id='weixinhao' style="margin-top:16px;border:1px solid #dfdfdf;
+      		width:230px;height:40px;border-radius:2px;color:#646464;outline: none;  box-shadow: none;height: 3em;">  	
+      		
+    		</div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-confirm>确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="my-bdzhifubao">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">请输入支付宝账号</div>
+            <div class="am-modal-bd">
+            <input id='zhifubaohao' style="margin-top:16px;border:1px solid #dfdfdf;
+      		width:230px;height:40px;border-radius:2px;color:#646464;outline: none;  box-shadow: none;height: 3em;">  	
+      		
     		</div>
             <div class="am-modal-footer">
                 <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-cancel>取消</span>
@@ -228,10 +480,14 @@
 <script type="text/javascript">
 var token = localStorage.getItem("token");
 var userid = localStorage.getItem("userid");
+var zhifuType = "";
 jQuery(document).ready(function() {
     loadData1();
-    //loadData2();
 });
+
+function payType(type) {
+    zhifuType = type;
+}
 
 function loadData1() {
     $.ajax({
@@ -251,13 +507,25 @@ function loadData1() {
             if (json.success) {
                 json.imgurl = imgurl;
                 zongji = json.zongji;
+                if(!/\./.test(zongji)){
+                	zongji += '.00';
+                }
                 zhichu = json.zhichu;
-                $("#zongjia").html(zongji);
+                if(!/\./.test(zhichu)){
+                	zhichu += '.00';
+                }
+                shouru = json.shouru;
+                if(!/\./.test(zhichu)){
+                	zhichu += '.00';
+                }
+                $("#zongjia").html(shouru);
+                $("#shengyu").html(zongji);
                 $("#tixian").html(zhichu);
                 var html = template('s_sale_1', json);
                 $("#u_sale_1").html(html);
                 var html = template('s_sale_2', json);
                 $("#u_sale_2").html(html);
+                getzongjia("jiage");
             } else {
                 $('#errmsg').text(json.message);
                 $('#my-alert').modal();
@@ -272,59 +540,35 @@ function loadData1() {
     });
 }
 
-function loadData2() {
-    $.ajax({
-        type: "post ",
-        url: baseurl("APPCHONGZHI.do"),
-        dataType: "jsonp",
-        jsonp: "callback",
-        jsonpCallback: "irld2",
-        data: {
-        	leixing: "zhanghuzhichu",
-            yonghuID: userid,
-            token: token
-        },
-        success: function(json) {
-            if (!checktoken(json)) {
-                return;
-            }
-            if (json.success) {
-                json.imgurl = imgurl;
-                var html = template('s_sale_2', json);
-                $("#u_sale_2").html(html);
-            } else {
-                $('#errmsg').text(json.message);
-                $('#my-alert').modal();
-
-            }
-        },
-        error: function() {
-            $('#errmsg').text("网络通讯错误,请稍后重试 ");
-            $('#my-alert').modal();
-
-        }
-    });
-}
-function zhuanru() {
+function zhuanru() {	
     $('#my-prompt').modal({
         relatedTarget: this,
         onConfirm: function(e) {
-        	jinea = $('#jinea').val(); 
+        	var jinea = document.getElementById("jinea").value;
+        	if(jinea == "" || jinea == null || typeof(jinea) == 'undefined' || jinea < 0.01){
+        		showalert("金额必须大于0.01")
+                return;
+        	}
+        	
             $.ajax({
                 type: "post ",
-                url: baseurl("APPDIANPUSHOUCANG.do"),
+                url: baseurl("APPTIXIAN.do"),
                 dataType: "jsonp",
                 jsonp: "callback",
                 jsonpCallback: "mlcl",
                 data: {
                     yonghuID: userid,
-                    token: token
+                    token: token,
+                    jine : jinea
                 },
                 success: function(json) {
+                	if(!checktoken(json)){
+                		return; 
+                	}
                     if (json.success) {
-                        $('#errmsg').text("转入余额成功");
-                        $('#my-alert').modal();
-                        loadData();
+                        $('#errmsg1').text("转入余额成功");
+                        $('#my-alert1').modal();
+                        
                     } else {
                         $('#errmsg').text(json.message);
                         $('#my-alert').modal();
@@ -341,6 +585,159 @@ function zhuanru() {
 
         }
     });
+}
+function tixian() {	
+    $('#my-tixian').modal({
+        relatedTarget: this,
+        onConfirm: function(e) {
+        	var jinea = document.getElementById("tixianjine").value;
+        	if(jinea == "" || jinea == null || typeof(jinea) == 'undefined' || jinea < 0.01){
+        		showalert("金额必须大于0.01")
+                return;
+        	}
+        	if (zhifuType == null || typeof(zhifuType) == 'undefined' || zhifuType == "") {
+        		showalert("请选择提现方式")
+        		return;
+            } 
+            $.ajax({
+                type: "post ",
+                url: baseurl("APPYONGJINTIXIAN.do"),
+                dataType: "jsonp",
+                jsonp: "callback",
+                jsonpCallback: "mlcl",
+                data: {
+                    yonghuID: userid,
+                    token: token,
+                    jine : jinea,
+                    fangshi : zhifuType
+                },
+                success: function(json) {
+                	if(!checktoken(json)){
+                		return; 
+                	}
+                    if (json.success) {
+                        $('#errmsg1').text("提现成功");
+                        $('#my-alert1').modal();
+                        
+                    } else {
+                    	if(json.message == "weixin"){
+                    		$('#errmsgweixin').text("您还没有绑定微信，请去绑定");
+                            $('#my-weixin').modal();
+                    	}else if(json.message == "zhifubao"){
+                    		$('#errmsgzhifubao').text("您还没有绑定支付宝，请去绑定");
+                            $('#my-zhifubao').modal();
+                    	}else{
+                    		$('#errmsg').text(json.message);
+                            $('#my-alert').modal();  
+                    	}
+                    	                      
+
+                    }
+                },
+                error: function() {
+
+
+                }
+            });
+        },
+        onCancel: function(e) {
+
+        }
+    });
+}
+function bdweixin() {
+	 $('#my-bdweixin').modal({
+	        relatedTarget: this,
+	        onConfirm: function(e) {
+	        	var weixinhao = document.getElementById("weixinhao").value;
+	        	if (isExistExpression(weixin)) {
+	                return;
+	            }
+	            $.ajax({
+	                type: "post ",
+	                url: baseurl("APPBANGDING.do"),
+	                dataType: "jsonp",
+	                jsonp: "callback",
+	                jsonpCallback: "mlcl",
+	                data: {
+	                    yonghuID: userid,
+	                    token: token,
+	                    zhanghao : weixinhao,
+	                    fangshi : 'weixin'
+	                },
+	                success: function(json) {
+	                	if(!checktoken(json)){
+	                		return; 
+	                	}
+	                    if (json.success) {
+	                        $('#errmsg').text(json.message);
+	                        $('#my-alert').modal();
+	                        
+	                    } else {	                    	
+	                    	$('#errmsg').text(json.message);
+	                        $('#my-alert').modal();                        
+
+	                    }
+	                },
+	                error: function() {
+
+
+	                }
+	            });
+	        },
+	        onCancel: function(e) {
+
+	        }
+	    });
+	
+}
+function bdzhifubao() {
+	$('#my-bdzhifubao').modal({
+        relatedTarget: this,
+        onConfirm: function(e) {
+        	var zhifubaohao = document.getElementById("zhifubaohao").value;
+        	if (isExistExpression(zhifubaohao)) {
+                return;
+            }
+            $.ajax({
+                type: "post ",
+                url: baseurl("APPBANGDING.do"),
+                dataType: "jsonp",
+                jsonp: "callback",
+                jsonpCallback: "mlcl",
+                data: {
+                    yonghuID: userid,
+                    token: token,
+                    zhanghao : zhifubaohao,
+                    fangshi : 'zhifubao'
+                },
+                success: function(json) {
+                	if(!checktoken(json)){
+                		return; 
+                	}
+                    if (json.success) {
+                        $('#errmsg').text(json.message);
+                        $('#my-alert').modal();
+                        
+                    } else {	                    	
+                    	$('#errmsg').text(json.message);
+                        $('#my-alert').modal();                        
+
+                    }
+                },
+                error: function() {
+
+
+                }
+            });
+        },
+        onCancel: function(e) {
+
+        }
+    });
+}
+function reloadData() {
+	window.location.reload();
 }
 
 </script>

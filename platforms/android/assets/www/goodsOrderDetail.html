@@ -15,6 +15,20 @@
     <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
     <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
     <style type="text/css">
+    .am-btn {
+        border-radius: 6px;
+        border: none;
+        width: 100%;
+        height: 3em;
+        font-size: 1em;
+        color: #3291f9;
+        outline: none;
+        background-color: #d8ebff;
+        background-size: cover;
+        background-repeat: no-repeat;
+        outline: none;
+    }
+    
     .am-header .am-header-title {
         margin: 0 15%;
     }
@@ -68,9 +82,8 @@
         background: #ffff;
     }
     
-   
     .am-u-sm-left {
-         font-size: 14px;
+        font-size: 14px;
         color: gray;
         padding: 5px;
         line-height: 1em;
@@ -78,7 +91,7 @@
     }
     
     .am-u-sm-right {
-         font-size: 14px;
+        font-size: 14px;
         color: gray;
         padding: 5px;
         line-height: 1em;
@@ -97,16 +110,31 @@
         <h1 class="am-header-title">订单详情</h1>
     </header>
     <div class="am-g" onclick="gotoGoodsDetail()" style="background-color: white;margin-top: 1px;padding: 0">
-        <div class="am-u-sm-5" style="height:8rem">
-            <img id="image_god" style="height: 100%;border:none;margin-top:14px;" src="">
+        <div class="am-u-sm-3" style="height:5rem">
+            <img id="image_god" style="height: 95%;border:none;margin:10px;" src="">
         </div>
-        <div class="am-u-sm-6">
-            <b style="color:#000;font-size: 1em; line-height: 1em;height: 1.5em;float:left;margin-bottom:5px;margin-top:2em" id="goodName"></b>
+        <div class="am-u-sm-8">
+            <b style="color:#000;font-size: 1em; line-height: 1em;height: 1.5em;float:left;margin-bottom:5px;margin-top: 10px" id="goodName"></b>
             <div style="line-height:2em;clear: both;font-size: 1.5em">
-                <div style="font-size: 14px;color:#999999;"><span>单价:</span><span style="color: #999999;" id="singlePrice"></span></div>
+                <div style="font-size: 14px;color:#999999;"><span>单价:</span><span class="jiage" style="color: #999999;" id="singlePrice"></span></div>
             </div>
         </div>
-        <div class="am-u-sm-1" style="margin-top: 3em"><i class="iconfont icon-fanhuijiantou"></i> </div>
+        <div class="am-u-sm-1" style="margin-top: 1.5em">
+            <i class="iconfont icon-fanhuijiantou "></i>
+        </div>
+    </div>
+    <div class="am-u-sm-12" style="background-color: white;margin-top: 1em">
+        <b id="exchangTime"></b>
+        <b style="height: 2em;line-height: 2em">商户信息</b>
+        <div class="am-u-sm-12" style="background-color: lightgray;height: 1px"></div>
+        <br>
+        <div class="am-u-sm-4 am-u-sm-left">商户名称</div>
+        <div class="am-u-sm-8 am-u-sm-right" id="shopName"></div>
+        <div class="am-u-sm-4 am-u-sm-left">商户地址</div>
+        <div class="am-u-sm-8 am-u-sm-right" id="addr"></div>
+        <div class="am-u-sm-4 am-u-sm-left">电&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;话</div>
+        <div class="am-u-sm-8 am-u-sm-right" id="tel" onclick="callShop(this)"></div>
+        <br>
     </div>
     <div class="am-u-sm-12" style="background-color: white;margin-top: 1em">
         <b id="exchangTime"></b>
@@ -115,19 +143,31 @@
         <br>
         <div class="am-u-sm-4 am-u-sm-left">订单编号</div>
         <div class="am-u-sm-8 am-u-sm-right" id="dingdanbianhao"></div>
-        <div class="am-u-sm-4 am-u-sm-left">下单日期</div>
+        <div class="am-u-sm-4 am-u-sm-left">下单时间</div>
         <div class="am-u-sm-8 am-u-sm-right" id="xiadanriqi"></div>
-        <div class="am-u-sm-4 am-u-sm-left">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</div>
-        <div class="am-u-sm-8 am-u-sm-right" id="shuliang"></div>
-        <div class="am-u-sm-4 am-u-sm-left">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价</div>
-        <div id="zongjia" class="am-u-sm-8 am-u-sm-right"></div>
-        <div class="am-u-sm-4 am-u-sm-left">使用积分</div>
-        <div id="shiyongjifen" class="am-u-sm-8 am-u-sm-right"></div>
-        <div class="am-u-sm-4 am-u-sm-left">总 &nbsp;优 惠</div>
-        <div id="zongyouhui" class="am-u-sm-8 am-u-sm-right"></div>
-        <div class="am-u-sm-4 am-u-sm-left">实 &nbsp;付 款</div>
-        <div id="shifukuan" class="am-u-sm-8 am-u-sm-right"></div>
+        <div class="am-u-sm-4 am-u-sm-left xuyaoyincang">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</div>
+        <div class="am-u-sm-8 am-u-sm-right xuyaoyincang" id="shuliang"></div>
+        <div class="am-u-sm-4 am-u-sm-left xuyaoyincang">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价</div>
+        <div id="zongjia" class="am-u-sm-8 am-u-sm-right xuyaoyincang jiage"></div>
+        <div class="am-u-sm-4 am-u-sm-left xuyaoyincang">使用积分</div>
+        <div id="shiyongjifen" class="am-u-sm-8 am-u-sm-right xuyaoyincang"></div>
+        <div class="am-u-sm-4 am-u-sm-left xuyaoyincang">总 &nbsp;优 惠</div>
+        <div id="zongyouhui" class="am-u-sm-8 am-u-sm-right xuyaoyincang jiage"></div>
+        <div class="am-u-sm-4 am-u-sm-left xuyaoyincang">实 &nbsp;付 款</div>
+        <div id="shifukuan" class="am-u-sm-8 am-u-sm-right xuyaoyincang jiage"></div>
         <br>
+    </div>
+    <div style=" margin: 0em; padding: 0 1em;;margin-top: 2em;" class="am-u-sm-6" hidden id="cancelOrder">
+        <input type="button" name="" value="取消订单" onclick="cancelOrder()" class="am-btn am-btn-sm am-fl" style="color: white;background-color: #838383">
+    </div>
+    <div style=" margin: 0em; padding: 0 1em;;margin-top: 2em;" class="am-u-sm-6" hidden id="goToPay">
+        <input type="button" name="" value="去 支 付" onclick="goToPay()" class="am-btn am-btn-sm am-fl" style="color:white;background-color: #c62d1e;">
+    </div>
+    <div style=" margin: 0em; padding: 0 1em;;margin-top: 2em;" class="am-u-sm-6" hidden id="refund">
+        <input type="button" name="" value="退&nbsp;&nbsp;&nbsp;&nbsp;款" onclick="refund()" class="am-btn am-btn-sm am-fl" style="color:white;background-color: #c62d1e;">
+    </div>
+    <div style=" margin: 0em; padding: 0 1em;margin-top: 2em;" class="am-u-sm-6" hidden id="goToCode">
+        <input type="button" name="" value="查看券码" onclick="goToUse()" class="am-btn am-btn-sm am-fl" style="color:white;background-color: #d74d2d;">
     </div>
     <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
         <div class="am-modal-dialog">
@@ -140,14 +180,48 @@
             </div>
         </div>
     </div>
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">是否取消订单</div>
+            <div class="am-modal-bd" id="mobel"></div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-confirm>确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt1">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">您确定退款吗？</div>
+            <div class="am-modal-bd" id="mobel"></div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-confirm>确定</span>
+            </div>
+        </div>
+    </div>
     <script type="text/javascript">
     var token = localStorage.getItem("token");
     var userid = localStorage.getItem("userid");
     var dingdanID = getParameter("dingdanID");
     var goodsID = getParameter("goodsID");
+    var orderStatus = getParameter("orderStatus");
+    var shanghuID = getParameter("shanghuID");
     jQuery(document).ready(function() {
-        loadData();
+        if (orderStatus == "daifukuan") {
+            $("#cancelOrder").prop("hidden", false);
+            $("#goToPay").prop("hidden", false);
+        }
+        if (orderStatus == "daishiyong") {
+            $("#goToCode").prop("hidden", false);
+            $("#refund").prop("hidden", false);
+        }
+        if (orderStatus == "tuikuanzhong" || orderStatus == "yituikuan" || orderStatus == "daifukuan") {
 
+            $(".xuyaoyincang").hide();
+
+        }
+        loadData();
     });
 
     function loadData() {
@@ -169,6 +243,9 @@
 
                 if (json.success) {
                     dingdanxiangqingList = json.dingdanxiangqingList[0];
+                    $("#shopName").html(dingdanxiangqingList.mingcheng);
+                    $("#addr").html(dingdanxiangqingList.dizhi);
+                    $("#tel").html(dingdanxiangqingList.shoujihao);
                     $("#dingdanbianhao").html(dingdanxiangqingList.dingdanbinahao);
                     $("#xiadanriqi").html(dingdanxiangqingList.xiadanriqi);
                     $("#shuliang").html(dingdanxiangqingList.shangpingshuliang);
@@ -179,6 +256,7 @@
                     $("#goodName").html(dingdanxiangqingList.shangpinming);
                     $("#singlePrice").html(dingdanxiangqingList.shangpinjiage);
                     $("#image_god").attr("src", imgurl + dingdanxiangqingList.tupiandizhi);
+                    getzongjia("jiage");
                 } else {
                     $('#errmsg').text(dingdanxiangqingList.message);
                     $('#my-alert').modal();
@@ -192,9 +270,124 @@
             }
         });
     }
-    function gotoGoodsDetail() {
-       window.location.href = "shopInfo.html?shangpinID=" + goodsID;
+
+    function goToPay() {
+        window.location.href = "jiesuan.html?dingdanID=" + dingdanID + "&goodsID=" + goodsID;
+
     }
+
+    function cancelOrder() {
+        $('#my-prompt').modal({
+            relatedTarget: this,
+            onConfirm: function(e) {
+                $.ajax({
+                    type: "post ",
+                    url: baseurl("APPDIANDANCHEXIAO.do"),
+                    dataType: "jsonp",
+                    jsonp: "callback",
+                    jsonpCallback: "goddcb",
+                    data: {
+                        dingdanID: dingdanID,
+                        yonghuID: userid,
+                        token: token
+                    },
+                    success: function(json) {
+                        if (!checktoken(json)) {
+                            return;
+                        }
+                        if (json.success) {
+                            window.history.back();
+                        } else {
+                            $('#errmsg').text(json.message);
+                            $('#my-alert').modal();
+
+                        }
+                    },
+                    error: function() {
+
+
+                    }
+                });
+            },
+            onCancel: function(e) {
+
+            }
+        });
+
+    }
+
+    function refund() {
+        $('#my-prompt1').modal({
+            relatedTarget: this,
+            onConfirm: function(e) {
+                $.ajax({
+                    type: "post ",
+                    url: baseurl("APPDINGDANTUIDAN.do"),
+                    dataType: "jsonp",
+                    jsonp: "callback",
+                    jsonpCallback: "goddcb",
+                    data: {
+                        dingdanID: dingdanID,
+                        yonghuID: userid,
+                        token: token
+                    },
+                    success: function(json) {
+                        if (!checktoken(json)) {
+                            return;
+                        }
+                        if (json.success) {
+                            window.history.back();
+                        } else {
+                            $('#errmsg').text(json.message);
+                            $('#my-alert').modal();
+
+                        }
+                    },
+                    error: function() {
+
+
+                    }
+                });
+            },
+            onCancel: function(e) {
+
+            }
+        });
+
+    }
+
+    function gotoGoodsDetail() {
+        if (goodsID == "daodianfu") {
+            window.location.href = "shops.html?shanghuID=" + shanghuID;
+        } else {
+            window.location.href = "shopInfo.html?shangpinID=" + goodsID;
+        }
+    }
+
+    function goToUse() {
+        window.location.href = "groupTicket.html?dingdanID=" + dingdanID + "&goodsID=" + goodsID;
+
+    }
+
+    function callShop(item) {
+
+        var tel = item.innerHTML;
+        window.PhoneCaller.call(tel, callsucc, callfail);
+
+    }
+
+    function callsucc() {
+
+    }
+
+    function callfail() {
+
+    }
+
+    // function goToComment(shanghuID, dingdanID, goodsID, e) {
+    //     window.location.href = "comment.html?dingdanID=" + dingdanID + "&goodsID=" + goodsID + "&shanghuID=" + shanghuID;
+
+    // }
     </script>
 </body>
 

@@ -1,352 +1,454 @@
 <!doctype html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="renderer" content="webkit">
-    <meta http-equiv="Cache-Control" content="no-siteapp" />
-    <title>Insert title here</title>
-    <script src="js/include.js"></script>
-    <link>
-    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
-    <link href="css/style.css" rel="stylesheet" type="text/css">
-    <link href="icon/iconfont.css"  rel="stylesheet" type="text/css">
-    <style type="text/css">
-    .am-header .am-header-title {
-        margin: 0 15%;
-        color:#fff
-    }
-    .yhb-title{
-    	background: #000;
-    	border-bottom: none;
-    }
-    
-    
-	
-    hr {
-        margin: 0.3em 0em;
-        padding: 0px;
-        border-top: 1px solid #e8e8e8;
-    }
-    
-    .item {
-        margin-top: 1em;
-        width: 100%;
-    }
-    
-    .small {
-        font-size: 1em;
-        padding-left: 1.5em;
-        color: #7a7a7a;
-        line-height: 2em;
-    }
-    
-    .margin {
-        margin: 0em;
-    }
-    
-    .am-tabs-d2 .am-tabs-nav {
-        background-color: white;
-        border-bottom: 1px solid lightgray;
-    }
-    
-    .am-tabs-d2 .am-tabs-nav a {
-        line-height: 42px;
-        color: lightgray;
-    }
-    
-    .am-tabs-d2 .am-tabs-nav>.am-active {
-        position: relative;
-        background-color: white;
-        border-bottom: 1px solid lightgray;
-    }
-    
-    .am-tabs-d2 .am-tabs-nav>.am-active:after {
-        position: absolute;
-        width: 50%;
-        height: 0;
-        bottom: 0;
-        left: 28%;
-        border: 1px solid deepskyblue;
-        content: "";
-        z-index: 1;
-    }
-    
-    .am-tabs-d2 .am-tabs-nav>.am-active a {
-        line-height: 42px;
-        color: deepskyblue;
-        background: #ffff;
-    }
-    
-	.am-input-lg{
-		border-bottom: 1px solid #ccc;
-	}
-	.am-form-group{
-		width: 100%;
-		margin-bottom: 0;
-	}
-	.am-radio-inline{
-		width: 100%;
-		margin-left:0;
-		border-bottom:1px solid #e4e4e4;
-		padding:10px 15px
-	}
-	.am-radio-inline i{
-		font-size: 2.5rem;
-	}
-	.am-radio-inline i,
-	.am-radio-inline div{
-		float:left;
-		margin-right:1rem
-	}
-	.am-radio-inline div{
-		font-size: 2rem;
-		color:#767676;
-	}
-	
-	
-	.am-radio-inline:last-child{
-		border-bottom:none
-	}
-	.iconfont{
-		color: #fff;
-	}
-	.xiang-1{
-		width: 100%;
-	}
-	.xiang-bg{
-		background:url(img/xiang-2.jpg) repeat-x;
-		background-size:100% 100%;
-	}
-	.wu{
-		width: 80%;
-		margin: 0 auto;
-		display: block;
-		padding-top: 20px;
-		padding-bottom: 30px;
-	}
-	.am-form-group{
-		padding-bottom: 10px;
-		width: 90%;
-		margin: 0 auto;
-		
-		position: relative;
-	}
-	.am-form-group p{
-		position: absolute;
-		right:10px;
-		top:10px;
-		padding:5px 10px;
-		
-		font-size: 1rem;
-		color:#ff0000;
-		border-left:1px solid #ff6c00
-	}
-	.am-form select, 
-	.am-form textarea, 
-	.am-form input[type=text], 
-	.am-form input[type=password], 
-	.am-form input[type=datetime], 
-	.am-form input[type=datetime-local], 
-	.am-form input[type=date], 
-	.am-form input[type=month], 
-	.am-form input[type=time], 
-	.am-form input[type=week], 
-	.am-form input[type=number], 
-	.am-form input[type=email], 
-	.am-form input[type=url], 
-	.am-form input[type=search], 
-	.am-form input[type=tel], 
-	.am-form input[type=color], 
-	.am-form-field {
-    display: block;
-    width: 100%;
-    padding: .625em;
-    font-size: 1.6rem;
-    line-height: 1.5;
-    color: #555;
-    vertical-align: middle;
-    background-color: #fff;
-    background-image: none;
-    border: 1.5px solid #ccc;
-    border-radius: 0;
-    -webkit-appearance: none;
-    -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    border-radius: 15px;
-    text-indent: 25px;
-}
-	.am-form-success .am-form-field, .am-field-valid {
-    border-color: #ff6c00!important;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-}
-.am-form-error .am-form-field, .am-field-error {
-    border-color: #ff6c00!important;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
-}
-	.am-form-group i{
-		position: absolute;
-		left:10px;
-		top:10px;
-		color:#ff6c00!important;
-		font-size: 2rem;
-	}
-	.btn-img{
-		width: 80%;
-		display: block;
-		margin: 0 auto;
-	}
-    </style>
-</head>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<title>Insert title here</title>
+		<script src="js/include.js"></script>
 
-<body style="background-color:#fff0c7">
-    <header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title">
-        <div class="am-header-left am-header-nav">
-			<a href="javascript:mi_exit(-1);" style="text-align: left">
-				<i class="iconfont icon-fanhuijiantou1"></i> 
-			</a>
-		</div>
-        <h1 class="am-header-title">好友送红包</h1>
-        <div id="card" class="am-header-right am-header-nav iconfont icon-dian" onclick="queren()">
-        </div>
-        
-    </header>
-    <div class="am-g">
-		<img src="img/xiang-1.jpg" class="xiang-1">
-	</div>
-	<div class="am-g xiang-bg">
-		<img src="img/wu.png" class="wu">
-		<div class="am-form-group">
-			<form class="am-form">
-				<div class="am-form-group am-form-success am-form-icon am-form-feedback">
-					<i class="iconfont icon-shouji"></i>
-					<input type="text" class="am-form-field" placeholder="请输入手机号">
-					
-				</div>
-				<div class="am-form-group am-form-warning am-form-icon am-form-feedback">
-					<i class="iconfont icon-mima"></i>
-					<input type="text" class="am-form-field" placeholder="请设置密码">
-					
-				</div>
-				<div class="am-form-group am-form-error am-form-icon am-form-feedback">
-					<i class="iconfont icon-yanzhengma"></i>
-					<input type="text" class="am-form-field" placeholder="请输入验证码">
-					<p>获取验证码</p>
-				</div>
-			</form>
-		</div>
-		<img src="img/btn.png" class="btn-img">
-	</div>
-	
-	
-	<!--div id="done" style="" class="am-u-sm-12">
-        <input type="button" name="" value="确认结算" onclick="fukuan()" class="am-btn am-btn-sm am-fl" style="border-radius: 6px;border: none;width: 100%;height: 3em; font-size: 1em; color: white; outline: none;background-color: lightskyblue ;background-size: cover;background-repeat: no-repeat;">
-    </div-->
-     <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
-        <div class="am-modal-dialog">
-            <div class="am-modal-hd"></div>
-            <div class="am-modal-bd">
-                <a id="errmsg"></a>
-            </div>
-            <div class="am-modal-footer">
-                <span class="am-modal-btn">确定</span>
-            </div>
-        </div>
-    </div>
-    
-    <script type="text/javascript">
-    var dingdanID = getParameter("dingdanID");
-    var userid = window.localStorage.getItem('userid');
-	var token = window.localStorage.getItem('token');
-	var jifenStatus = "yes";
-	var zhifuType = "";
-	if (userid == null || userid == "null" || userid == "") {
-		isLogin = false;
-	} else {
-		isLogin = true;
-	}
-	jQuery(document).ready(function() {
-		jiesuan();
-	});	  
-	  function buyong() {
-		  if ($('#uesjifen').is(':checked')) {
-			  	jifenStatus = "yes"
-				 jiesuan(jifenStatus);
-	      } else {
-	    	 jifenStatus = "no"
-	    	 jiesuan(jifenStatus);
-	      }
-	}
-    function jiesuan(){
-		$.ajax({
-			type: "post",
-			url:baseurl("APPGOPAY.do"),
-			dataType: "jsonp",
-			data:{
-				"yonghuID":userid,
-				"token":token,
-				"dingdanID":dingdanID,
-				"jifenStatus":jifenStatus
-			},
-			jsonp: "callback",
-			jsonpCallback: "fenleilist",
-			success: function(json) {
-				 $("#goodsicon").attr('src', imgurl + json.samllImg);
-				 $("#price").html(json.totalPrice);
-				 $("#name").html(json.goodsName);
-				 $("#keyongjifen").html(json.keyongjifen);
-				 $("#jifen").html(json.jifen);
-				 $("#yue").html(json.zhanghuyue);
-				 
-										
-			},
-			error: function() {
+		<link>
+		<link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+		<style type="text/css">
+			.am-header .am-header-title {
+				margin: 0 15%;
+				color: #fff
+			}
 			
+			.yhb-title {
+				background: #000;
+				border-bottom: none;
 			}
-		});	
-		
-	}
-    function payType(type) {
-    	zhifuType = type;
-	}
+			
+			hr {
+				margin: 0.3em 0em;
+				padding: 0px;
+				border-top: 1px solid #e8e8e8;
+			}
+			
+			.item {
+				margin-top: 1em;
+				width: 100%;
+			}
+			
+			.small {
+				font-size: 1em;
+				padding-left: 1.5em;
+				color: #7a7a7a;
+				line-height: 2em;
+			}
+			
+			.margin {
+				margin: 0em;
+			}
+			
+			.am-tabs-d2 .am-tabs-nav {
+				background-color: white;
+				border-bottom: 1px solid lightgray;
+			}
+			
+			.am-tabs-d2 .am-tabs-nav a {
+				line-height: 42px;
+				color: lightgray;
+			}
+			
+			.am-tabs-d2 .am-tabs-nav>.am-active {
+				position: relative;
+				background-color: white;
+				border-bottom: 1px solid lightgray;
+			}
+			
+			.am-tabs-d2 .am-tabs-nav>.am-active:after {
+				position: absolute;
+				width: 50%;
+				height: 0;
+				bottom: 0;
+				left: 28%;
+				border: 1px solid deepskyblue;
+				content: "";
+				z-index: 1;
+			}
+			
+			.am-tabs-d2 .am-tabs-nav>.am-active a {
+				line-height: 42px;
+				color: deepskyblue;
+				background: #ffff;
+			}
+			
+			.am-input-lg {
+				border-bottom: 1px solid #ccc;
+			}
+			
+			.am-form-group {
+				width: 100%;
+				margin-bottom: 0;
+			}
+			
+			.am-radio-inline {
+				width: 100%;
+				margin-left: 0;
+				border-bottom: 1px solid #e4e4e4;
+				padding: 10px 15px
+			}
+			
+			.am-radio-inline i {
+				font-size: 2.5rem;
+			}
+			
+			.am-radio-inline i,
+			.am-radio-inline div {
+				float: left;
+				margin-right: 1rem
+			}
+			
+			.am-radio-inline div {
+				font-size: 2rem;
+				color: #767676;
+			}
+			
+			.am-radio-inline:last-child {
+				border-bottom: none
+			}
+			
+			.iconfont {
+				color: #fff;
+			}
+			
+			.xiang-1 {
+				width: 100%;
+			}
+			
+			.xiang-bg {
+				background: url(img/xiang-2.jpg) repeat-x;
+				background-size: 100% 100%;
+			}
+			
+			.wu {
+				width: 80%;
+				margin: 0 auto;
+				display: block;
+				padding-top: 20px;
+				padding-bottom: 30px;
+			}
+			
+			.am-form-group {
+				padding-bottom: 10px;
+				width: 90%;
+				margin: 0 auto;
+				position: relative;
+			}
+			
+			.am-form-group .ma {
+				position: absolute;
+				right: 10px;
+				top: 8px;
+				width: 30%;
+				border: none;
+				background: none;
+				line-height: 30px;
+				font-size: 1rem;
+				color: #ff0000;
+				border-left: 1px solid #ff6c00
+			}
+			
+			.am-form select,
+			.am-form textarea,
+			.am-form input[type=text],
+			.am-form input[type=password],
+			.am-form input[type=datetime],
+			.am-form input[type=datetime-local],
+			.am-form input[type=date],
+			.am-form input[type=month],
+			.am-form input[type=time],
+			.am-form input[type=week],
+			.am-form input[type=number],
+			.am-form input[type=email],
+			.am-form input[type=url],
+			.am-form input[type=search],
+			.am-form input[type=tel],
+			.am-form input[type=color],
+			.am-form-field {
+				display: block;
+				width: 100%;
+				padding: .625em;
+				font-size: 1.6rem;
+				line-height: 1.5;
+				color: #555;
+				vertical-align: middle;
+				background-color: #fff;
+				background-image: none;
+				border: 1.5px solid #ccc;
+				border-radius: 0;
+				-webkit-appearance: none;
+				-webkit-transition: border-color .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+				transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+				border-radius: 15px;
+				text-indent: 25px;
+			}
+			
+			.am-form-success .am-form-field,
+			.am-field-valid {
+				border-color: #ff6c00!important;
+				-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+				box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			}
+			
+			.am-form-error .am-form-field,
+			.am-field-error {
+				border-color: #ff6c00!important;
+				-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+				box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+			}
+			
+			.am-form-group i {
+				position: absolute;
+				left: 10px;
+				top: 10px;
+				color: #ff6c00!important;
+				font-size: 2rem;
+			}
+			
+			.btn-img {
+				width: 80%;
+				display: block;
+				margin: 0 auto;
+				margin-top: -15px;
+			}
+			
+			.xiaoshi {
+				height: 36px;
+				width: 80%;
+				margin: 0 auto;
+				margin-bottom: 10px;
+				margin-top: -12px;
+			}
+			
+			.shuru{
+				background: rgba(0, 0, 0, .5);
+				color: #fff;
+				display: none;
+				border-radius: 5px;
+				height: 36px;
+				line-height: 36px;
+				text-align: center;
+				
+			}
+			
+			
 
-    function fukuan() {
-    	$.ajax({
-			type: "post",
-			url:baseurl("APPDOPAY.do"),
-			dataType: "jsonp",
-			data:{
-				"yonghuID":userid,
-				"token":token,
-				"dingdanID":dingdanID,
-				"jifenStatus":jifenStatus,
-				"zhifuType":zhifuType
-			},
-			jsonp: "callback",
-			jsonpCallback: "fenleilist",
-			success: function(json) {
-				if(json.success){
-					window.location.href = "jiesuanchenggong.html?dingdanID="+dingdanID;
-				}else{
-					$('#errmsg').text(json.message);
-			          $('#my-alert').modal();
-				}
-				 			 
-										
-			},
-			error: function() {
-				 $('#errmsg').text("网络错误");
-		          $('#my-alert').modal();
+		</style>
+	</head>
+
+	<body style="background-color:#fff0c7">
+		<header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title">
+			<div class="am-header-left am-header-nav">
+				<a href="javascript:mi_exit(-1);" style="text-align: left">
+					<i class="iconfont icon-fanhuijiantou1"></i>
+				</a>
+			</div>
+			<h1 class="am-header-title">好友送红包</h1>
+			<div id="card" class="am-header-right am-header-nav iconfont icon-dian" onclick="queren()">
+			</div>
+
+		</header>
+		<div class="am-g">
+			<img src="img/xiang-1.jpg" class="xiang-1">
+		</div>
+		<div class="am-g xiang-bg">
+			<img src="img/wu.png" class="wu">
+			<div class="am-form-group">
+				<form class="am-form">
+					<div class="am-form-group am-form-success am-form-icon am-form-feedback">
+						<i class="iconfont icon-shouji"></i>
+						<input type="text" class="am-form-field" placeholder="请输入手机号">
+
+					</div>
+					<div class="am-form-group am-form-warning am-form-icon am-form-feedback">
+						<i class="iconfont icon-mima"></i>
+						<input type="text" class="am-form-field" placeholder="请设置密码">
+
+					</div>
+					<div class="am-form-group am-form-error am-form-icon am-form-feedback">
+						<i class="iconfont icon-yanzhengma"></i>
+						<input type="text" class="am-form-field" placeholder="请输入验证码">
+						<input type="button" value="获取验证码" class="ma" onclick="clickButton(this)" />
+					</div>
+				</form>
+			</div>
+			<div class="xiaoshi">
+				<p class="shuru" id="shuru">请输入</p>
+			</div>
+			<img src="img/btn.png" class="btn-img" id="btn-img">
+		</div>
+
+		<div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+			<div class="am-modal-dialog">
+				<div class="am-modal-hd"></div>
+				<div class="am-modal-bd">
+					<a id="errmsg"></a>
+				</div>
+				<div class="am-modal-footer">
+					<span class="am-modal-btn">确定</span>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			var dingdanID = getParameter("dingdanID");
+			var userid = window.localStorage.getItem('userid');
+			var token = window.localStorage.getItem('token');
+			var jifenStatus = "yes";
+			var zhifuType = "";
+			if(userid == null || userid == "null" || userid == "") {
+				isLogin = false;
+			} else {
+				isLogin = true;
 			}
-		});	
-	}
-    </script>
-    
-</body>
+			jQuery(document).ready(function() {
+				jiesuan();
+			});
+
+			function buyong() {
+				if($('#uesjifen').is(':checked')) {
+					jifenStatus = "yes"
+					jiesuan(jifenStatus);
+				} else {
+					jifenStatus = "no"
+					jiesuan(jifenStatus);
+				}
+			}
+
+			function jiesuan() {
+				$.ajax({
+					type: "post",
+					url: baseurl("APPGOPAY.do"),
+					dataType: "jsonp",
+					data: {
+						"yonghuID": userid,
+						"token": token,
+						"dingdanID": dingdanID,
+						"jifenStatus": jifenStatus
+					},
+					jsonp: "callback",
+					jsonpCallback: "fenleilist",
+					success: function(json) {
+						if(!checktoken(json)){
+			        		return; 
+			        	}
+						$("#goodsicon").attr('src', imgurl + json.samllImg);
+						$("#price").html(json.totalPrice);
+						$("#name").html(json.goodsName);
+						$("#keyongjifen").html(json.keyongjifen);
+						$("#jifen").html(json.jifen);
+						$("#yue").html(json.zhanghuyue);
+
+					},
+					error: function() {
+
+					}
+				});
+
+			}
+
+			function payType(type) {
+				zhifuType = type;
+			}
+
+			function fukuan() {
+				$.ajax({
+					type: "post",
+					url: baseurl("APPDOPAY.do"),
+					dataType: "jsonp",
+					data: {
+						"yonghuID": userid,
+						"token": token,
+						"dingdanID": dingdanID,
+						"jifenStatus": jifenStatus,
+						"zhifuType": zhifuType
+					},
+					jsonp: "callback",
+					jsonpCallback: "fenleilist",
+					success: function(json) {
+						if(!checktoken(json)){
+			        		return; 
+			        	}
+						if(json.success) {
+							window.location.href = "jiesuanchenggong.html?dingdanID=" + dingdanID;
+						} else {
+							$('#errmsg').text(json.message);
+							$('#my-alert').modal();
+						}
+
+					},
+					error: function() {
+						$('#errmsg').text("网络错误");
+						$('#my-alert').modal();
+					}
+				});
+			}
+		</script>
+		<script type="text/javascript">
+			function clickButton(obj) {
+				var obj = $(obj);
+				obj.attr("disabled", "disabled"); /*按钮倒计时*/
+				var time = 60;
+				var set = setInterval(function() {
+					obj.val(--time + "(s)");
+				}, 1000); /*等待时间*/
+				setTimeout(function() {
+					obj.attr("disabled", false).val("重新获取验证码"); /*倒计时*/
+					clearInterval(set);
+				}, 60000);
+			}
+		</script>
+
+		<!--script>
+			$(function() {
+				$("#btn-img").click(function() {
+						$("#shuru").fadeToggle();
+					})
+					.blur(function() {
+						setTimeout(function() {
+							$('#shuru').hide();
+						}, 500)
+					}).click(function() {
+						//$("#forusername").show();
+						setTimeout(function() {
+							$('#shuru').fadeToggle();
+						}, 3000)
+					})
+			})
+		</script-->
+		<script>
+			$(function(){
+				$('#shuru').hide();
+				$('#btn-img').click(function(){
+					$('#shuru').fadeToggle().delay(5000).fadeToggle(); 
+				})
+				
+			})
+			
+		</script>
+		<script type="text/javascript">
+			function clickButton(obj) {
+				var obj = $(obj);
+				obj.attr("disabled", "disabled"); /*按钮倒计时*/
+				var time = 60;
+				var set = setInterval(function() {
+					obj.val(--time + "(s)");
+				}, 1000); /*等待时间*/
+				setTimeout(function() {
+					obj.attr("disabled", false).val("重新获取验证码"); /*倒计时*/
+					clearInterval(set);
+				}, 60000);
+			}
+		</script>
+	</body>
 
 </html>

@@ -59,7 +59,9 @@
 	.am-list>li p:first-child{
 		float:left;
 		color:#666666;
-		font-size: 2rem;
+		font-size: 1.4rem;
+		margin-top: 6px;
+		padding-left: 10px;
 	}
 	.am-list>li:last-child{
 		border-bottom:none;
@@ -261,7 +263,7 @@ input[name=modify-num] {
 		</div>
         <h1 class="am-header-title">提交订单</h1>
     </header>
-    <div class="am-g" style="background-color: white;padding:0 0 0 15px;margin-top:10px;border-top:1px solid #d8d8d8;border-bottom:1px solid #d8d8d8;">
+    <div class="am-g" style="width:95%;background-color: white;margin-top:10px;">
 		<div class="am-form-graamoup">
 			<ul class="am-list" style="margin-left:0;">
 				<li>
@@ -270,7 +272,7 @@ input[name=modify-num] {
 				</li>
 			    <li>
 					<p id="num">数量</p>
-					<div class ="" style="font-size: 14px;float: right;text-align: center;border-radius: 2px;padding:0 0.6em 0 0;">
+					<div class ="" style="font-size: 14px;float: right;text-align: center;border-radius: 2px;padding:0;">
 					<span class="minus-wp fleft" >
 						<span class="am-icon-minus"></span>
 					</span>
@@ -287,8 +289,8 @@ input[name=modify-num] {
 			</ul>
 		</div>
 	</div>
-	<div class="am-g" style="background-color: white;padding:0 0 0 15px;margin-top:10px;border-top:1px solid #d8d8d8;border-bottom:1px solid #d8d8d8; margin-bottom: 10px;">
-		<div class="am-g">
+	<div class="am-g" style="width:95%;background-color: white;margin-top:10px;">
+		<div class="am-form-graamoup">
 			<ul class="am-list" style="margin-left:0;">
 				<li>
 					<p>积分规则</p>
@@ -307,7 +309,7 @@ input[name=modify-num] {
 	</div>
 	
 	<div id="done" style="margin-top: 2em" class="am-u-sm-12">
-        <input type="button" name="" value="确认提交" onclick="done()" class="am-btn am-btn-sm am-fl" style="border-radius: 6px;border: none;width: 100%;height: 3em; font-size: 1em; color: white; outline: none;background-color: lightskyblue ;background-size: cover;background-repeat: no-repeat;">
+        <input type="button" name="" value="确认提交" onclick="done()" class="am-btn am-btn-sm am-fl" style="border-radius: 6px;border: none;width: 100%;height: 3em; font-size: 1em; color: white; outline: none;background-color:#c62d1e;background-size: cover;background-repeat: no-repeat;">
     </div>
     <div class="am-modal am-modal-confirm" tabindex="-1"
 		id="modify-buy-num">
@@ -361,6 +363,9 @@ input[name=modify-num] {
 			jsonp: "callback",
 			jsonpCallback: "fenleilist",
 			success: function(json) {
+				if(!checktoken(json)){
+	        		return; 
+	        	}
 				var name = json.goodsName;
 				var jifenguize = json.jifenguize;
 				var jifen = json.jifen;
@@ -470,6 +475,9 @@ input[name=modify-num] {
 			jsonp: "callback",
 			jsonpCallback: "fenleilist",
 			success: function(json) {
+				if(!checktoken(json)){
+	        		return; 
+	        	}
 				var dingdanID = json.dingdanID;
 				goJiesuan(dingdanID);
 										

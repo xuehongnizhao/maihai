@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>Insert title here</title>
+    <script src="js/include.js"></script>
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    body,
+    html,
+    #allmap {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        margin: 0;
+        font-family: "微软雅黑";
+    }
+    </style>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=R9LB3lwD1kNycjPuH4xkPmOu9345ButI"></script>
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    .am-header-default .am-header-nav {
+        color: #87bef9;
+    }
+    
+    hr {
+        margin: 0.3em 0em;
+        padding: 0px;
+        border-top: 1px solid #e8e8e8;
+    }
+    
+    .item {
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav {
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav a {
+        line-height: 42px;
+        color: lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active {
+        position: relative;
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active:after {
+        position: absolute;
+        width: 50%;
+        height: 0;
+        bottom: 0;
+        left: 28%;
+        border: 1px solid deepskyblue;
+        content: "";
+        z-index: 1;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active a {
+        line-height: 42px;
+        color: deepskyblue;
+        background: #ffff;
+    }
+    
+    .am-list {
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+    
+    .am-list>li {
+        position: relative;
+        display: block;
+        margin-bottom: 0px;
+        background-color: #fff;
+        border-top: none;
+        border-width: 1px 0;
+        overflow: hidden;
+    }
+    
+    .am-list i {
+        float: left;
+        font-size: 4.5rem;
+        margin-left: 1.5rem;
+    }
+    
+    .am-list .jiage {
+        float: right;
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #ff8d52;
+        margin-right: 10px;
+        margin-top: 15px;
+    }
+    
+    .czmc {
+        float: left;
+        margin-top: 10px;
+        margin-left: 15px
+    }
+    
+    .czmc p {
+        margin: 0;
+    }
+    
+    .czmc p:first-child {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+    
+    .czmc p:last-child {
+        color: #b5b5b5
+    }
+    </style>
+</head>
+
+<body>
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">商家地址</h1>
+    </header>
+    <div id="allmap"></div>
+</body>
+
+</html>
+<script type="text/javascript">
+var jingdu =  getParameter("jingdu");
+var weidu =  getParameter("weidu");
+// 百度地图API功能
+var map = new BMap.Map("allmap");
+var point = new BMap.Point(jingdu, weidu);
+map.centerAndZoom(point, 14);
+
+var geolocation = new BMap.Geolocation();
+// geolocation.getCurrentPosition(function(r) {
+//     if (this.getStatus() == BMAP_STATUS_SUCCESS) {
+
+//         var myIcon = new BMap.Icon("img/myLocation.png", new BMap.Size(32, 32));
+//         var marker2 = new BMap.Marker(r.point, {
+//             icon: myIcon
+//         }); // 创建标注
+//         map.addOverlay(marker2); // 将标注添加到地图中
+
+//     } else {
+//         alert('failed' + this.getStatus());
+//     }
+// }, {
+//     enableHighAccuracy: true
+// })
+
+var myIcon = new BMap.Icon("img/shopLocation.png", new BMap.Size(32, 32));
+var marker = new BMap.Marker(point, {
+    icon: myIcon
+}); // 创建标注
+map.addOverlay(marker); // 将标注添加到地图中
+map.panTo(point);
+// map.panTo(point1);
+//关于状态码
+//BMAP_STATUS_SUCCESS   检索成功。对应数值“0”。
+//BMAP_STATUS_CITY_LIST 城市列表。对应数值“1”。
+//BMAP_STATUS_UNKNOWN_LOCATION  位置结果未知。对应数值“2”。
+//BMAP_STATUS_UNKNOWN_ROUTE 导航结果未知。对应数值“3”。
+//BMAP_STATUS_INVALID_KEY   非法密钥。对应数值“4”。
+//BMAP_STATUS_INVALID_REQUEST   非法请求。对应数值“5”。
+//BMAP_STATUS_PERMISSION_DENIED 没有权限。对应数值“6”。(自 1.1 新增)
+//BMAP_STATUS_SERVICE_UNAVAILABLE   服务不可用。对应数值“7”。(自 1.1 新增)
+//BMAP_STATUS_TIMEOUT   超时。对应数值“8”。(自 1.1 新增)
+</script>

@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>myinfo</title>
+    <script src="js/include.js"></script>
+    <link>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    hr {
+        margin: 0.3em 0em;
+        padding: 0px;
+        border-top: 1px solid #e8e8e8;
+    }
+    
+    .item {
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    .am-header-nav {
+        float: right;
+        margin-top: 7px;
+        margin-right: 10px
+    }
+    
+    .am-header-nav span {
+        right: 7px;
+        top: 10px
+    }
+    
+    .am-img-thumbnail {
+        border: 5px solid #b2d7ff;
+        width: 74px;
+        height: 74px;
+        float: right;
+    }
+    </style>
+</head>
+
+<body>
+    <div data-am-widget="header" class="am-g" style="background-color:#84bcf9;margin-bottom:10px;padding-bottom: 1em;">
+        <div id="message" class="am-header-right am-header-nav">
+            <i class="iconfont icon-xiaoxi"></i>
+            <span></span>
+            <!--已经display: none -->
+        </div>
+        <div style="margin-top: 4em;">
+            <div style="color: white; width: 25%;float: left; height:5em;">
+                <img id="userIcon" class="am-img-thumbnail am-circle" src='' />
+            </div>
+        </div>
+        <div id="isGroup" style="margin-left: 1em;height: 5em;width: 60%;float: left; ">
+            <div style="float: left; width: 59%; line-height: 1.2em; height: 4em; ">
+                <div style=" width: 100%; margin-top: 1em ">
+                    <div id="nickName" type="button" style="float: left;font-size:22px;color:white;font-weight: bold; "></div>
+                    <a id="mspan3" style="float:left;font-size: 10px;border-radius:3px;background-color:#1acf9a;text-align:center;padding:0 3px;margin-left: 0.5em; color: white; "></a>
+                    <br>
+                    <span id="integral" style="width: 100%;font-size:14px;color:white ;float: left; " hidden>积分:  </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white;border-bottom:1px solid #e5e5e5;border-top:1px solid #e5e5e5 ">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="mycomment() ">
+            <i class="iconfont icon-daipingjia left "></i>我的评价
+            <i class="iconfont icon-fanhuijiantou "></i>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white;border-bottom:1px solid #e5e5e5">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="shoucang() ">
+            <i class="iconfont icon-shoucang left "></i>我的收藏
+            <i class="iconfont icon-fanhuijiantou "></i>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white; border-bottom:1px solid #e5e5e5 ">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="chongzhi() ">
+            <i class="iconfont icon-chongzhi left "></i>我要充值
+            <i class="iconfont icon-fanhuijiantou "></i>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white; margin-top: 10px;border-bottom:1px solid #e5e5e5;border-top:1px solid #e5e5e5 ">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="integralshop() ">
+            <i class="iconfont icon-shangcheng left "></i>积分商城
+            <i class="iconfont icon-fanhuijiantou "></i>
+            <span>好礼已上线</span>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white;border-bottom:1px solid #e5e5e5;">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="integralrule() ">
+            <i class="iconfont icon-jifenshuoming left "></i>积分规则
+            <i class="iconfont icon-fanhuijiantou "></i>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white;border-bottom:1px solid #e5e5e5;">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="sds() ">
+            <i class="iconfont icon-duihuan left "></i>积分兑换
+            <i class="iconfont icon-fanhuijiantou "></i>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white; margin-top: 10px ;border-bottom:1px solid #e5e5e5;border-top:1px solid #e5e5e5;">
+        <div id="specialForNew" style="margin-left:1em;height:3em;line-height:3em;color: black;" onclick="specialForNew()" hidden>
+            <i class="iconfont icon-xinren left "></i>新人专享
+            <i class="iconfont icon-fanhuijiantou "></i>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white; border-bottom:1px solid #e5e5e5;">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="growFamily() ">
+            <i class="iconfont icon-kefu left "></i>壮大家族
+            <i class="iconfont icon-fanhuijiantou "></i>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white;border-bottom:1px solid #e5e5e5;">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="familyMenber() ">
+            <i class="iconfont icon-hezuo left "></i>家族成员
+            <i class="iconfont icon-fanhuijiantou "></i>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white; margin-top: 10px;border-bottom:1px solid #e5e5e5; ">
+    </div>
+    <div class="doc-group " style="background-color: white; border-bottom:1px solid #e5e5e5;">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="exchangepassword() ">
+            <i class="iconfont icon-xiugaimima left "></i>修改密码
+            <i class="iconfont icon-fanhuijiantou "></i>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white;border-bottom:1px solid #e5e5e5;">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="birthday() ">
+            <i class="iconfont icon-shengri left "></i>我的生日
+            <i class="iconfont icon-fanhuijiantou "></i>
+            <span id="myBirthday"></span>
+        </div>
+    </div>
+    <!--  <div class="doc-group " style="background-color: white;border-bottom:1px solid #e5e5e5;">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="addrlist() ">
+            <i class="iconfont icon-shouhuodizhi left "></i>收货地址
+            <i class="iconfont icon-fanhuijiantou "></i>
+            <span>修改/添加</span>
+        </div>
+    </div> -->
+    <div class="doc-group " style="background-color: white; margin-top: 10px ;border-bottom:1px solid #e5e5e5;border-top:1px solid #e5e5e5;">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="notesForNew() ">
+            <i class="iconfont icon-xinren left "></i>新人须知
+            <i class="iconfont icon-fanhuijiantou "></i>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white; border-bottom:1px solid #e5e5e5;">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="customerCenter() ">
+            <i class="iconfont icon-kefu left "></i>客户中心
+            <i class="iconfont icon-fanhuijiantou "></i>
+        </div>
+    </div>
+    <div class="doc-group " style="background-color: white;border-bottom:1px solid #e5e5e5;">
+        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="aboutUs() ">
+            <i class="iconfont icon-hezuo left "></i>关于"优惠宝 "
+            <i class="iconfont icon-fanhuijiantou "></i>
+            <span>我要合作</span>
+        </div>
+    </div>
+    <div style="margin-top: 1em " class="am-u-sm-12 " id="quitLogin">
+        <input type="button" value="退 出" onclick="quit()" class="am-btn am-btn-sm am-fl " style="border-radius: 6px;border: none;width: 100%;height: 3em; font-size: 1em; color: white; outline: none;background-color:#84bcf9;background-size: cover;background-repeat: no-repeat; ">
+    </div>
+    <div style="height: 5em "></div>
+    <header id="hid2 " class="am-topbar am-topbar-inverse am-topbar-fixed-bottom " style="border-top:1px #dfdfdf solid ; background-color:#dfdfdf">
+        <div data-am-widget="navbar " class="am-navbar am-navbar-default ">
+            <ul class="am-navbar-nav am-cf am-avg-sm-4 " style="background-color: #f5f3f4; ">
+                <li>
+                    <a href="main.html " class=" ">
+                        <i class="iconfont icon-shouye " style="color:#b5b3ac "></i>
+                        <span class="am-navbar-label " style="color:#b5b3ac;font-size: 12px;margin-top: 0.1em ">首页</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="nearby.html " class=" ">
+                        <i class="iconfont icon-fujindingwei " style="color:#b5b3ac "></i>
+                        <span class="am-navbar-label " style="color:#b5b3ac;font-size: 12px;margin-top: 0.1em ">附近</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="order.html " class=" ">
+                        <i class="iconfont icon-dingdan " style="color:#b5b3ac "></i>
+                        <span class="am-navbar-label " style="color:#b5b3ac;font-size: 12px;margin-top: 0.1em ">订单</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0); " class=" ">
+                        <i class="iconfont icon-wode-fill" style="color:#4384c6 "></i>
+                        <span class="am-navbar-label " style="color:#4384c6;font-size: 12px; margin-top: 0.1em ">我的</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsg"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript ">
+    var token = localStorage.getItem("token");
+    var userid = localStorage.getItem("userid");
+    jQuery(document).ready(function() {
+        if (localStorage.getItem("userIcon") == "" || localStorage.getItem("userIcon") == null) {
+
+            localStorage.setItem("userIcon", "touxiang.jpg")
+        }
+        $("#userIcon").attr('src', imgurl + localStorage.getItem("userIcon"));
+        if (token == "" || userid == "" || userid == null || typeof(userid) == "undefind") {
+            $("#quitLogin").attr("hidden", true);
+            $("#specialForNew").attr("hidden",false);
+            $("#nickName").html("注册/登陆");
+            $('#nickName').click(function() {
+                login();
+            });
+            return;
+        } else {
+            $("#quitLogin").attr("hidden", false)
+
+            $("#myBirthday").html(localStorage.getItem("myBirthday"));
+            $("#integral").html('积分:' + localStorage.getItem("integral"));
+            $("#nickName").html(localStorage.getItem("nickName"));
+            loadData();
+        }
+
+    });
+
+    function login() {
+        window.location.href = "login.html"
+    }
+
+    function loadData() {
+        $.ajax({
+            type: "post ",
+            url: baseurl("APPWODE.do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "ld",
+            data: {
+                yonghuID: userid,
+                token: token
+            },
+            success: function(json) {
+                if (!checktoken(json)) {
+                    return;
+                }
+                if (json.success) {
+                    $("#integral").attr("hidden", false)
+                    $("#myBirthday").html(json.shengri);
+                    $("#userIcon").attr('src', imgurl + json.touxiang);
+                    $("#integral").html('积分:' + json.zhanghujifen);
+                    $("#nickName").html(json.phone);
+                    localStorage.setItem("myBirthday", json.shengri);
+                    localStorage.setItem("userIcon", json.touxiang);
+                    localStorage.setItem("integral", json.zhanghujifen);
+                    localStorage.setItem("nickName", json.phone);
+                } else {
+                    $('#errmsg').text(json.message);
+                    $('#my-alert').modal();
+
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试 ");
+                $('#my-alert').modal();
+
+            }
+        });
+    }
+
+    function shoucang() {
+        window.location.href = "mylove.html "
+    }
+
+    function mycomment() {
+        window.location.href = "mycomment.html "
+    }
+
+    function chongzhi() {
+        // window.location.href = "mychongzhi.html "
+    }
+
+    function integralshop() {
+        window.location.href = "integralshop.html "
+    }
+
+    function integralrule() {
+        // window.location.href = "Integralrule.html "
+    }
+
+    function exchangepassword() {
+        window.location.href = "changepassword.html "
+    }
+
+    function birthday() {
+        window.location.href = "birthday.html "
+    }
+
+    function addrlist() {
+        window.location.href = "addrlist.html "
+    }
+
+    function quit() {
+        localStorage.clear();
+        window.location.reload();
+    }
+    </script>
+</body>
+
+</html>

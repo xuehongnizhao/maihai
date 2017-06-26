@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>Insert title here</title>
+    <script src="js/include.js"></script>
+    <link>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav {
+        background-color: white;
+        border-bottom: 1px solid #dddddd;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav a {
+        line-height: 42px;
+        color: #72777a;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active {
+        position: relative;
+        background-color: #fcfcfc;
+        border-bottom: 1px solid #dddddd;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active:after {
+        position: absolute;
+        width: 50%;
+        height: 0;
+        bottom: 0;
+        left: 28%;
+        border: 1px solid rgb(141, 142, 137);
+        content: "";
+        z-index: 1;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active a {
+        line-height: 42px;
+        color: #72777a;
+        background: #f5f5f5;
+    }
+    
+    .ul-fixed {
+        position: fixed;
+        top: 0px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1010;
+    }
+    
+    .ul-fixed1 {
+        position: fixed;
+        top: 49px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1010;
+    }
+    
+    .am-header-default .am-header-nav {
+        color: #87bef9;
+    }
+    
+    .mi-black {
+        color: white;
+        background: #474240;
+        outline: none;
+        border: #474240 1px solid;
+        -moz-border-radius: 3px;
+        /* Gecko browsers */
+        -webkit-border-radius: 3px;
+        /* Webkit browsers */
+        border-radius: 3px;
+        /* W3C syntax */
+    }
+    
+    hr {
+        margin: 0em 0.5em;
+        padding: 0px;
+        border-top: 1px solid #dddddd;
+    }
+    
+    .item {
+        margin-left: 6.25%;
+        margin-right: 6.25%;
+        margin-top: 1em;
+        width: 87.5%;
+        height: 9em;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    .divBorder {
+        border: 1px;
+        border-style: solid;
+        border-color: #e3e3e3;
+        margin-top: 1em;
+    }
+    </style>
+</head>
+
+<body style="background: #f8f8f8">
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed mi-title">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title" style="font-size:16px;color: black">生日</h1>
+        <div id="card" class="am-header-right am-header-nav" onclick="queren()">
+            确认
+        </div>
+    </header>
+    <div class="am-u-sm-12">
+        <input id="user-birth" type="text" class="" placeholder="" name="birth" style="border: none;width: 100%;text-align: center;" onclick="showDateDialog();" data-am-datepicker readonly />
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsg"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var token = localStorage.getItem("token");
+    var userid = localStorage.getItem("userid");
+    jQuery(document).ready(function() {
+        loadData()
+
+    });
+
+
+    function loadData() {
+        $.ajax({
+            type: "post ",
+            url: baseurl("APPWODE.do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "ld",
+            data: {
+                yonghuID: userid,
+                token: token
+            },
+            success: function(json) {
+                if (!checktoken(json)) {
+                    return;
+                }
+                if (json.success) {
+                    $("#user-birth").attr("value", json.shengri);
+                } else {
+                    $('#errmsg').text(json.message);
+                    $('#my-alert').modal();
+
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试 ");
+                $('#my-alert').modal();
+
+            }
+        });
+    }
+
+    function queren() {
+        if ($("#user-birth").val() != "") {
+            $.ajax({
+                type: "post ",
+                url: baseurl("APPWODESHENGRI.do"),
+                dataType: "jsonp",
+                jsonp: "callback",
+                jsonpCallback: "bqr",
+                data: {
+                    yonghuID: userid,
+                    token: token,
+                    shengri: $("#user-birth").val()
+                },
+                success: function(json) {
+                    if (!checktoken(json)) {
+                        return;
+                    }
+
+                    if (json.success) {
+                        $('#errmsg').text("修改成功");
+                        $('#my-alert').modal();
+                    } else {
+                        $('#errmsg').text(json.message);
+                        $('#my-alert').modal();
+
+                    }
+                },
+                error: function() {
+                    $('#errmsg').text("网络通讯错误,请稍后重试 ");
+                    $('#my-alert').modal();
+
+                }
+            });
+        } else {
+            $('#errmsg').text("请输入您的生日");
+            $('#my-alert').modal();
+        }
+    }
+
+    function showDateDialog() {
+
+        // $('#user-birth').text('').scroller($.extend({
+        //  preset : 'date'
+        // }, {
+        //  theme : 'android-ics light',
+        //  mode : 'scroller',
+        //  display : 'bottom'
+        // }));
+
+        $('#user-birth').datepicker().
+        on('changeDate.datepicker.amui', function(event) {
+
+        });
+    }
+    </script>
+</body>
+
+</html>

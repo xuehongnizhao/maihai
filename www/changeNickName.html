@@ -25,7 +25,7 @@
         font-size: 1em;
         color: white;
         outline: none;
-        background-color: lightskyblue;
+        background-color:#c62d1e;
         background-size: cover;
         background-repeat: no-repeat;
     }
@@ -48,9 +48,9 @@
         <h1 class="am-header-title" style="font-size: 16px;">昵称</h1>
     </header>
     <div class="am-u-sm-g" style="height: 3em;margin-top: 5px">
-        <textarea id="commentText" placeholder="输入您的昵称" maxlength=100 style="border:none;outline: none;height: 3em;width: 100%;resize:none;line-height: 3em"></textarea>
+        <textarea id="nickName" placeholder="输入您的昵称" maxlength=5 style=" text-align: center;border:none;outline: none;height: 3em;width: 100%;resize:none;line-height: 3em"></textarea>
     </div>
-    <div class="am-u-sm-12" style="height: 2em;margin-top: 5px;color: gray;font-size: 12px">以中文或英文字母开头，限4-16个字符，一个汉字为两个字符</div>
+    <!-- <div class="am-u-sm-12" style="height: 2em;margin-top: 5px;color: gray;font-size: 12px"></div> -->
     <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
         <div class="am-modal-dialog">
             <div class="am-modal-hd"></div>
@@ -68,58 +68,45 @@
     <script type="text/javascript">
     var token = localStorage.getItem("token");
     var userid = localStorage.getItem("userid");
-    var dingdanID = getParameter("dingdanID");
-    var goodsID = getParameter("goodsID");
 
     function done() {
-        var commentText = $("#commentText").val()
-        if (stringNull(commentText)) {
+        var nickName = $("#nickName").val()
+        if (stringNull(nickName)) {
             showalert("请填写您的昵称")
             return;
         }
-        commentText = encodeURI(commentText);
-        $.ajax({
+        nickName = encodeURI(nickName);
+         $.ajax({
             type: "post ",
-            url: baseurl(".do"),
+            url: baseurl("APPGERENXINXIUPATE.do"),
             dataType: "jsonp",
             jsonp: "callback",
-            jsonpCallback: "cd",
+            jsonpCallback: "cnnld",
             data: {
                 yonghuID: userid,
                 token: token,
-                dingdanID: dingdanID,
-                pinglunneirong: commentText,
-                shangpinID: goodsID,
-
+                name: nickName
             },
             success: function(json) {
                 if (!checktoken(json)) {
                     return;
                 }
                 if (json.success) {
-                    $('#my-alert').modal({
-                        relatedTarget: this,
-                        onConfirm: function(e) {
-                            window.history.back();
-                        },
-                        onCancel: function(e) {
-
-                        }
-                    });
+                   window.history.back();
                 } else {
-                    showalert(json.message)
+                    $('#errmsg').text(json.message);
+                    $('#my-alert').modal();
+
                 }
-
-
-
             },
             error: function() {
-                $('#errmsg').text("网络通讯错误,请稍后重试");
+                $('#errmsg').text("网络通讯错误,请稍后重试 ");
                 $('#my-alert').modal();
 
             }
         });
-    }
+
+        }
     </script>
 </body>
 

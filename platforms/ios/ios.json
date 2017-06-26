@@ -39,6 +39,30 @@
                         {
                             "xml": "<preference name=\"CameraUsesGeolocation\" value=\"false\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"alipay\"><param name=\"ios-package\" value=\"alipay\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"alipayid\" value=\"2017052607353342\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Wechat\"><param name=\"ios-package\" value=\"CDVWechat\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"WECHATAPPID\" value=\"wx26ffe4a65c004585\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"PhoneCaller\"><param name=\"ios-package\" value=\"PhoneCaller\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -58,7 +82,7 @@
                     "NSAppTransportSecurity": [
                         {
                             "xml": "<dict><key>NSAllowsArbitraryLoads</key><true /></dict>",
-                            "count": 1
+                            "count": 2
                         }
                     ],
                     "BaiduMapLocation": [
@@ -67,8 +91,29 @@
                             "count": 1
                         }
                     ],
-                    "NSCameraUsageDescription": [],
-                    "NSPhotoLibraryUsageDescription": []
+                    "NSCameraUsageDescription": [
+                        {
+                            "xml": "<string>扫描二维码</string>",
+                            "count": 1
+                        }
+                    ],
+                    "NSPhotoLibraryUsageDescription": [],
+                    "CFBundleURLTypes": [
+                        {
+                            "xml": "<array><dict><key>CFBundleURLName</key><string>alipay</string><key>CFBundleURLSchemes</key><array><string>ali2017052607353342</string></array></dict></array>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<array><dict><key>CFBundleURLName</key><string>weixin</string><key>CFBundleURLSchemes</key><array><string>wx26ffe4a65c004585</string></array></dict></array>",
+                            "count": 1
+                        }
+                    ],
+                    "LSApplicationQueriesSchemes": [
+                        {
+                            "xml": "<array><string>weixin</string><string>wechat</string></array>",
+                            "count": 1
+                        }
+                    ]
                 }
             }
         }
@@ -99,6 +144,21 @@
             "PACKAGE_NAME": "com.feishang.maihai"
         },
         "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.feishang.maihai"
+        },
+        "cordova-plugin-alipay-v2": {
+            "APP_ID": "2017052607353342",
+            "PACKAGE_NAME": "com.feishang.maihai"
+        },
+        "cordova-plugin-wechat": {
+            "WECHATAPPID": "wx26ffe4a65c004585",
+            "PACKAGE_NAME": "com.feishang.maihai"
+        },
+        "cordova-plugin-phonecaller": {
+            "PACKAGE_NAME": "com.feishang.maihai"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "CAMERA_USAGE_DESCRIPTION": "扫描二维码",
             "PACKAGE_NAME": "com.feishang.maihai"
         }
     },
@@ -355,6 +415,38 @@
             "pluginId": "cordova-plugin-camera",
             "clobbers": [
                 "CameraPopoverHandle"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-alipay-v2/www/alipay.js",
+            "id": "cordova-plugin-alipay-v2.alipay",
+            "pluginId": "cordova-plugin-alipay-v2",
+            "clobbers": [
+                "cordova.plugins.alipay"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-wechat/www/wechat.js",
+            "id": "cordova-plugin-wechat.Wechat",
+            "pluginId": "cordova-plugin-wechat",
+            "clobbers": [
+                "Wechat"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-phonecaller/www/phonecaller.js",
+            "id": "cordova-plugin-phonecaller.PhoneCaller",
+            "pluginId": "cordova-plugin-phonecaller",
+            "clobbers": [
+                "PhoneCaller"
+            ]
+        },
+        {
+            "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+            "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+            "pluginId": "phonegap-plugin-barcodescanner",
+            "clobbers": [
+                "cordova.plugins.barcodeScanner"
             ]
         }
     ]

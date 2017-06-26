@@ -33,6 +33,21 @@
         },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "com.feishang.maihai"
+        },
+        "cordova-plugin-alipay-v2": {
+            "APP_ID": "2017052607353342",
+            "PACKAGE_NAME": "com.feishang.maihai"
+        },
+        "cordova-plugin-wechat": {
+            "WECHATAPPID": "wx26ffe4a65c004585",
+            "PACKAGE_NAME": "com.feishang.maihai"
+        },
+        "cordova-plugin-phonecaller": {
+            "PACKAGE_NAME": "com.feishang.maihai"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "CAMERA_USAGE_DESCRIPTION": "扫描二维码",
+            "PACKAGE_NAME": "com.feishang.maihai"
         }
     },
     "dependent_plugins": {}

@@ -1,0 +1,522 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<script src="js/include.js"></script>
+		<link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+		<link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+		<link href="css/style.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript">
+			var onDeviceReady = function() {
+				document.addEventListener("backbutton", showConfirm, false);
+
+				cordova.getAppVersion.getVersionCode(function(version) {
+					checkUpdate(version);
+				});
+				console.log("JPushPlugin:Device ready!")
+				initiateUI();
+			}
+			var onGetRegistradionID = function(data) {
+				try {
+					console.log("JPushPlugin:registrationID is " + data)
+					window.localStorage.setItem('pushid', data);
+					insertPushData();
+				} catch(exception) {
+					console.log(exception);
+				}
+			}
+
+			var onTagsWithAlias = function(event) {
+				try {
+					console.log("onTagsWithAlias");
+					var result = "result code:" + event.resultCode + " ";
+					result += "tags:" + event.tags + " ";
+					result += "alias:" + event.alias + " ";
+					$("#tagAliasResult").html(result);
+				} catch(exception) {
+					console.log(exception)
+				}
+			}
+			var onOpenNotification = function(event) {
+				try {
+					var alertContent = "";
+					if(device.platform == "Android") {
+						alertContent = window.plugins.jPushPlugin.openNotification.alert;
+					} else {
+						alertContent = event.aps.alert;
+					}
+
+				} catch(exception) {
+					console.log("JPushPlugin:onOpenNotification" + exception);
+				}
+			}
+			var onReceiveNotification = function(event) {
+				try {
+					var alert
+					if(device.platform == "Android") {
+						alert = window.plugins.jPushPlugin.receiveNotification.alert;
+					} else {
+						alert = event.aps.alert;
+					}
+					$("#notificationResult").html(alert);
+
+				} catch(exeption) {
+					console.log(exception)
+				}
+			}
+			var onReceiveMessage = function(event) {
+				try {
+
+					var message = "";
+					if(device.platform == "Android") {
+						message = window.plugins.jPushPlugin.receiveMessage.message;
+					} else {
+						message = event.content;
+					}
+					//var extras = window.plugins.jPushPlugin.extras
+
+					$("#messageResult").html(message);
+
+				} catch(exception) {
+					console.log("JPushPlugin:onReceiveMessage-->" + exception);
+				}
+			}
+
+			var initiateUI = function() {
+
+				try {
+					window.plugins.jPushPlugin.init();
+					window.plugins.jPushPlugin.getRegistrationID(onGetRegistradionID);
+
+					if(device.platform != "Android") {
+						window.plugins.jPushPlugin.setDebugModeFromIos();
+						window.plugins.jPushPlugin.setApplicationIconBadgeNumber(0);
+					} else {
+						window.plugins.jPushPlugin.setDebugMode(true);
+					}
+				} catch(exception) {
+					console.log(exception);
+				}
+
+			}
+
+			function insertPushData() {
+				var userid = window.localStorage.getItem('userid');
+				var pushid = window.localStorage.getItem('pushid');
+				if(userid != "" && pushid != "") {
+					$.ajax({
+						type: "post",
+						url: url("User.insertpush"),
+						data: {
+							"userid": userid,
+							"pushid": pushid
+						},
+						dataType: "jsonp",
+						jsonp: "callback",
+						jsonpCallback: "ipush",
+						success: function(data) {
+
+						},
+						error: function() {
+
+						}
+
+					});
+				}
+			}
+
+			document.addEventListener("deviceready", onDeviceReady, false);
+			document.addEventListener("jpush.openNotification", onOpenNotification,
+				false);
+			document.addEventListener("jpush.receiveNotification",
+				onReceiveNotification, false);
+			document.addEventListener("jpush.receiveMessage", onReceiveMessage, false);
+
+			function onConfirm(button) {
+				// if press 'Yes'
+				if(button === 1) {
+					navigator.app.exitApp();
+				}
+			}
+			// PhoneGap Notification 提供的 Confirm API
+			function showConfirm() {
+				navigator.notification.confirm('確定要离开么?', // message
+					onConfirm, // callback function
+					'买嗨', // title
+					'是,否' // confirm 選項，用逗號隔開
+				);
+			}
+			//jpush.receiveMessage
+		</script>
+
+		<style type="text/css">
+			
+			
+			body,
+			html {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.line {
+				border: none;
+				border-top: 1px solid #b8b1a4;
+				height: 1px;
+				width: 100%;
+				margin-top: 1em;
+			}
+			
+			.mi-black {
+				color: #4489ce;
+				background: white;
+				outline: none;
+				border: white 1px solid;
+				border-top: #dddddd 1px solid;
+			}
+			
+			.line1 {
+				border: none;
+				border-top: 1px solid #ccc;
+				height: 1px;
+				width: 100%;
+				margin-top: 0.3em;
+				margin-bottom: 0.5em;
+			}
+			
+			#tcColor {
+				color: #333333;
+			}
+			
+			#testColor {
+				color: #333333;
+				font-size: 15px;
+			}
+			
+			.am-offcanvas-bar {
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				z-index: 1091;
+				width: 75%;
+				max-width: 100%;
+				background: #f8f8f8;
+				border: none;
+				overflow-y: auto;
+				/* scrollable */
+				-webkit-overflow-scrolling: touch;
+				/* scrollable */
+				-webkit-transition: -webkit-transform 0.3s ease-in-out;
+				transition: transform 0.3s ease-in-out;
+				-webkit-transform: translateX(-100%);
+				-ms-transform: translateX(-100%);
+				transform: translateX(-100%);
+			}
+			
+			.am-offcanvas-bar:after {
+				content: "";
+				display: block;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				width: 1px;
+				background: transparent;
+			}
+			
+			.am-fr {
+				float: left;
+			}
+			
+			.am-header-fixed {
+				position: absolute;
+			}
+			
+			.am-slider-d1 {
+				-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+				box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2)/* Direction Nav */
+			}
+			
+			.loading .am-slider-d1 .am-viewport {
+				max-height: 300px;
+			}
+			
+			.am-slider-d1 .am-slider-desc {
+				padding: 8px 35px;
+				width: 100%;
+				color: black;
+				background-color: white;
+			}
+			
+			.am-topbar-inverse {
+				background-color: #f5f3f4;
+				border-color: #f5f3f4;
+			}
+			
+			.am-navbar .am-navbar-nav {
+				background-color: #f5f3f4;
+			}
+			
+			.am-modal-actions-group {
+				margin: 0px;
+			}
+			
+			.img {}
+			
+			.img1 {}
+			
+			.data-am-selected {
+				width: 33%;
+				float: left;
+			}
+			
+			.icon-sousuo{
+				float:left;
+				margin-top: 2px;
+				color:#C0C0C0;
+				margin-left:20px;
+				margin-right:10px;
+			}
+			.am-header-left p{
+				float:left;
+				color:#fff;
+			}
+			.am-header-left i{
+				font-size:1px;
+				float:left;
+				color:#fff;
+				margin-left:5px;
+				margin-top:2px
+			}
+			#d-leixing{
+				background: #fff;
+				padding-top:20px;
+				padding-bottom:10px;
+			}
+			#d-huodongList{
+				background: #fff;
+				margin-top: 10px;
+				margin-bottom:10px;
+				padding: 0;
+			}
+			#d-shanghulist{
+				padding: 0;
+				margin-bottom: 61px;
+			}
+			.am-u-sm-12 .img-leixing{
+				width: 65%;
+				max-width:50px;
+			}
+			.am-u-sm-12 .leixing-mingzi{
+				padding-bottom:10px;
+				padding-top:5px;
+				font-size: 1.4rem;
+			}
+			.icon-ding{
+				float:left;
+				color:#fbb111;
+				margin-right:5px
+			}
+			.title{
+				background: #fff;
+				text-align: center;
+				color:#4384c6;
+				border-bottom:1px solid #e5e5e5;
+				padding:10px 0;
+				font-size: 1.4rem;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<!-- Header -->
+
+		<header data-am-widget="header" class="am-header am-header-default am-header-fixed zhuye-title">
+			<div class="am-header-left am-header-nav" onclick="citychoose()">
+				<p id="address" style="font-size: 14px">哈尔滨市</p>
+				<i class="iconfont icon-quyudingweijiantou"></i>
+			</div>
+			<div style="margin-left:7rem;margin-right:3rem;line-height:30px;background: #fff;overflow:hidden;border-radius: 30px;margin-top:8px" onclick="search()">
+				<i class="iconfont icon-sousuo"></i>
+				<div style="height: 30px;line-height: 30px; color: #C0C0C0;font-size: 14px;">关键词</div>
+			</div>
+			<div id="message" class="am-header-right am-header-nav">
+				<i class="iconfont icon-xiaoxi"></i>
+				<span style=""></span><!--已经display: none -->
+			</div>
+		</header>
+
+		<div class="am-u-sm-12" id="d-leixing">			
+			<script id='s-leixing' type="text/html">
+				{{each fenleilist as val i}}  
+    				<div class="am-u-sm-3" align="center" style="float: left;padding: 0;" onclick="main2('{{val.fenleiID}}')">						
+						<img  src="{{imgurl+val.tupiandizhi}}" class="img-leixing">
+						<p class="leixing-mingzi">{{val.fenleimingcheng}}</p>
+					</div>
+				{{/each}}
+			</script>
+
+		</div>
+		<div id="d-huodongList" class="am-u-sm-12">
+			<script id='s-huodongList' type="text/html">
+				{{each HuodongList as val i}} 
+				{{if i%2 ==0}} {{if val.huodongID == null || val.huodongID == ""}}
+				<div class="am-u-sm-6 img" style="padding:0em;">
+					<a href="javascript:void(0);" id="" class=""><img style="border-right:3px solid #fafafa;width: {{imgwidth}}px; height:{{imgheight}}px" src="img/guanggao02.png"></a>
+				</div>
+				{{else}}
+				<div class="am-u-sm-6 img" style="padding:0em;">
+					<a href="javascript:void(0);" id="" class=""><img onclick="lclick('{{val.guanlianID}}')" style="border-right:3px solid #fafafa;width: {{imgwidth}}px; height:{{imgheight}}px;" src={{imgurl+val.huodongtupian}}></a>
+				</div>
+				{{/if}} {{else if i%4==1 }} {{if val.huodongID == null || val.huodongID == ""}}
+				<div class="am-u-sm-6 img1" style="padding:0em;><a href=" javascript:void(0); " id=" " class=" "><img style="width: {{imgwidth}}px; height: {{imgheight}}px; " src="img/guanggao011.png "></a></div>
+			<div class="am-u-sm-12 "style="height:1em;background: #f8f8f8;border-bottom: 1px solid #eeeeee; "></div>
+        		{{else}}
+               <div class="am-u-sm-6 img1 " style="padding:0em;>
+					<a href="javascript:void(0);" id="" class=""><img onclick="lclick('{{val.guanlianID}}')" style="width:{{imgwidth}}px; height: {{imgheight}}px;" src={{imgurl+val.huodongtupian}} onerror="this.src='img/guanggao01.png'"></a>
+				</div>
+				<!--div class="am-u-sm-12" style="height:1em;background: #f8f8f8;border-bottom: 1px solid #eeeeee; "></div-->
+				{{/if}} 				
+				{{/if}}
+				 {{/each}}
+			</script>
+
+		</div>
+		<div class="am-u-sm-12 title">— 热门商铺 —</div>
+		<div id="d-shanghulist" class="am-u-sm-12">
+			<script id='s-shanghulist' type="text/html">
+			{{each shanghulist as val i}}
+				<div class="am-g" onclick="goToRiceDetail('{{val.shanghuID}}')" style="background-color: white;border-bottom:1px solid #e5e5e4;border-radius: 4px;">
+					<div class="am-u-sm-4" style="height:8rem">
+					<img style="width:100%;height:6rem;border:none;margin-top:14px;" src="{{imgurl+val.tupiandizhi}}">
+					</div>
+				<div class="am-u-sm-8" style="padding:0 0 0 0.5em;">
+				<div style="color:#000;font-size: 1.3em; height: 1.5em;float:left;margin-bottom:5px;margin-top:8px">{{val.dianpumingcheng}}</div>
+				<span style="font-size: 1em;color:#999999;float: right;margin-right: 10px;margin-top:10px">{{val.juli}}m</span>
+				<div style="line-height: 1em;clear: both;margin-bottom:5px">
+				<span style="font-size: 0.8em;color:#999999;">{{val.jine}}元可抵扣{{val.jifen}}积分</span>			
+				</div>
+				<div class="am-u-sm-8" style="font-size: 0.8em;padding:0;margin-bottom:10px;">
+					<div style="font-size: 1em;color:#999999;"><i class="iconfont icon-ding"></i>已售<span>{{if val.yishou == ""}}0{{else}}{{val.yishou}}{{/if}}</span></div>
+				</div>
+				</div>
+				</div>
+			{{/each}}
+			</script>
+		
+		</div>
+
+		<header id="hid2" class="am-topbar am-topbar-inverse am-topbar-fixed-bottom " style="border-top: 1px #dfdfdf solid ; background-color">
+			<div data-am-widget="navbar" class="am-navbar  am-navbar-default ">
+				<ul class="am-navbar-nav am-cf am-avg-sm-4">
+					<li>
+						<a href="javascript:void(0);" class="">
+							<i class="iconfont icon-shouye-fill" style="color:#4384c6"></i>
+							<span class="am-navbar-label" style="color: #4384c6; font-size: 12px; margin-top: 0.1em">首页</span>
+						</a>
+					</li>
+					<li>
+						<a href="nearby.html" class="">
+							<i class="iconfont icon-fujindingwei" style="color:#b5b3ac"></i>
+							<span class="am-navbar-label" style="color: #b5b3ac; font-size: 12px; margin-top: 0.1em">附近</span>
+						</a>
+					</li>
+					<li>
+						<a href="order.html" class="">
+							<i class="iconfont icon-dingdan" style="color:#b5b3ac"></i>
+							<span class="am-navbar-label" style="color: #b5b3ac; font-size: 12px; margin-top: 0.1em">订单</span>
+						</a>
+					</li>
+					<li>
+						<a href="myinfo.html" class="">
+							<i class="iconfont icon-wode" style="color:#b5b3ac"></i>
+							<span class="am-navbar-label" style="color: #b5b3ac; font-size: 12px; margin-top: 0.1em">我的</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+
+	</body>
+
+	<script type="text/javascript">
+		var isLogin = true;		
+		var userid = window.localStorage.getItem('userid');
+		var token = window.localStorage.getItem('token');
+		var cityCode = window.localStorage.getItem('cityCode');
+		var city = window.localStorage.getItem('cityName');
+		$("#address").html(city);
+		if(userid == null || userid == "null") {
+			isLogin = false;
+		} else {
+			isLogin = true;
+		}
+
+		jQuery(document).ready(function() {
+			if(typeof(cityCode) =='undefined' || cityCode =='' || cityCode == null ){
+				window.localStorage.setItem('cityCode',230102);
+				cityCode = window.localStorage.getItem('cityCode');
+				window.localStorage.setItem('cityName','哈尔滨');
+				$("#address").html('哈尔滨');
+			}
+			getTuList();
+		});
+
+		function getTuList(){
+			
+			$.ajax({
+				type: "post",
+				url:baseurl("APPSHOUYE.do"),
+				dataType: "jsonp",
+				data:{
+					"cityCode": cityCode,
+					"jingdu": 126.7023827709,
+					"weidu" : 45.7591702951
+				},
+				jsonp: "callback",
+				jsonpCallback: "fenleilist",
+				success: function(json) {
+					json.imgwidth = screen.width / 2;
+					json.imgheight = screen.width / 4;
+					json.imgurl = imgurl;
+					var html = template('s-leixing', json);
+					$("#d-leixing").html(html);
+					var html = template('s-huodongList', json);
+					$("#d-huodongList").html(html);
+					var html = template('s-shanghulist', json);
+					$("#d-shanghulist").html(html);
+				},
+				error: function() {
+					alert("错误")
+				}
+			});
+
+		}
+		function main2(fenleiID) {
+			window.location.href = "main2page.html?fenleiID=" + fenleiID;
+		}
+		function goToRiceDetail(shanghuID) {
+			window.location.href = "shops.html?shanghuID=" + shanghuID;
+		}
+		function search() {
+			window.location.href = "search.html";
+		}
+		function citychoose() {
+			window.location.href = "searchCity.html";
+		}
+		function lclick(guanlianID) {
+			window.location.href = "shops.html?shanghuID=" + guanlianID;
+		}
+	</script>
+
+</html>

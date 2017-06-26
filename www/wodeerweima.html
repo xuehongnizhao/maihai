@@ -1,0 +1,270 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>wodeerweima</title>
+    <script src="js/include.js"></script>
+    <script src="js/qrcode.js"></script>
+    <link>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    hr {
+        margin: 0.3em 0em;
+        padding: 0px;
+        border-top: 1px solid #e8e8e8;
+    }
+    
+    .item {
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav {
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav a {
+        line-height: 42px;
+        color: lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active {
+        position: relative;
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active:after {
+        position: absolute;
+        width: 50%;
+        height: 0;
+        bottom: 0;
+        left: 28%;
+        border: 1px solid deepskyblue;
+        content: "";
+        z-index: 1;
+    }
+    
+    .erweima {
+        background: #fff;
+        height: 150px;
+        width: 150px;
+        margin: 0 auto;
+        padding: 0px;
+        border: 1px solid #f0efed;
+        border-radius: 5px;
+        display: block;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active a {
+        line-height: 42px;
+        color: deepskyblue;
+        background: #ffff;
+    }
+    </style>
+</head>
+
+<body>
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title" style="border:none;">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title" style="font-size: 16px;">我的名片</h1>
+        <div id="hid2" class="am-header-right am-header-nav">
+            分享
+        </div>
+    </header>
+    <div data-am-widget="header" class="am-g" style="background-image: url('img/fengzhonlingluan.jpg') ;margin-bottom:10px;padding-bottom: 1em;height: 10em ;background-size: cover;" onclick="goToChangeMyInfo()">
+        <div class="am-u-sm-4" style="padding: 0">
+            <div style="font-size: 12px;width: 100%;color:white ;float: left;margin: 7em 0 0 2em">
+            </div>
+        </div>
+        <div class="am-u-sm-4" style="padding: 0">
+            <img id="userIcon" class="am-img-thumbnail" style="
+            position: absolute;top: 1em; left: 0px;right: 0px;margin: auto;width:70px;height: 70px;border:none;" src='' />
+            <div id="nickName" type="button" style="font-size:16px;font-weight: bold; width: 100%;text-align: center; margin-top: 7em"></div>
+        </div>
+        <div class="am-u-sm-4" style="padding: 0">
+            <div style="font-size: 12px;width: 100%;color:white ;float: left;margin-top: 42px">
+            </div>
+        </div>
+    </div>
+    <div class="am-u-sm-12" style="background-color: white;padding: 10%;margin: 10px;width: 95%">
+        <div class="am-u-sm-12" style="">
+            <div class="erweima" id="qrcode"><img src="img/fengkuangzhizuoerweima.jpg" style="width:100%;height: auto;"></div>
+        </div>
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsg"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <div class="am-modal-actions" id="modal_share" style="max-height: 80%;overflow:auto;">
+        <div class="am-modal-actions-group margin">
+            <ul id="u-list" class="am-list">
+                <li style="height:3em;line-height:3em;border-bottom:1px #ededed solid;border-top:none;" val="分享给好友" onclick="shareTypeitemClick('0')"> <span style="display:block;">分享给好友</span></li>
+                <li style="height:3em;line-height:3em;border-bottom:1px #ededed solid;border-top:none;" val="分享到朋友圈" onclick="shareTypeitemClick('1')"> <span style="display:block;">分享到朋友圈</span></li>
+                <li style="border: none;">
+                    <button class="am-btn am-btn-secondary am-btn-block" style="height:3em;background:white;color:#4489ce;border:none;" onclick="closemodal('#modal_share')">
+                        取消</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var token = localStorage.getItem("token");
+    var userid = localStorage.getItem("userid");
+    var shareUrl = baseurl("APPSHARE.do?yaoqingrenID=") + userid + "&type=yonghu";
+    var actIntroduce = "邀请注册";
+
+    jQuery(document).ready(function() {
+        $("#userIcon").attr('src', imgurl + "touxiang.jpg");
+        loadData();
+        creatCode();
+    });
+    var wechatInstalled = 0;
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    function onDeviceReady() {
+        Wechat.isInstalled(function(installed) {
+            if (installed) {
+                wechatInstalled = 1;
+            } else {
+                wechatInstalled = 0;
+            }
+        }, function(reason) {
+            wechatInstalled = 0;
+        });
+    }
+
+    function loadData() {
+        $.ajax({
+            type: "post ",
+            url: baseurl("APPWODE.do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "wdewmld",
+            data: {
+                yonghuID: userid,
+                token: token
+            },
+            success: function(json) {
+                if (!checktoken(json)) {
+                    return;
+                }
+                if (json.success) {
+
+
+
+                    $("#userIcon").attr('src', json.touxiang);
+
+
+                    $("#nickName").html(json.nickname);
+
+
+                } else {
+                    $('#errmsg').text(json.message);
+                    $('#my-alert').modal();
+
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试 ");
+                $('#my-alert').modal();
+
+            }
+        });
+    }
+
+    function creatCode() {
+        $('#qrcode').html('');
+        var qrcode = new QRCode(document.getElementById("qrcode"), {
+            width: 150,
+            height: 150
+        });
+        qrcode.makeCode(shareUrl);
+    }
+
+    function closemodal(id) {
+        $(id).modal('close');
+    }
+
+    function shareTypeitemClick(shareType) {
+        share(shareType, userid, actIntroduce, shareUrl);
+    }
+
+    function share(type, userid, wxdesc, wxurl) {
+        var wxscene = Wechat.Scene.TIMELINE;
+        if (type == 2) {
+            return;
+        } else {
+            if (type == 0) {
+                wxscene = Wechat.Scene.SESSION
+            }
+            if (type == 1) {
+                wxscene = Wechat.Scene.TIMELINE
+            }
+        }
+        Wechat.share({
+            message: {
+                title: wxdesc,
+                description: wxdesc,
+                thumb: baseurl('img/thumb.jpg'),
+                messageExt: "邀请分享",
+                media: {
+                    type: Wechat.Type.WEBPAGE,
+                    webpageUrl: wxurl
+                }
+            },
+            scene: wxscene // share to Timeline
+        }, function() {
+            $('#errmsg').text("分享成功");
+            $('#my-alert').modal();
+        }, function(reason) {});
+        closemodal('#modal_share');
+    }
+    $('#hid2').click(function() {
+        if (wechatInstalled == 0) {
+            $('#errmsg').text("暂无分享路径 ");
+            $('#my-alert').modal();
+            return;
+        }
+        $('#modal_share').modal();
+
+    });
+    </script>
+</body>
+
+</html>

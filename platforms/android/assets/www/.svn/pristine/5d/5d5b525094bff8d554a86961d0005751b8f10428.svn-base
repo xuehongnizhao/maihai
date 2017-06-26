@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>About "buy hi"</title>
+    <script src="js/include.js"></script>
+    <link>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    hr {
+        margin: 0.3em 0em;
+        padding: 0px;
+        border-top: 1px solid #e8e8e8;
+    }
+    
+    .item {
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav {
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav a {
+        line-height: 42px;
+        color: lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active {
+        position: relative;
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active:after {
+        position: absolute;
+        width: 50%;
+        height: 0;
+        bottom: 0;
+        left: 28%;
+        border: 1px solid deepskyblue;
+        content: "";
+        z-index: 1;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active a {
+        line-height: 42px;
+        color: deepskyblue;
+        background: #ffff;
+    }
+    .am-u-sm-12 span{
+    	display: block;
+    	width: 100%;
+    	line-height: 30px;
+    	font-size: 1.5rem;
+    	padding-right: 10px;
+    }
+    .am-u-sm-12 .xiao-title{
+    	font-weight: bold;
+    	line-height: 20px;
+    }
+    .am-u-sm-12 b{
+    	color:#595959;
+    	display: block;
+    	line-height: 26px;
+    	font-size: 1.5rem;
+    	margin-top: 5px;
+    	margin-bottom: 5px;
+    }
+    .am-u-sm-12 a{
+    	text-decoration:underline;
+    	font-weight: bold;
+    }
+    </style>
+</head>
+
+<body>
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title" style="font-size: 16px;">关于“买嗨”</h1>
+    </header>
+    
+    <div id="goodsDeatail" class="am-u-sm-12" style="background-color: white"></div>
+    <div class="am-u-sm-12" style="background-color: white;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding-bottom:10px;margin-top: 10px;line-height: 3em;padding-right:0">
+        <b>1、买嗨平台：买一次 嗨一次。消费者通过平台消费可以返现。商家可以通过平台赚取跨界收入。</b>
+        <div class="am-u-sm-12" style="background-color: lightgray;height: 1px;margin-bottom: 10px;"></div>
+        <span class="xiao-title">如果您是消费者：</span>
+        <span>我们帮您寻找值得信赖的商家，让您享受超实惠的优质服务；</span>
+        <span>我们希望帮助您发现新鲜有趣的消费方式，不断发现新的惊喜；</span>
+        <span>我们帮您推荐一定物超所值；</span>
+        <span class="xiao-title">如果您是商家：</span>
+        <span>我们为您寻找追求时尚的消费者，消费能力有所保障；</span>
+        <span>我们的推广合作方式低成本，效果显著；</span>
+        <span>我们的推广合作方式对商家的利益会进行更好的保障。</span>
+     </div>
+    <div class="am-u-sm-12" style="background-color: white;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding-bottom:10px;margin-top: 10px;line-height: 3em;padding-right:0">
+        <b>2.商务合作</b>
+        <div class="am-u-sm-12" style="background-color: lightgray;height: 1px;margin-bottom: 10px;"></div>
+        <span class="xiao-title">如果您是媒体、渠道，想洽谈资源置换、商务合作，请联系：</span>
+        <span>邮箱：<a href="#"></a></span>
+        <span class="xiao-title">如果您想在买嗨平台投放广告，请联系：</span>
+        <span>邮箱：<a href="#"></a></span>
+    </div>
+    <div class="am-u-sm-12" style="background-color: white;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding-bottom:10px;margin-top: 10px;line-height: 3em;padding-right:0">
+        <b>3.用户帮助</b>
+        <div class="am-u-sm-12" style="background-color: lightgray;height: 1px;margin-bottom: 10px;"></div>
+        <span class="xiao-title">如果您如果您付款或消费遇到问题，请联系客服人员：</span>
+        <span>客服电话</span>
+        <span>提交BUG</span>
+    </div>
+    <div id="done" style="" class="am-u-sm-12">
+        <input type="button" name="" value="如果您发现了我们的一个BUG，请点击" onclick="done()" class="am-btn am-btn-sm am-fl" style="border-radius: 6px;margin-top:10px;border: none;width: 100%;height: 3em;margin-bottom: 10px; font-size: 1em; color: white; outline: none;background-color: lightskyblue ;background-size: cover;background-repeat: no-repeat;">
+    </div>
+    <script type="text/javascript">
+    var token = localStorage.getItem("token");
+    var userid = localStorage.getItem("userid");
+    jQuery(document).ready(function() {
+        loadData();
+    });
+
+    function loadData() {
+        $.ajax({
+            type: "post ",
+            url: baseurl("APPWODESHOUCANG.do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "mlld",
+            data: {
+                yonghuID: userid,
+                token: token
+            },
+            success: function(json) {
+                if (!checktoken(json)) {
+                    return;
+                }
+
+                if (json.success) {
+                    json.imgurl = imgurl;
+                    var html = template('s_mylove', json);
+                    $("#d_mylove").html(html);
+                } else {
+                    $('#errmsg').text(json.message);
+                    $('#my-alert').modal();
+
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试");
+                $('#my-alert').modal();
+
+            }
+        });
+    }
+
+    function cancelLove(shanghuID,e) {
+        $('#my-prompt').modal({
+            relatedTarget: this,
+            onConfirm: function(e) {
+                $.ajax({
+                    type: "post ",
+                    url: baseurl("APPDIANPUSHOUCANG.do"),
+                    dataType: "jsonp",
+                    jsonp: "callback",
+                    jsonpCallback: "mlcl",
+                    data: {
+                        shanghuID: shanghuID,
+                        yonghuID: userid,
+                        token: token
+                    },
+                    success: function(json) {
+                        if (json.success) {
+                            $('#errmsg').text("成功取消收藏");
+                            $('#my-alert').modal();
+                            loadData();
+                        } else {
+                            $('#errmsg').text(json.message);
+                            $('#my-alert').modal();
+
+                        }
+                    },
+                    error: function() {
+
+
+                    }
+                });
+            },
+            onCancel: function(e) {
+
+            }
+        });
+        stopBubble(e);
+    }
+    function goToShops(shanghuID,e) {
+        window.location.href = "shops.html?shanghuID="+shanghuID;
+        stopBubble(e);
+    }
+
+    function stopBubble(e) {
+    var evt = e || window.event;
+    evt.stopPropagation ? evt.stopPropagation() : (evt.cancelBubble = true);
+}
+    </script>
+</body>
+
+</html>

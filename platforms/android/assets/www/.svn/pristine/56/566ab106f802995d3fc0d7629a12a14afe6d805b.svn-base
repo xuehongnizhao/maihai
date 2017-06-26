@@ -1,0 +1,442 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <script src="js/include.js"></script>
+    <link>
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    body,
+    html {
+        width: 100%;
+        height: 100%;
+    }
+    
+    .line {
+        border: none;
+        border-top: 1px solid #b8b1a4;
+        height: 1px;
+        width: 100%;
+        margin-top: 1em;
+    }
+    
+    .mi-black {
+        color: #4489ce;
+        background: white;
+        outline: none;
+        border: white 1px solid;
+        border-top: #dddddd 1px solid;
+    }
+    
+    .line1 {
+        border: none;
+        border-top: 1px solid #ccc;
+        height: 1px;
+        width: 100%;
+        margin-top: 0.3em;
+        margin-bottom: 0.5em;
+    }
+    
+    #tcColor {
+        color: #333333;
+    }
+    
+    #testColor {
+        color: #333333;
+        font-size: 15px;
+    }
+    
+    .am-offcanvas-bar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 1091;
+        width: 75%;
+        max-width: 100%;
+        background: #f8f8f8;
+        border: none;
+        overflow-y: auto;
+        /* scrollable */
+        -webkit-overflow-scrolling: touch;
+        /* scrollable */
+        -webkit-transition: -webkit-transform 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out;
+        -webkit-transform: translateX(-100%);
+        -ms-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+    
+    .am-offcanvas-bar:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        width: 1px;
+        background: transparent;
+    }
+    
+    .am-fr {
+        float: left;
+    }
+    
+    .am-header-fixed {
+        position: absolute;
+    }
+    
+    .am-slider-d1 {
+        -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2)/* Direction Nav */
+    }
+    
+    .loading .am-slider-d1 .am-viewport {
+        max-height: 300px;
+    }
+    
+    .am-slider-d1 .am-slider-desc {
+        padding: 8px 35px;
+        width: 100%;
+        color: black;
+        background-color: white;
+    }
+    
+    .am-topbar-inverse {
+        background-color: #f5f3f4;
+        border-color: #f5f3f4;
+    }
+    
+    .am-navbar .am-navbar-nav {
+        background-color: #f5f3f4;
+    }
+    
+    .am-modal-actions-group {
+        margin: 0px;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav {
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav a {
+        line-height: 42px;
+        color: #333333;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active {
+        position: relative;
+        background-color: white;
+        border-bottom: 2px solid #84bcf9;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active:after {
+        content: none;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active a {
+        line-height: 42px;
+        color: #84bcf9;
+        background: #ffff;
+    }
+    
+    .data-am-selected {
+        width: 33%;
+        float: left;
+    }
+    
+    .status-orderAll {
+        color: blue;
+        text-align: right;
+    }
+    
+    .status-button {
+        height: 2.5em;
+        width: 8em;
+        border-radius: 4px;
+        border-color: orange;
+        border: 2px solid orange;
+        line-height: 2.5em;
+        color: orange;
+        text-align: center;
+        margin: 3em 0;
+    }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title" style="position: fixed;">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">我的订单</h1>
+    </header>
+    <div class="" style="padding-left: 0em; padding-right: 0em; margin-top: 1em; margin: 0em;">
+        <div id="tabs111" data-am-widget="tabs" class="am-tabs am-tabs-d2" style="margin:0px;">
+            <ul class="am-tabs-nav am-cf ul-fixed" style="width:100%;height:3em;position: fixed;z-index: 999;">
+                <li id="ul_id1" class="am-active" style="height:3em;">
+                    <a href="[data-tab-panel-0]" style="height:2em;width:100%; margin:0.5em auto;line-height:2em;">全部</a>
+                </li>
+                <li id="ul_id2" class="" style="height:3em;">
+                    <a href="[data-tab-panel-1]" style=" height:2em;width:100%; margin:0.5em auto;line-height:2em;">待付款</a>
+                </li>
+                <li id="ul_id3" class="" style="height:3em;">
+                    <a href="[data-tab-panel-2]" style=" height:2em;width:100%; margin:0.5em auto;line-height:2em;">待使用</a>
+                </li>
+                <li id="ul_id4" class="" style="height:3em;">
+                    <a href="[data-tab-panel-3]" style=" height:2em;width:100%; margin:0.5em auto;line-height:2em;">待评价</a>
+                </li>
+            </ul>
+            <div class="am-tabs-bd" style="border: none;margin-top:0px;">
+                <div data-tab-panel-0 class="am-tab-panel am-active" id="d_panel-0" style="padding: 0;">
+                </div>
+                <script type="text/html" id="s_panel-0">
+                    {{each wodedingdanquanbuList as val i}}
+                    <div class="am-g" style="background-color: white;border-bottom:1px solid #e5e5e4;{{if i == 0 }}margin-top:48px{{/if}}">
+                        <div class="am-u-sm-2" style="height:10rem">
+                            <img style="width:64px;height:64px;border:none;margin-top:14px;" src="{{imgurl+val.tupiandizhi}}">
+                        </div>
+                        <div class="am-u-sm-10" style="padding:0 0 0 0.5em;">
+                            <div class="am-u-sm-8" style="font-size: 0.8em; margin-top: 8px;">
+                                <div style="color:#000;font-size: 1.3em; height: 1.5em;float:left;margin-bottom:5px;margin-top:8px">{{val.shangpinming}}</div>
+                                <div style="line-height: 1em;clear: both;margin-bottom:5px">
+                                    <div style="font-size: 1em;color:#999999;">下单日期 : {{val.xiadanriqi}}</div>
+                                    <br>
+                                    <div style="font-size: 1em;color:#999999;"> 数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量 : {{val.shangpingshuliang}}</div>
+                                    <br>
+                                    <div style="font-size: 1em;color:#999999;">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价 : ￥ {{val.zongjia}}</div>
+                                </div>
+                            </div>
+                            <div class="am-u-sm-4" style="font-size: 0.8em;padding: 10px 0;margin-bottom:10px;padding-right: 10px;height: 8em;">
+                                <div class="status-orderAll">{{if val.dingdanzhuangtai == "daifukuan"}}代付款{{/if}}{{if val.dingdanzhuangtai == "daipingjia"}}待评价{{/if}}{{if val.dingdanzhuangtai == "daishiyong"}}待消费{{/if}}</div>
+                                <div onclick="goToSomthing('{{val.dingdanzhuangtai}}')" class="status-button">
+                                    {{if val.dingdanzhuangtai == "daifukuan"}}去付款{{/if}}{{if val.dingdanzhuangtai == "daipingjia"}}去评价{{/if}}{{if val.dingdanzhuangtai == "daishiyong"}}查看券码{{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </script>
+                <div data-tab-panel-1 class="am-tab-panel am-active" id="d_panel-1" style="padding: 0;">
+                </div>
+                <script type="text/html" id="s_panel-1">
+                    {{each daifukuanList as val i}}
+                    <div class="am-g" style="background-color: white;border-bottom:1px solid #e5e5e4;{{if i == 0 }}margin-top:48px{{/if}}">
+                        <div class="am-u-sm-2" style="height:10rem">
+                            <img style="width:64px;height:64px;border:none;margin-top:14px;" src="{{imgurl+val.tupiandizhi}}">
+                        </div>
+                        <div class="am-u-sm-10" style="padding:0 0 0 0.5em;">
+                            <div class="am-u-sm-8" style="font-size: 0.8em; margin-top: 8px;">
+                                <div style="color:#000;font-size: 1.3em; height: 1.5em;float:left;margin-bottom:5px;margin-top:8px">{{val.shangpinming}}</div>
+                                <div style="line-height: 1em;clear: both;margin-bottom:5px">
+                                    <div style="font-size: 1em;color:#999999;">下单日期 : {{val.xiadanriqi}}</div>
+                                    <br>
+                                    <div style="font-size: 1em;color:#999999;"> 数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量 : {{val.shangpingshuliang}}</div>
+                                    <br>
+                                    <div style="font-size: 1em;color:#999999;">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价 : ￥ {{val.zongjia}}</div>
+                                </div>
+                            </div>
+                            <div class="am-u-sm-4" style="font-size: 0.8em;padding: 10px 0;margin-bottom:10px;padding-right: 10px;height: 8em;">
+                                <div class="status-orderAll">代付款</div>
+                                <div onclick="goToPay()" class="status-button">
+                                    去付款
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </script>
+                <div data-tab-panel-2 class="am-tab-panel am-active" id="d_panel-2" style="padding: 0;">
+                </div>
+                <script type="text/html" id="s_panel-2">
+                    {{each daishiyongList as val i}}
+                    <div class="am-g" style="background-color: white;border-bottom:1px solid #e5e5e4;{{if i == 0 }}margin-top:48px{{/if}}">
+                        <div class="am-u-sm-2" style="height:10rem">
+                            <img style="width:64px;height:64px;border:none;margin-top:14px;" src="{{imgurl+val.tupiandizhi}}">
+                        </div>
+                        <div class="am-u-sm-10" style="padding:0 0 0 0.5em;">
+                            <div class="am-u-sm-8" style="font-size: 0.8em; margin-top: 8px;">
+                                <div style="color:#000;font-size: 1.3em; height: 1.5em;float:left;margin-bottom:5px;margin-top:8px">{{val.shangpinming}}</div>
+                                <div style="line-height: 1em;clear: both;margin-bottom:5px">
+                                    <div style="font-size: 1em;color:#999999;">下单日期 : {{val.xiadanriqi}}</div>
+                                    <br>
+                                    <div style="font-size: 1em;color:#999999;"> 数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量 : {{val.shangpingshuliang}}</div>
+                                    <br>
+                                    <div style="font-size: 1em;color:#999999;">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价 : ￥ {{val.zongjia}}</div>
+                                </div>
+                            </div>
+                            <div class="am-u-sm-4" style="font-size: 0.8em;padding: 10px 0;margin-bottom:10px;padding-right: 10px;height: 8em;">
+                                <div class="status-orderAll">待消费</div>
+                                <div onclick="goToUse()" class="status-button">
+                                    查看券码
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </script>
+                <div data-tab-panel-3 class="am-tab-panel am-active" id="d_panel-3" style="padding: 0;">
+                </div>
+                <script type="text/html" id="s_panel-3">
+                    {{each daipingjiaList as val i}}
+                    <div class="am-g" style="background-color: white;border-bottom:1px solid #e5e5e4;{{if i == 0 }}margin-top:48px{{/if}}">
+                        <div class="am-u-sm-2" style="height:10rem">
+                            <img style="width:64px;height:64px;border:none;margin-top:14px;" src="{{imgurl+val.tupiandizhi}}">
+                        </div>
+                        <div class="am-u-sm-10" style="padding:0 0 0 0.5em;">
+                            <div class="am-u-sm-8" style="font-size: 0.8em; margin-top: 8px;">
+                                <div style="color:#000;font-size: 1.3em; height: 1.5em;float:left;margin-bottom:5px;margin-top:8px">{{val.shangpinming}}</div>
+                                <div style="line-height: 1em;clear: both;margin-bottom:5px">
+                                    <div style="font-size: 1em;color:#999999;">下单日期 : {{val.xiadanriqi}}</div>
+                                    <br>
+                                    <div style="font-size: 1em;color:#999999;"> 数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量 : {{val.shangpingshuliang}}</div>
+                                    <br>
+                                    <div style="font-size: 1em;color:#999999;">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价 : ￥ {{val.zongjia}}</div>
+                                </div>
+                            </div>
+                            <div class="am-u-sm-4" style="font-size: 0.8em;padding: 10px 0;margin-bottom:10px;padding-right: 10px;height: 8em;">
+                                <div class="status-orderAll">待评价</div>
+                                <div onclick="goToComment()" class="status-button">
+                                    去评价
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+                </script>
+            </div>
+        </div>
+        <div style="height: 3em"></div>
+    </div>
+    <header id="hid2" class="am-topbar am-topbar-inverse am-topbar-fixed-bottom " style="border-top:1px #dfdfdf solid">
+        <div data-am-widget="navbar" class="am-navbar  am-navbar-default ">
+            <ul class="am-navbar-nav am-cf am-avg-sm-4" style="background-color: #f5f3f4;">
+                <li>
+                    <a href="main.html" class="">
+                        <i class="iconfont icon-shouye-fill" style="color:#b5b3ac"></i>
+                        <span class="am-navbar-label" style="color:#b5b3ac;font-size: 12px;margin-top: 0.1em">首页</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="nearby.html" class="">
+                        <i class="iconfont icon-fujindingwei" style="color:#b5b3ac"></i>
+                        <span class="am-navbar-label" style="color:#b5b3ac;font-size: 12px;margin-top: 0.1em">附近</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="">
+                        <i class="iconfont icon-dingdan" style="color:#4384c6"></i>
+                        <span class="am-navbar-label" style="color:#4384c6;font-size: 12px;margin-top: 0.1em">订单</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="myinfo.html" class="">
+                        <i class="iconfont icon-wode" style="color:#b5b3ac"></i>
+                        <span class="am-navbar-label" style="color:#b5b3ac;font-size: 12px; margin-top: 0.1em">我的</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsg"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+var token = localStorage.getItem("token");
+var userid = localStorage.getItem("userid");
+jQuery(document).ready(function() {
+    loadData();
+});
+
+function loadData() {
+    $.ajax({
+        type: "post ",
+        url: baseurl("APPMYDINGDAN.do"),
+        dataType: "jsonp",
+        jsonp: "callback",
+        jsonpCallback: "oald",
+        data: {
+            yonghuID: userid,
+            token: token
+        },
+        success: function(json) {
+            if (!checktoken(json)) {
+                return;
+            }
+            if (json.success) {
+                //全部
+
+                json.imgurl = imgurl;
+                var html0 = template('s_panel-0', json);
+                $("#d_panel-0").html(html0);
+                var html1 = template('s_panel-1', json);
+                $("#d_panel-1").html(html1);
+                var html2 = template('s_panel-2', json);
+                $("#d_panel-2").html(html2);
+                var html3 = template('s_panel-3', json);
+                $("#d_panel-3").html(html3);
+                $("#tabs111").tabs();
+
+
+            } else {
+                $('#errmsg').text(json.message);
+                $('#my-alert').modal();
+
+            }
+        },
+        error: function() {
+            $('#errmsg').text("网络通讯错误,请稍后重试 ");
+            $('#my-alert').modal();
+
+        }
+    });
+}
+
+function goToSomthing(status) {
+    if (status == "daishiyong") {
+    	goToUse();
+        
+    } else if (status == "daipingjia") {
+    	goToComment();
+      
+    } else if (status == "daifukuan") {
+    	goToPay();
+        
+    }
+}
+function goToUse() {
+$('#errmsg').text("去使用");
+        $('#my-alert').modal();
+}
+function goToComment() {
+  window.location.href = ""
+}
+function goToPay() {
+	$('#errmsg').text("去付款");
+        $('#my-alert').modal();
+}
+</script>
+
+</html>

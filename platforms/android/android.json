@@ -39,6 +39,26 @@
                         {
                             "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"alipay\"><param name=\"android-package\" value=\"cn.hhjjj.alipay.alipay\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Wechat\"><param name=\"android-package\" value=\"xu.li.cordova.wechat.Wechat\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"WECHATAPPID\" value=\"wx26ffe4a65c004585\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"PhoneCaller\"><param name=\"android-package\" value=\"io.codebakery.phonecaller.PhoneCaller\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BarcodeScanner\"><param name=\"android-package\" value=\"com.phonegap.plugins.barcodescanner.BarcodeScanner\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -56,11 +76,11 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\" />",
-                            "count": 1
+                            "count": 3
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-                            "count": 1
+                            "count": 3
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\" />",
@@ -68,15 +88,15 @@
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
-                            "count": 1
+                            "count": 3
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
-                            "count": 4
+                            "count": 6
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-                            "count": 1
+                            "count": 3
                         },
                         {
                             "xml": "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\" />",
@@ -91,9 +111,43 @@
                         {
                             "xml": "<meta-data android:name=\"com.baidu.lbsapi.API_KEY\" android:value=\"RpFho4R7RFmvb8WMknjZG6mzxmKpFiu0\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<activity android:configChanges=\"orientation|keyboardHidden|navigation|screenSize\" android:exported=\"false\" android:name=\"com.alipay.sdk.app.H5PayActivity\" android:screenOrientation=\"behind\" android:windowSoftInputMode=\"adjustResize|stateHidden\"></activity>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:exported=\"true\" android:label=\"@string/launcher_name\" android:name=\".wxapi.WXEntryActivity\"><intent-filter><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /><data android:scheme=\"wx26ffe4a65c004585\" /></intent-filter></activity>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:exported=\"true\" android:label=\"@string/launcher_name\" android:launchMode=\"singleTop\" android:name=\".wxapi.WXPayEntryActivity\"><intent-filter><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /><data android:scheme=\"wx26ffe4a65c004585\" /></intent-filter></activity>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:clearTaskOnLaunch=\"true\" android:configChanges=\"orientation|keyboardHidden|screenSize\" android:exported=\"false\" android:name=\"com.google.zxing.client.android.CaptureActivity\" android:theme=\"@android:style/Theme.NoTitleBar.Fullscreen\" android:windowSoftInputMode=\"stateAlwaysHidden\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:label=\"Share\" android:name=\"com.google.zxing.client.android.encode.EncodeActivity\" />",
+                            "count": 1
                         }
                     ],
-                    "application": []
+                    "application": [],
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.CAMERA\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.FLASHLIGHT\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-feature android:name=\"android.hardware.camera\" android:required=\"true\" />",
+                            "count": 1
+                        }
+                    ]
                 }
             }
         }
@@ -124,6 +178,23 @@
             "PACKAGE_NAME": "com.feishang.maihai"
         },
         "cordova-plugin-camera": {
+            "PACKAGE_NAME": "com.feishang.maihai"
+        },
+        "cordova-plugin-alipay-v2": {
+            "APP_ID": "2017052607353342",
+            "PACKAGE_NAME": "com.feishang.maihai"
+        },
+        "cordova-plugin-wechat": {
+            "WECHATAPPID": "wx26ffe4a65c004585",
+            "PACKAGE_NAME": "com.feishang.maihai"
+        },
+        "cordova-plugin-phonecaller": {
+            "PACKAGE_NAME": "com.feishang.maihai"
+        },
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "com.feishang.maihai"
+        },
+        "phonegap-plugin-barcodescanner": {
             "PACKAGE_NAME": "com.feishang.maihai"
         }
     },
@@ -356,6 +427,34 @@
             "clobbers": [
                 "CameraPopoverHandle"
             ]
+        },
+        {
+            "file": "plugins/cordova-plugin-alipay-v2/www/alipay.js",
+            "id": "cordova-plugin-alipay-v2.alipay",
+            "clobbers": [
+                "cordova.plugins.alipay"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-wechat/www/wechat.js",
+            "id": "cordova-plugin-wechat.Wechat",
+            "clobbers": [
+                "Wechat"
+            ]
+        },
+        {
+            "file": "plugins/cordova-plugin-phonecaller/www/phonecaller.js",
+            "id": "cordova-plugin-phonecaller.PhoneCaller",
+            "clobbers": [
+                "PhoneCaller"
+            ]
+        },
+        {
+            "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+            "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+            "clobbers": [
+                "cordova.plugins.barcodeScanner"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -366,6 +465,11 @@
         "cordova-plugin-file": "4.1.1",
         "cordova-plugin-device": "1.1.6",
         "com.percolatestudio.cordova.fileupload": "0.2.0",
-        "cordova-plugin-camera": "2.1.1"
+        "cordova-plugin-camera": "2.1.1",
+        "cordova-plugin-alipay-v2": "0.0.3",
+        "cordova-plugin-wechat": "1.4.0",
+        "cordova-plugin-phonecaller": "0.0.2",
+        "cordova-plugin-compat": "1.1.0",
+        "phonegap-plugin-barcodescanner": "6.0.6"
     }
 }

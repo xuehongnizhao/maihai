@@ -71,7 +71,7 @@
     }
     
     .am-header-default .am-header-nav {
-        color: #87bef9;
+        color: #fff;
     }
     
     .mi-black {
@@ -145,7 +145,7 @@
                 <i class="iconfont icon-fanhuijiantou1"></i>
             </a>
         </div>
-        <h1 class="am-header-title" style="font-size:16px;color: black">生日</h1>
+        <h1 class="am-header-title" style="font-size:16px;">生日</h1>
         <div id="card" class="am-header-right am-header-nav" onclick="queren()">
             确认
         </div>
@@ -205,10 +205,10 @@
     }
 
     function queren() {
-        if ($("#user-birth").val() != "") {
+        if (!stringNull($("#user-birth").val())) {
             $.ajax({
                 type: "post ",
-                url: baseurl("APPWODESHENGRI.do"),
+                url: baseurl("APPGERENXINXIUPATESR.do"),
                 dataType: "jsonp",
                 jsonp: "callback",
                 jsonpCallback: "bqr",

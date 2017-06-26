@@ -1,0 +1,32 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "D9E3447051693688830B5AD76960BB06E823C072",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "adeca04f-706c-2d4b-9a21-1d3bacdd27a0++8752" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "adeca04f-706c-2d4b-9a21-1d3bacdd27a0++8752" : 9223372036854775807,
+    "D9E3447051693688830B5AD76960BB06E823C072" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "0CA1320C-A1D6-45EF-A2E2-92E3B37972AC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "adeca04f-706c-2d4b-9a21-1d3bacdd27a0++8752" : "maihai\/www\/",
+    "D9E3447051693688830B5AD76960BB06E823C072" : "maihai\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "买嗨",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "platforms\/ios\/买嗨.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/xuehongnizhao\/maihai.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D9E3447051693688830B5AD76960BB06E823C072"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/114.215.40.197\/svn\/yhb",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "adeca04f-706c-2d4b-9a21-1d3bacdd27a0++8752"
+    }
+  ]
+}

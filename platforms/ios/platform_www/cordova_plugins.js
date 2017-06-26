@@ -252,6 +252,38 @@ module.exports = [
         "clobbers": [
             "CameraPopoverHandle"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-alipay-v2/www/alipay.js",
+        "id": "cordova-plugin-alipay-v2.alipay",
+        "pluginId": "cordova-plugin-alipay-v2",
+        "clobbers": [
+            "cordova.plugins.alipay"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-wechat/www/wechat.js",
+        "id": "cordova-plugin-wechat.Wechat",
+        "pluginId": "cordova-plugin-wechat",
+        "clobbers": [
+            "Wechat"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-phonecaller/www/phonecaller.js",
+        "id": "cordova-plugin-phonecaller.PhoneCaller",
+        "pluginId": "cordova-plugin-phonecaller",
+        "clobbers": [
+            "PhoneCaller"
+        ]
+    },
+    {
+        "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+        "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+        "pluginId": "phonegap-plugin-barcodescanner",
+        "clobbers": [
+            "cordova.plugins.barcodeScanner"
+        ]
     }
 ];
 module.exports.metadata = 

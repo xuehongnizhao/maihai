@@ -1,0 +1,213 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>Insert title here</title>
+    <script src="js/include.js"></script>
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    .am-header-default .am-header-nav {
+        color: #87bef9;
+    }
+    
+    hr {
+        margin: 0.3em 0em;
+        padding: 0px;
+        border-top: 1px solid #e8e8e8;
+    }
+    
+    .item {
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav {
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav a {
+        line-height: 42px;
+        color: lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active {
+        position: relative;
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active:after {
+        position: absolute;
+        width: 50%;
+        height: 0;
+        bottom: 0;
+        left: 28%;
+        border: 1px solid deepskyblue;
+        content: "";
+        z-index: 1;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active a {
+        line-height: 42px;
+        color: deepskyblue;
+        background: #ffff;
+    }
+    
+    .am-list {
+        margin-bottom: 0;
+        padding-left: 0;
+    }
+    
+    .am-list>li {
+        position: relative;
+        display: block;
+        margin-bottom: 0px;
+        background-color: #fff;
+        border-top: none;
+        border-width: 1px 0;
+        overflow: hidden;
+    }
+    
+    .am-list i {
+        float: left;
+        font-size: 4.5rem;
+        margin-left: 1.5rem;
+    }
+    
+    .am-list .jiage {
+        float: right;
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #ff8d52;
+        margin-right: 10px;
+        margin-top: 15px;
+    }
+    
+    .czmc {
+        float: left;
+        margin-top: 10px;
+        margin-left: 15px
+    }
+    
+    .czmc p {
+        margin: 0;
+    }
+    
+    .czmc p:first-child {
+        font-size: 1.8rem;
+        font-weight: bold;
+    }
+    
+    .czmc p:last-child {
+        color: #b5b5b5
+    }
+    </style>
+</head>
+
+<body style="background-color:#f0efec">
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">消息详情</h1>
+    </header>
+   <div class="am-u-sm-12" style="margin-top: 5px;">
+   		<div class="am-u-sm-2" style="margin:0em;padding:0em;">
+				<img src="img/news_07.png" style="width:80%;height:auto">
+		</div>
+		<div class="am-u-sm-10" style="margin:0em;padding:0em;height: 3em;line-height: 3em;">
+				<span style="font-size: 15px">系统消息</span>
+		</div>
+   </div>
+   <div id="d_list" style="height:100%;margin-left: 5px;margin-top: 5px;font-size: 15px" class="am-u-sm-12">
+	<script id="s_list" type="text/html">
+	{{if xiaoxixiangqing.length > 0}}
+			     								
+		{{xiaoxixiangqing[0].neirong}}
+						
+	{{else }}
+	
+		<p>没有找到数据</p>
+	
+	{{/if}}
+	
+	</script>
+
+	</div>
+    
+</body>
+<script type="text/javascript">
+var token = localStorage.getItem("token");
+var userid = localStorage.getItem("userid");
+var xiaoxiId = getParameter("xiaoxiID");
+jQuery(document).ready(function() {
+    loadMsg();
+});
+
+function loadMsg() {
+    $.ajax({
+        type: "post ",
+        url: baseurl("APPXIAOXIUPDATE.do"),
+        dataType: "jsonp",
+        jsonp: "callback",
+        jsonpCallback: "irld1",
+        data: {        	
+            yonghuID: userid,
+            token: token,
+            xiaoxiId : xiaoxiId
+        },
+        success: function(json) {
+        	if(!checktoken(json)){
+        		return; 
+        	}
+        	if (json.success) {
+                var html = template('s_list', json);
+                $("#d_list").html(html);
+            } else {
+                $('#errmsg').text(json.message);
+                $('#my-alert').modal();
+
+            }
+
+		},
+        error: function() {
+            $('#errmsg').text("网络通讯错误,请稍后重试 ");
+            $('#my-alert').modal();
+
+        }
+    });
+}
+
+function toDetail(xiaoxiID){
+	window.location.href = "msgDetail.html?xiaoxiID="+xiaoxiID;
+}
+
+</script>
+
+</html>

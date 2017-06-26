@@ -48,20 +48,22 @@
     }
     
     .status-button {
-        height: 2.5em;
-        width: 100%;
-        border-radius: 4px;
-        border-color: orange;
-        border: 2px solid orange;
-        line-height: 2.5em;
-        color: orange;
+        width: 4.5em;
+        border-radius: 3px;
+        border:1px solid #c62d1e;
+        line-height:1.5em;
+        color: white;
+        font-size: 14px;
+        color: #c62d1e;
         text-align: center;
-        margin: 3em 0;
+        float: right;
     }
     
     .status-orderAll {
-        color: blue;
         text-align: right;
+        color: #c62d1e;
+        float: right;
+        font-size: 14px;
     }
     </style>
 </head>
@@ -92,40 +94,46 @@
             <p>待评价</p>
             <span id="daipingjia" hidden></span>
         </div>
-        <div class="am-u-sm-3" align="center" style="float: left;padding: 0;" onclick="">
+        <div class="am-u-sm-3" align="center" style="float: left;padding: 0;" onclick="goToOrderAll(4)">
             <i class="iconfont icon-tui"></i>
-            <p>退款/售后</p>
+            <p>退&nbsp;&nbsp;&nbsp;&nbsp;款</p>
+            <span id="tuikuan" hidden></span>
         </div>
     </div>
     <div class="am-g" id="d_order_list" style="padding: 10px; margin-top: 5em">
     </div>
     <script type="text/html" id="s_order_list">
         {{if wodequanbuList.length >0}} {{each wodequanbuList as val i}}
-        <div class="am-g" onclick="goToOrder('{{val.dingdanID}}','{{val.goodsID}}','{{val.dingdanzhuangtai}}')" style="background-color: white;border-bottom:1px solid #e5e5e4;">
-            <div class="am-u-sm-3" style="height:10rem;padding: 1px">
-                <img style="width:100%;border:none;margin: 1em 0;" src="{{imgurl+val.tupiandizhi}}">
+        <div class="am-g" onclick="goToOrder('{{val.shanghuID}}','{{val.dingdanID}}','{{val.goodsID}}','{{val.dingdanzhuangtai}}')" style="background-color: white;border-bottom:1px solid #e5e5e4;">
+            <div class="am-u-sm-2" style="width: 20%;">
+                <img style="width:100%;border:none;margin: 1em 0.5em;" src="{{imgurl+val.tupiandizhi}}">
             </div>
-            <div class="am-u-sm-9" style="padding: 0">
-                <div class="am-u-sm-8" style="font-size: 0.8em; margin-top: 8px;padding: 0 0 0 2px">
-                    <div style="color:#000;font-size: 1.3em; height: 1.5em;float:left;margin-bottom:5px;margin-top:8px">{{val.shangpinming}}</div>
-                    <div style="line-height: 1em;clear: both;margin-bottom:5px">
-                        <div style="font-size: 1em;color:#999999;">下单日期 : {{val.xiadanriqi}}</div>
-                        <br>
-                        <div style="font-size: 1em;color:#999999;"> 数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量 : {{val.shangpingshuliang}}</div>
-                        <br>
-                        <div style="font-size: 1em;color:#999999;">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价 : ￥ {{val.zongjia}}</div>
+            <div class="am-u-sm-10" style="padding: 0;width: 80%;margin-bottom: 12px;">
+                <div class="am-u-sm-12">
+                    <div style="color:#000;font-size:16px; height: 1.5em;float:left;margin-bottom:5px;margin-top:8px">{{val.shangpinming}}
+                    </div>
+                    <div class="status-orderAll" style="margin-top: 10px;">
+                        {{if val.dingdanzhuangtai == "tuikuanzhong"}}退款中{{/if}} {{if val.dingdanzhuangtai == "yituikuan"}}已退款{{/if}}{{if val.dingdanzhuangtai == "daifukuan"}}待付款{{/if}}{{if val.dingdanzhuangtai == "daipingjia"}}待评价{{/if}}{{if val.dingdanzhuangtai == "daishiyong"}}待使用{{/if}}{{if val.dingdanzhuangtai == "yipingjia"}}已评价{{/if}}
                     </div>
                 </div>
-                <div class="am-u-sm-4" style="font-size: 0.8em;padding: 10px 0;margin-bottom:10px;padding-right: 10px;height: 8em;">
-                    <div class="status-orderAll">{{if val.dingdanzhuangtai == "daifukuan"}}代付款{{/if}}{{if val.dingdanzhuangtai == "daipingjia"}}待评价{{/if}}{{if val.dingdanzhuangtai == "daishiyong"}}待使用{{/if}}{{if val.dingdanzhuangtai == "yipingjia"}}已评价{{/if}}</div>
-                    <div onclick="goToSomthing('{{val.shanghuID}}','{{val.dingdanzhuangtai}}','{{val.dingdanID}}','{{val.goodsID}}')" class="status-button">
-                        {{if val.dingdanzhuangtai == "daifukuan"}}去付款{{/if}}{{if val.dingdanzhuangtai == "daipingjia"}}去评价{{/if}}{{if val.dingdanzhuangtai == "daishiyong"}}查看券码{{/if}}{{if val.dingdanzhuangtai == "yipingjia"}}已评价{{/if}}
+                <div class="am-u-sm-12">
+                    <div style="line-height: 14px;clear: both;margin-bottom:5px">
+                        <div style="font-size: 14px;color:#999999;">下单时间 : {{val.xiadanriqi}}</div>
+                    </div>
+                    <div class="am-u-sm-12" style="padding: 0">
+                        <div class="jiage" style="font-size: 14px;color:#999999;float: left;margin-left: 0">总价 : ￥ {{val.zongjia}}</div>
+                        <div style="margin-left: 1em;{{if (val.dingdanzhuangtai == "tuikuanzhong" ||val.dingdanzhuangtai == "yituikuan"||val.dingdanzhuangtai == "yipingjia")}}display:none;{{/if}}"  onclick="goToSomthing('{{val.shanghuID}}','{{val.dingdanzhuangtai}}','{{val.dingdanID}}','{{val.goodsID}}')" class="status-button"> {{if val.dingdanzhuangtai == "daifukuan"}}去 付 款{{/if}}{{if val.dingdanzhuangtai == "daipingjia"}}去评价{{/if}}{{if val.dingdanzhuangtai == "daishiyong"}}查看券码{{/if}}
+                        </div>
+
+                        <div  style="{{if val.goodsID == "daodianfu" }}display:none;{{/if}}" onclick="goToGoods('{{val.goodsID}}')" class="status-button" ">
+                            再来一单
+                        </div>
+                        
                     </div>
                 </div>
             </div>
         </div>
-        {{/each}} 
-        {{else}}
+        {{/each}} {{else}}
         <div class="zanwu">暂无订单</div>
         {{/if}}
     </script>
@@ -146,8 +154,8 @@
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="">
-                        <i class="iconfont icon-dingdan-fill" style="color:#4384c6"></i>
-                        <span class="am-navbar-label" style="color:#4384c6;font-size: 12px;margin-top: 0.1em">订单</span>
+                        <i class="iconfont icon-dingdan-fill" style="color:#d74d2d"></i>
+                        <span class="am-navbar-label" style="color:#d74d2d;font-size: 12px;margin-top: 0.1em">订单</span>
                     </a>
                 </li>
                 <li>
@@ -202,6 +210,7 @@
                     json.imgurl = imgurl;
                     var html = template('s_order_list', json);
                     $("#d_order_list").html(html);
+                    getzongjia("jiage");
                     if (json.daifukuannumber != 0) {
                         $("#daifukuan").attr("hidden", false);
                         $("#daifukuan").html(json.daifukuannumber);
@@ -215,9 +224,10 @@
                         $("#daipingjia").attr("hidden", false);
                         $("#daipingjia").html(json.daipingjianumber);
                     }
-
-
-
+                    if (json.tuikuannumber != 0) {
+                        $("#tuikuan").attr("hidden", false);
+                        $("#tuikuan").html(json.tuikuannumber);
+                    }
 
                 } else {
                     $('#errmsg').text(json.message);
@@ -233,19 +243,20 @@
         });
     }
 
-    function goToSomthing(shanghuID,status, dingdanID, goodsID, e) {
+    function goToSomthing(shanghuID, status, dingdanID, goodsID, e) {
         if (status == "daishiyong") {
             goToUse(dingdanID, goodsID);
 
         } else if (status == "daipingjia") {
-            goToComment(shanghuID,dingdanID, goodsID);
+            goToComment(shanghuID, dingdanID, goodsID);
 
         } else if (status == "daifukuan") {
             goToPay(dingdanID, goodsID);
 
         } else if (status == "yipingjia") {
             window.location.href = "mycomment.html";
-        }
+        } 
+
         stopBubble(e)
     }
 
@@ -253,14 +264,15 @@
         var evt = e || window.event;
         evt.stopPropagation ? evt.stopPropagation() : (evt.cancelBubble = true);
     }
+    function goToGoods(goodsID,e) {
+        window.location.href = "shopInfo.html?shangpinID=" + goodsID;
 
-    function goToOrder(dingdanID, goodsID,orderStatus, e) {
-        if (orderStatus == "daifukuan") {
-            goToPay(dingdanID,goodsID);
-        }else{
-        window.location.href = "goodsOrderDetail.html?dingdanID=" + dingdanID + "&goodsID=" + goodsID;    
-        }
-        
+        stopBubble(e)
+    }
+    function goToOrder(shanghuID,dingdanID, goodsID, orderStatus, e) {
+
+        window.location.href = "goodsOrderDetail.html?dingdanID=" + dingdanID + "&goodsID=" + goodsID + "&orderStatus=" + orderStatus + "&shanghuID=" + shanghuID;
+
         stopBubble(e)
     }
 
@@ -270,8 +282,8 @@
         stopBubble(e)
     }
 
-    function goToComment(shanghuID,dingdanID, goodsID, e) {
-        window.location.href = "comment.html?dingdanID=" + dingdanID + "&goodsID=" + goodsID +"&shanghuID"+shanghuID;
+    function goToComment(shanghuID, dingdanID, goodsID, e) {
+        window.location.href = "comment.html?dingdanID=" + dingdanID + "&goodsID=" + goodsID + "&shanghuID" + shanghuID;
         stopBubble(e)
     }
 

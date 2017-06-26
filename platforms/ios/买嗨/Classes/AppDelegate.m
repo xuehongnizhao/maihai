@@ -27,13 +27,34 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
-
+#import "UserGuideViewController.h"
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
+    CGRect screenBounds = [[UIScreen mainScreen] bounds];
+    self.window = [[UIWindow alloc] initWithFrame:screenBounds];
     self.viewController = [[MainViewController alloc] init];
-    return [super application:application didFinishLaunchingWithOptions:launchOptions];
+    if(![[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"])
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstLaunch"];
+        NSLog(@"第一次启动");
+        //如果是第一次启动的话,使用UserGuideViewController (用户引导页面) 作为根视图
+        UserGuideViewController *userGuideViewController = [[UserGuideViewController alloc] init];
+        self.window.rootViewController = userGuideViewController;
+        
+    }
+    else
+    {
+        [NSThread sleepForTimeInterval:5.0];
+        NSLog(@"不是第一次启动");
+        self.window.rootViewController = self.viewController;
+        
+    }
+    [self.window setBackgroundColor:[UIColor whiteColor]];
+    [self.window makeKeyAndVisible];
+
+    return YES;
 }
 
 @end

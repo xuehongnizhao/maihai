@@ -140,6 +140,9 @@
 					jsonp: "callback",
 					jsonpCallback: "fenleilist",
 					success: function(json) {
+						if(!checktoken(json)){
+			        		return; 
+			        	}
 						$("#goodsicon").attr('src', imgurl + json.samllImg);
 						$("#price").html(json.totalPrice);
 						$("#name").html(json.goodsName);
@@ -174,6 +177,9 @@
 					jsonp: "callback",
 					jsonpCallback: "fenleilist",
 					success: function(json) {
+						if(!checktoken(json)){
+			        		return; 
+			        	}
 						if(json.success) {
 							window.location.href = "jiesuanchenggong.html?dingdanID=" + dingdanID;
 						} else {

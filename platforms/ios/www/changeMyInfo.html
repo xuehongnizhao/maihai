@@ -43,20 +43,13 @@
     
     .am-header-nav {
         float: right;
-        margin-top: 7px;
+        
         margin-right: 10px
     }
     
     .am-header-nav span {
         right: 7px;
         top: 10px
-    }
-    
-    .am-img-thumbnail {
-        border: 5px solid #b2d7ff;
-        width: 74px;
-        height: 74px;
-        float: right;
     }
     </style>
 </head>
@@ -70,35 +63,35 @@
         </div>
         <h1 class="am-header-title">个人信息</h1>
     </header>
-    <div class="doc-group" style=" margin-top: 5px;background-color: white;border-bottom:1px solid #e5e5e5;border-top:1px solid #e5e5e5 ">
+    <div class="doc-group" style="margin: 0 10px; margin-top: 15px;background-color: white;border-bottom:1px solid #e5e5e5;border-top:1px solid #e5e5e5 ">
         <div id="p " style="margin-left:1em;height:4em;line-height:4em;color: black " onclick="changeImg() ">
             头像
             <i class="iconfont icon-fanhuijiantou "></i>
-            <img src="http://114.215.40.197/IMG/touxiang.jpg" id="img" style="height:3em;width: 3em;margin-top: 0.5em;float: right;">
+            <img src="http://114.215.40.197/IMG/touxiang.jpg" id="headIcon" class="am-img-thumbnail " style="height:3em;width: 3em;margin-top: 0.5em;float: right; border:none;">
         </div>
     </div>
-    <div class="doc-group" style="background-color: white;border-bottom:1px solid #e5e5e5">
+    <div class="doc-group" style="margin: 0 10px; background-color: white;border-bottom:1px solid #e5e5e5">
         <div style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="changNickName() ">
             昵称
             <i class="iconfont icon-fanhuijiantou"></i>
-            <span style="">你好</span>
+            <span id="nickName" style="">你好</span>
         </div>
     </div>
-    <div class="doc-group " style="background-color: white; border-bottom:1px solid #e5e5e5 ">
+    <div class="doc-group " style="margin: 0 10px; background-color: white; border-bottom:1px solid #e5e5e5 ">
         <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="changeBirthday() ">
             生日
             <i class="iconfont icon-fanhuijiantou "></i>
-            <span style="">1991/12/12</span>
+            <span id="birthday" style="">1991/12/12</span>
         </div>
     </div>
-    <div class="doc-group " style="background-color: white; border-bottom:1px solid #e5e5e5 ">
-        <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="changeSignature() ">
+    <div class="doc-group " style="margin: 0 10px; background-color: white; border-bottom:1px solid #e5e5e5 ">
+        <div style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="changeSignature() ">
             个性签名
             <i class="iconfont icon-fanhuijiantou "></i>
         </div>
     </div>
-    <div class="doc-group " style="background-color: white; border-bottom:1px solid #e5e5e5 ">
-        <div style="margin-left:1em;height:6em;line-height:2em;color: gray ">
+    <div class="doc-group " style="margin: 0 10px; background-color: white; border-bottom:1px solid #e5e5e5 ">
+        <div id="myStyle" style="margin-left:1em;height:6em;line-height:2em;color: gray ">
             一个没有梦想的人和无忧无虑有什么区别
         </div>
     </div>
@@ -113,6 +106,17 @@
             </div>
         </div>
     </div>
+    <div class="am-modal-actions" id="select_icon">
+        <div class="am-modal-actions-group margin">
+            <ul class="am-list">
+                <li style="height: 3em; line-height: 3em;" onclick="uploadImage(1)"><span>拍照上传</span></li>
+                <li style="height: 3em; line-height: 3em;" onclick="uploadImage(2)"><span>相册上传</span></li>
+                <li onclick="closemodal()">
+                    <button class="mi-black" data-am-modal-cancel style="height: 3em; width: 100%; border: none;">取消</button>
+                </li>
+            </ul>
+        </div>
+    </div>
     <script type="text/javascript ">
     var token = localStorage.getItem("token");
     var userid = localStorage.getItem("userid");
@@ -124,11 +128,138 @@
 
 
     function loadData() {
+        $.ajax({
+            type: "post ",
+            url: baseurl("APPGERENXINXI.do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "cmild",
+            data: {
+                yonghuID: userid,
+                token: token
+            },
+            success: function(json) {
+                if (!checktoken(json)) {
+                    return;
+                }
+                if (json.success) {
+                    $("#headIcon").attr("src", json.icon);
+                    $("#nickName").html(json.nickname);
+                    $("#birthday").html(json.birth);
+                    $("#myStyle").html(json.gerenqianming);
+                } else {
+                    $('#errmsg').text(json.message);
+                    $('#my-alert').modal();
 
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试 ");
+                $('#my-alert').modal();
+
+            }
+        });
     }
 
     function changeImg() {
+        $('#select_icon').modal();
+    }
 
+    function uploadImage(type) {
+        $('#select_icon').modal('close');
+        var sourceType;
+        if (type == 1) {
+            sourceType = navigator.camera.PictureSourceType.CAMERA;
+        } else if (type == 2) {
+            sourceType = navigator.camera.PictureSourceType.PHOTOLIBRARY;
+        } else {
+            return;
+        }
+
+        navigator.camera.getPicture(uploadPhoto, function(message) {
+            navigator.notification.alert("获取图片失败", function() {}, "提示", "确定");
+        }, {
+            quality: 80,
+            destinationType: navigator.camera.DestinationType.FILE_URI,
+            sourceType: sourceType,
+            allowEdit: true,
+            targetWidth: 320,
+            targetHeight: 320,
+            aspectX: 4,
+            aspectY: 4
+        });
+    }
+
+    function uploadPhoto(imageURI) {
+        var options = new FileUploadOptions();
+        options.fileKey = "file";
+        options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1);
+        options.mimeType = "image/jpeg";
+        //options.mimeType = "multipart/form-data";
+        options.chunkedMode = false;
+        options.enctype = "multipart/form-data"
+        var params = {};
+        params.value1 = "test";
+        params.value2 = imageURI;
+        options.params = params;
+
+        var ft = new FileUpload();
+        ft.upload(imageURI, encodeURI(baseurl("APPGETTUPIANLIU.do")), win, fail, options);
+    }
+
+    function win(r) {
+        console.log("Code = " + r.responseCode);
+        console.log("Response = " + r.response);
+        console.log("Sent = " + r.bytesSent);
+
+        var imgpath = imgurl + r.response + ".jpg";
+        commentImageURL = imgpath;
+        updateImgPath(imgpath);
+    }
+
+    function fail(error) {
+        showalert("上传失败")
+        console.log("upload error source " + error.source);
+        console.log("upload error target " + error.target);
+
+    }
+
+    function updateImgPath(imgpath) {
+        $("#headIcon").attr('src', imgpath);
+
+        $.ajax({
+            type: "post ",
+            url: baseurl("APPGERENXINXIUPATEIC.do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "cmild",
+            data: {
+                yonghuID: userid,
+                token: token,
+                icon: imgpath
+            },
+            success: function(json) {
+                if (!checktoken(json)) {
+                    return;
+                }
+                if (json.success) {
+
+                } else {
+                    $('#errmsg').text(json.message);
+                    $('#my-alert').modal();
+
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试 ");
+                $('#my-alert').modal();
+
+            }
+        });
+    }
+
+    function closemodal() {
+        $('#select_icon').modal('close');
     }
 
     function changNickName() {

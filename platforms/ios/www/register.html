@@ -76,7 +76,7 @@
         border: none;
         width: 20px;
         height: 20px;
-        content: url('img/normal_addr2.png');
+        content: url('img/normal_addr3.png');
         background: transparent;
     }
     
@@ -85,13 +85,13 @@
         z-index: 100;
         width: 20px;
         height: 20px;
-        content: url('img/default_addr2.png');
+        content: url('img/default_addr3.png');
     }
     
     input[type=checkbox]:checked::after {
         width: 20px;
         height: 20px;
-        content: url('img/default_addr2.png');
+        content: url('img/default_addr3.png');
         display: block;
     }
     
@@ -132,9 +132,9 @@
         width: 100%;
         height: 3em;
         font-size: 1em;
-        color: #3291f9;
+        color: #fff;
         outline: none;
-        background-color: #d8ebff;
+        background-color: #c62d1e;
         background-size: cover;
         background-repeat: no-repeat;
     }
@@ -153,7 +153,7 @@
     </header>
     <div class="am-g" style="background-color: white;height: 3em;width: 100%;padding:0 5px;border-bottom:1px solid #e5e5e5">
         <div class="am-u-sm-4" style="">
-            <span id="step1" style="color:#3291f9;">1.输入手机号</span><i class="iconfont icon-fanhuijiantou"></i>
+            <span id="step1" style="color:#d74d2d;">1.输入手机号</span><i class="iconfont icon-fanhuijiantou"></i>
         </div>
         <div class="am-u-sm-4" style="">
             <span id="step2" style="color: gray;">2.输入验证码</span><i class="iconfont icon-fanhuijiantou"></i>
@@ -166,20 +166,20 @@
         <input id="inputText" type="number" name="" placeholder=" 请输入您的手机号" style="height: 3em;text-indent:20px;font-size:1.5rem;width: 100%;border:none;outline: none;">
 
     </div>
-    <div id="getCode" style=" margin: 0em; padding: 0 1em;margin-top: 1em;" class="am-u-sm-12"> 
+    <div id="getCode" style=" margin: 0em; padding: 0 0.5em;margin-top: 1em;" class="am-u-sm-12"> 
         <input type="button" name="" value="获取验证码" onclick="getCode()" class="am-btn am-btn-sm am-fl" style="outline: none;">
 
     </div>
-    <div id="confirmCode" type="number" style="margin: 0em; padding: 0 1em;margin-top:1em;" class="am-u-sm-12" hidden>
+    <div id="confirmCode" type="number" style="margin: 0em; padding: 0 0.5em;margin-top:1em;" class="am-u-sm-12" hidden>
         <input type="button" name="" value="确认验证码" onclick="confirmCode()" class="am-btn am-btn-sm am-fl" style="outline: none;">
 
     </div>
-    <div id="done" style=" margin: 0em; padding: 0 1em;margin-top:1em;" class="am-u-sm-12" hidden>
+    <div id="done" style=" margin: 0em; padding: 0 0.5em;margin-top:1em;" class="am-u-sm-12" hidden>
         <input type="button" name="" value="完成注册" onclick="done()" class="am-btn am-btn-sm am-fl" style="outline: none;">
     </div>
     <div style="font-size: 14px;margin-top: 1em" class="am-u-sm-12">
     	<label>
-	        <input checked id="confirmagreement" type="checkbox" name="" style="margin-left:5px;"> <span>我已阅读并同意</span><a href="registerAgreement.html" style="color:#589ff7">《"买嗨"用户协议》</a>
+	        <input checked id="confirmagreement" type="checkbox" name="" style="margin-left:5px;"> <span>我已阅读并同意</span><a href="registerAgreement.html" style="color: #c62d1e ">《"买嗨"用户协议》</a>
 	    </label>
     </div>
     <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
@@ -293,8 +293,9 @@
     }
 
     function confirmCode() {
+        var yanzhengma = $('#inputText').val()
         if (checkAgreement()) {
-            if ($('#inputText').val() == "") {
+            if (stringNull(yanzhengma)) {
 
                     $('#errmsg').text("验证码不能为空");
                     $('#my-alert').modal();
@@ -326,6 +327,7 @@
                     $('#step3').css("color", "lightskyblue")
                     $('#inputText')[0].placeholder = "请输入您的密码"
                     $('#inputText').val("")
+                    $('#inputText').prop("type","password")
 
                 } else {
 
@@ -343,6 +345,11 @@
 
 
     function done() {
+        var mima = $('#inputText').val()
+        if (stringNull(mima)||mima.length<6) {
+            showalert("密码不能小于6位");
+            return;
+        }
         if (checkAgreement()) {
             $.ajax({
                 type: "post",
@@ -353,7 +360,7 @@
                 },
                 dataType: "jsonp",
                 jsonp: "callback",
-                jsonpCallback: "d",
+                jsonpCallback: "rd",
                 success: function(data) {
                     if (data.success) {
                         localStorage.setItem("token",data.token);

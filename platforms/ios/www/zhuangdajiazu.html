@@ -25,7 +25,8 @@
         border-top: 1px solid #e8e8e8;
     }
     .yhb-title {
-	background:#f3102e;
+	background:#d74d2d;
+	border-bottom:none;
 }
     
     
@@ -77,6 +78,13 @@
         color: deepskyblue;
         background: #ffff;
     }
+    th {
+    text-align: center;
+    font-size: 14px;
+	}
+	td{
+	text-align: center;
+	}
 
     </style>
 </head>
@@ -96,79 +104,60 @@
         </div>
         
     </header>
-    <div id="d_mylove" class="am-u-sm-12" style="padding: 0">
-       <img class="am-img-responsive" alt="" src="img/zdjazu.png">
+    <div id="hid2" class="am-u-sm-12" style="padding: 0" >
+       <img class="am-img-responsive" alt="" src="img/zdjz.jpg">
+    </div>
+    <div class="am-u-sm-12" style="background-color: white;height: 4em">
+        <div class="am-u-sm-7"style="">
+            <div style="font-size: 14px;margin-top: 10px">坐享其成,&nbsp;&nbsp;仅需分享即可!</div>
+            <div style="font-size: 12px;color: #b9b9b9;">吃喝玩乐&nbsp;&nbsp;一触即嗨</div>
+        </div>
+        <div class="am-u-sm-5" style="background-color: #d74d2d;border-radius: 5px;margin-top: 8px;" onclick="goToMyQRCode()">
+            <div style="text-align: center;color: white;">查看我的专属</div>
+            <div style="text-align: center;color: white;">二维码</div>
+        </div>
     </div>
     
-    <div class="am-u-sm-12" style="background-image: url('img/bg.jpg');height: 100%;">
-        <table class="am-table-striped am-table-hover" style="width: 100%">
+    <div class="am-u-sm-12" style="height: 100%;background-color: white;margin-top: 10px">
+    	<div class="am-u-sm-12" style="border-bottom:1px solid #f0efec;color: #b9b9b9;font-size: 14px;height: 2em;line-height: 2em;">家族成员</div>
+       <table class="am-table-striped am-table-hover" style="width: 100%">
     <thead>
         <tr>
+            <th>排行</th>
+            <th>手机号</th>
             <th>成员数</th>
-            <th>成员消费</th>
-            <th>你获得</th>
         </tr>
     </thead>
-    <tbody style="background-color: white;">
-        <tr>
-            <td>10</td>
-            <td>100</td>
-            <td>5</td>
-        </tr>
-        <tr>
-            <td>10</td>
-            <td>200</td>
-            <td>6</td>
-        </tr>
-        <tr class="am-active">
-            <td>12</td>
-            <td>222</td>
-            <td>21</td>
-        </tr>
+    <tbody style="background-color: white;" id="d-paihanglist">
+        <script id='s-paihanglist' type="text/html">
+            {{each list as val index}}
+           		<tr>
+            		<td>{{index + 1}}</td>
+            		<td>{{val.phone}}</td>
+            		<td>{{val.shuliang}}</td>
+        		</tr>
+            {{/each}}
+        </script>
         
     </tbody>
 	</table>
-	<div class="am-u-sm-12" style="background-color: #ffffcc;padding-left: 0;"><span style=" font-size: 12px;">1积分等于一元人民币(可任意换购或消费哦!)</span></div>
 	
-	<div class="am-u-sm-12" style="background-color: #ffffcc;margin-top: 1em;margin-bottom: 1em;border-radius: 8px;">
-		<div class="am-u-sm-6" style="border-right: 1px solid #ffcc00;margin-top: 10px;margin-bottom: 10px;">
-			<div class="am-u-sm-12">我的家族</div>
-			<div class="am-u-sm-12"><span id="jiazu"></span>位</div>
-		</div>
-		<div class="am-u-sm-6" style="margin-top: 10px;margin-bottom: 10px;">
-			<div class="am-u-sm-12">我的收益</div>
-			<div class="am-u-sm-12"><span id="shouyi"></span>积分</div>
-		</div>
-	
-	</div>
+
 	
       </div>
-      <div class="am-u-sm-12" style="background-image: url('img/bg.jpg');height: 3em;">
-      		
-      </div>
-      
-    
-    <div class="am-modal-actions" id="modal_city" style="max-height: 80%;overflow:auto;">
+         
+    <div class="am-modal-actions" id="modal_share" style="max-height: 80%;overflow:auto;">
                 <div class="am-modal-actions-group margin">
                     <ul id="u-list" class="am-list">
-                        <li style = "height:3em;line-height:3em;border-bottom:1px #ededed solid;border-top:none;" onclick="weixin()"> 
-                        <span style = "display:block;">微信</span>
-                        </li>
-                        <li style = "height:3em;line-height:3em;border-bottom:1px #ededed solid;border-top:none;" onclick="pengyou()"> 
-                        <span style = "display:block;">朋友圈</span>
-                        </li>
+                        <li style = "height:3em;line-height:3em;border-bottom:1px #ededed solid;border-top:none;" val="分享给好友" onclick="shareTypeitemClick('0')"> <span style = "display:block;">分享给好友</span></li>
+					<li style = "height:3em;line-height:3em;border-bottom:1px #ededed solid;border-top:none;" val="分享到朋友圈" onclick="shareTypeitemClick('1')"> <span style = "display:block;">分享到朋友圈</span></li>
                         <li style="border: none;">
-                        	<button class="am-btn am-btn-secondary am-btn-block" style = "height:3em;background:white;color:#4489ce;border:none;" onclick="closemodal()">
+                        	<button class="am-btn am-btn-secondary am-btn-block" style = "height:3em;background:white;color:#4489ce;border:none;" onclick="closemodal('#modal_share')">
                         	取消</button>
                         </li>
                     </ul>
                 </div>
      </div>
-    <header id="hid2" class="am-topbar am-topbar-inverse am-topbar-fixed-bottom " style="border-top: 1px #dfdfdf solid ; background-color;bottom: 20px;">
-			<div data-am-widget="navbar" class="am-navbar  am-navbar-default " onclick="fenxiang()">
-				<img class="am-img-responsive"  src="img/huoqvyongjin.png">
-			</div>
-	</header>
     
     <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
         <div class="am-modal-dialog">
@@ -177,7 +166,7 @@
                 <a id="errmsg"></a>
             </div>
             <div class="am-modal-footer">
-                <span class="am-modal-btn">我知道了</span>
+                <span class="am-modal-btn">确定</span>
             </div>
         </div>
     </div>
@@ -187,32 +176,52 @@
     jQuery(document).ready(function() {
     	jiazu();
     });
+    var shareUrl=baseurl("APPSHARE.do?yaoqingrenID=") + userid+ "&type=yonghu";
+    var actIntroduce = "邀请注册";
     
-    function fenxiang() {
-    	$('#modal_city').modal();
-	}
     function jiazushuoming() {
     	$('#errmsg').text("家族说明家族说明家族说明家族说明家族说明家族说明家族说明家族说明家族说明家族说明家族说明家族说明家族说明家族说明家族说明家族说明家族说明");
         $('#my-alert').modal();
 	}
+    var wechatInstalled = 0;
+	document.addEventListener("deviceready", onDeviceReady, false);
+	function onDeviceReady(){
+		Wechat.isInstalled(function (installed) {
+		    if(installed){
+		    	wechatInstalled = 1;
+		    }else{
+		    	wechatInstalled = 0;
+		    }
+		}, function (reason) {
+			wechatInstalled = 0;
+		});
+	}
+    $('#hid2').click(function () {
+		if(wechatInstalled == 0){
+			$('#errmsg').text("暂无分享路径 ");
+            $('#my-alert').modal();
+			return ;
+		}
+		$('#modal_share').modal();
+		
+	});
     
     function jiazu() {
         $.ajax({
             type: "post",
-            url: baseurl("APPZHUANGDAJIAZU.do"),
+            url: baseurl("APPPAIHANGBANG.do"),
             dataType: "jsonp",
             jsonp: "callback",
             jsonpCallback: "idld",
             data: {
-            	yonghuID: userid,
-            	token:token
+            	
             },
             success: function(json) {
             	if (!checktoken(json)) {
                     return;
                 }
-            	$("#jiazu").html(json.list[0].shuliang);
-				 $("#shouyi").html(json.list[0].shouyi);
+            	var html = template('s-paihanglist', json);
+                $("#d-paihanglist").html(html);
                 
             },
             error: function() {
@@ -221,8 +230,41 @@
             }
         });
     };
-    function closemodal() {
-    	$('#modal_city').modal('close');
+    function closemodal(id) {
+		$(id).modal('close');
+	}
+    function shareTypeitemClick(shareType){
+		share(shareType,userid,actIntroduce,shareUrl);	
+	}
+    function share(type,userid,wxdesc,wxurl){
+		var wxscene = Wechat.Scene.TIMELINE;
+		if(type == 2){		
+			return;
+		}else{
+			if (type == 0){wxscene = Wechat.Scene.SESSION}
+			if (type == 1){wxscene = Wechat.Scene.TIMELINE}
+		}
+		Wechat.share({
+		    message: {
+		    	title: wxdesc,
+				description: wxdesc,
+		        thumb: baseurl('img/thumb.jpg'),
+				messageExt: "邀请分享",
+		        media: {
+		        	type: Wechat.Type.WEBPAGE,
+		        	webpageUrl:wxurl	        	
+		        }
+		    },
+		    scene: wxscene   // share to Timeline
+		}, function () {
+			$('#errmsg').text("分享成功");
+            $('#my-alert').modal();	
+		}, function (reason) {
+		});
+		closemodal('#modal_share');
+	}
+    function goToMyQRCode() {
+        window.location.href = "wodeerweima.html";   
     }
     </script>
 </body>

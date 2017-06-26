@@ -184,7 +184,7 @@
 	function loadChongzhi() {
         $.ajax({
             type: "post",
-            url: baseurl("APPCHONGZHI.do"),
+            url: baseurl("APPCHONGZHIJILU.do"),
             data: {
                 yonghuID: userid,
                 token: token,
@@ -198,7 +198,8 @@
                     return;
                 }
             	var html = template('s_sale', json);
-                $("#u-sale").html(html);                
+                $("#u-sale").html(html);
+                getzongjia("jiage");
             },
             error: function() {
                 $('#errmsg').text("网络通讯错误,请稍后重试 ");

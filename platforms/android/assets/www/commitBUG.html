@@ -29,10 +29,10 @@
             </a>
         </div>
         <h1 class="am-header-title" style="font-size: 16px;">反馈</h1>
-        <div class="am-header-right am-header-nav" onclick="done()" style="color: #87bef9;">确定</div>
+        <div class="am-header-right am-header-nav" onclick="done()" style="color: #fff;">确定</div>
     </header>
     <div class="am-u-sm-g" style="height: 10em;margin-top: 5px">
-        <textarea id="commentText" placeholder="请详细描述您所遇到的问题" maxlength=100 style="border:none;outline: none;height: 10em;width: 100%;resize:none;"></textarea>
+        <textarea id="bugText" placeholder="请详细描述您所遇到的问题" maxlength=100 style="border:none;outline: none;height: 10em;width: 100%;resize:none;"></textarea>
     </div>
     <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
         <div class="am-modal-dialog">
@@ -48,29 +48,26 @@
     <script type="text/javascript">
     var token = localStorage.getItem("token");
     var userid = localStorage.getItem("userid");
-    var dingdanID = getParameter("dingdanID");
-    var goodsID = getParameter("goodsID");
+
+
 
     function done() {
-        var commentText = $("#commentText").val()
-        if (stringNull(commentText)) {
+        var bugText = $("#bugText").val()
+        if (stringNull(bugText)) {
             showalert("请添加您的反馈内容")
             return;
         }
-        commentText = encodeURI(commentText);
+        bugText = encodeURI(bugText);
         $.ajax({
             type: "post ",
-            url: baseurl(".do"),
+            url: baseurl("APPFANKUI.do"),
             dataType: "jsonp",
             jsonp: "callback",
             jsonpCallback: "cd",
             data: {
                 yonghuID: userid,
                 token: token,
-                dingdanID: dingdanID,
-                pinglunneirong: commentText,
-                shangpinID: goodsID,
-
+                fankuineirong: bugText,
             },
             success: function(json) {
                 if (!checktoken(json)) {

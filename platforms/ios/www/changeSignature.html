@@ -25,11 +25,12 @@
         font-size: 1em;
         color: white;
         outline: none;
-        background-color: lightskyblue;
+        background-color:#c62d1e;
         background-size: cover;
         background-repeat: no-repeat;
     }
-       textarea::-webkit-input-placeholder {
+    
+    textarea::-webkit-input-placeholder {
         color: #aab2bd;
         font-size: 12px;
         text-align: center;
@@ -46,70 +47,44 @@
         </div>
         <h1 class="am-header-title" style="font-size: 16px;">个性签名</h1>
     </header>
-    <div class="am-u-sm-g" style="height: 3em;margin-top: 5px">
-        <textarea id="commentText" placeholder="输入您的个性签名" maxlength=100 style="border:none;outline: none;height: 3em;width: 100%;resize:none;line-height: 3em"></textarea>
+    <div class="am-u-sm-g" style="border:none;outline: none;height: 12em;width: 100%;resize:none;line-height: 1.5em;margin-top: 5px">
+        <textarea id="geXingQianMing" placeholder="输入您的个性签名" maxlength=100 style="border:none;outline: none;height: 12em;width: 100%;resize:none;line-height: 1.5em"></textarea>
     </div>
-    <div class="am-u-sm-12" style="height: 2em;margin-top: 5px;color: gray;font-size: 12px">请不要超过100个字</div>
-    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
-        <div class="am-modal-dialog">
-            <div class="am-modal-hd"></div>
-            <div class="am-modal-bd">
-                <a id="errmsg">修改成功</a>
-            </div>
-            <div class="am-modal-footer">
-                <span class="am-modal-btn" data-am-modal-confirm id="am-icon-close">确定</span>
-            </div>
-        </div>
-    </div>
+    <div class="am-u-sm-g" style="height: 2em;margin-top: 5px;color: gray;font-size: 12px">请不要超过100个字</div>
     <div style=" margin: 0em; padding: 0 1em;;margin-top: 2em;" class="am-u-sm-12">
         <input type="button" name="" value="确 定" onclick="done()" class="am-btn am-btn-sm am-fl" style="outline: none;">
     </div>
     <script type="text/javascript">
     var token = localStorage.getItem("token");
     var userid = localStorage.getItem("userid");
-    var dingdanID = getParameter("dingdanID");
-    var goodsID = getParameter("goodsID");
 
     function done() {
-        var commentText = $("#commentText").val()
-        if (stringNull(commentText)) {
-            showalert("请填写您的昵称")
+        var geXingQianMing = $("#geXingQianMing").val()
+        if (stringNull(geXingQianMing)) {
+            showalert("请填写您的个性签名")
             return;
         }
-        commentText = encodeURI(commentText);
+        geXingQianMing = encodeURI(geXingQianMing);
         $.ajax({
             type: "post ",
-            url: baseurl(".do"),
+            url: baseurl("APPGERENXINXIUPATEGX.do"),
             dataType: "jsonp",
             jsonp: "callback",
-            jsonpCallback: "cd",
+            jsonpCallback: "csld",
             data: {
                 yonghuID: userid,
                 token: token,
-                dingdanID: dingdanID,
-                pinglunneirong: commentText,
-                shangpinID: goodsID,
-
+                gexinqianming: geXingQianMing
             },
             success: function(json) {
                 if (!checktoken(json)) {
                     return;
                 }
                 if (json.success) {
-                    $('#my-alert').modal({
-                        relatedTarget: this,
-                        onConfirm: function(e) {
-                            window.history.back();
-                        },
-                        onCancel: function(e) {
-
-                        }
-                    });
+                    window.history.back();
                 } else {
                     showalert(json.message)
                 }
-
-
 
             },
             error: function() {

@@ -1,0 +1,177 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>goodsOrderDetail</title>
+    <script src="js/include.js"></script>
+    <link>
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    .item {
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav {
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav a {
+        line-height: 42px;
+        color: lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active {
+        position: relative;
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active:after {
+        position: absolute;
+        width: 50%;
+        height: 0;
+        bottom: 0;
+        left: 28%;
+        border: 1px solid deepskyblue;
+        content: "";
+        z-index: 1;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active a {
+        line-height: 42px;
+        color: deepskyblue;
+        background: #ffff;
+    }
+    .am-u-sm-6 {
+        font-size: 14px;
+        color:gray;
+        padding: 5px;
+        line-height: 1em;
+    }
+    .am-u-sm-6-left{
+        text-align: left;
+    }
+    .am-u-sm-6-right{
+        text-align: right;
+    }
+    </style>
+</head>
+
+<body>
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title">订单详情</h1>
+    </header>
+    <div onclick="goToOrderDetail('f257a8455bd7e804015bd7e849750002')" class="am-g" style="background-color: white;margin-top: 1px;padding: 0">
+        <div class="am-u-sm-5" style="height:8rem">
+            <img style="width:100%;border:none;margin-top:14px;" src="http://114.215.40.197:8080/IMG/D1.jpg">
+        </div>
+        <div class="am-u-sm-7">
+            <b style="color:#000;font-size: 1.2em; line-height: 1em;height: 1.5em;float:left;margin-bottom:5px;margin-top:1em">阿玛尼</b>
+            <div style="line-height:2em;clear: both;font-size: 1.5em">
+                <div style="font-size: 14px;color:#999999;"><span>单价:</span><span style="color: #999999;">￥11.98</span></div>
+            </div>
+            <div style="line-height:1em;height: 1em "></div>
+        </div>
+    </div>
+    <div class="am-u-sm-12" style="background-color: white;">
+        <b id="exchangTime"></b>
+        <b style="height: 2em;line-height: 2em">订单明细</b>
+        <div class="am-u-sm-12" style="background-color: lightgray;height: 1px"></div>
+        <br>
+        <div class="am-u-sm-6 am-u-sm-6-left">订单编号</div><div class="am-u-sm-6 am-u-sm-6-right">12312</div>
+        <div class="am-u-sm-6 am-u-sm-6-left">下单日期</div><div class="am-u-sm-6 am-u-sm-6-right">12312</div>
+        <div class="am-u-sm-6 am-u-sm-6-left">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量</div><div class="am-u-sm-6 am-u-sm-6-right">12312</div>
+        <div class="am-u-sm-6 am-u-sm-6-left">总&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价</div><div class="am-u-sm-6 am-u-sm-6-right">12312</div>
+        <div class="am-u-sm-6 am-u-sm-6-left">使用积分</div><div class="am-u-sm-6 am-u-sm-6-right">12312</div>
+        <div class="am-u-sm-6 am-u-sm-6-left">总 &nbsp;优 惠</div><div class="am-u-sm-6 am-u-sm-6-right">12312</div>
+        <div class="am-u-sm-6 am-u-sm-6-left">实 &nbsp;付 款</div><div class="am-u-sm-6 am-u-sm-6-right">12312</div>
+        <br>
+    </div>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsg"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var token = localStorage.getItem("token");
+    var userid = localStorage.getItem("userid");
+    var dingdanID = getParameter("dingdanID");
+    jQuery(document).ready(function() {
+        loadData();
+
+    });
+
+    function loadData() {
+        $.ajax({
+            type: "post ",
+            url: baseurl("APPDINDANXIANGQING.do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "cd",
+            data: {
+                yonghuID: userid,
+                token: token,
+                dingdanID: dingdanID,
+            },
+            success: function(json) {
+                if (!checktoken(json)) {
+                    return;
+                }
+
+                if (json.success) {
+                    json.imgurl = imgurl;
+                    var html = template('s_mylove', json);
+                    $("#d_mylove").html(html);
+                } else {
+                    $('#errmsg').text(json.message);
+                    $('#my-alert').modal();
+
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试");
+                $('#my-alert').modal();
+
+            }
+        });
+    }
+    </script>
+</body>
+
+</html>

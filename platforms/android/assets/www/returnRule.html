@@ -73,24 +73,29 @@
         color: deepskyblue;
         background: #ffff;
     }
-    .am-u-sm-12 span{
+    .am-u-sm-12 b{
+    	color:#333;
     	display: block;
-    	width: 100%;
-    	line-height: 30px;
+    	line-height:18px;
     	font-size: 1.5rem;
-    	padding-right: 10px;
+    	margin-top: 5px;
+    	padding-left:10px;
+    	padding-right:10px;
+    	margin-bottom: 5px;
+    	padding-bottom:5px;
+    	border-bottom:1px solid #e0e3e5;
     }
     .am-u-sm-12 .xiao-title{
     	font-weight: bold;
     	line-height: 20px;
     }
-    .am-u-sm-12 b{
-    	color:#595959;
+    .am-u-sm-12 span{
     	display: block;
-    	line-height: 26px;
-    	font-size: 1.5rem;
-    	margin-top: 5px;
-    	margin-bottom: 5px;
+    	width: 100%;
+    	line-height:24px;
+    	font-size: 1.2rem;
+    	padding-right: 10px;
+    	padding-left:10px
     }
     .am-u-sm-12 a{
     	text-decoration:underline;
@@ -111,24 +116,20 @@
     
     <div id="goodsDeatail" class="am-u-sm-12" style="background-color: white"></div>
     
-    <div class="am-u-sm-12" style="background-color: white;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding-bottom:10px;margin-top: 10px;line-height: 3em;padding-right:0">
+    <div class="am-u-sm-12" style="background-color: white;padding-bottom:10px;margin-top: 10px;line-height: 3em;width: 95%;padding:0; margin:10px 2.5% 10px;">
         <b>第一种分润：消费分润35%</b>
-        <div class="am-u-sm-12" style="background-color: lightgray;height: 1px;margin-bottom: 10px;"></div>
         <span>直接消费的人，拿35%；</span>
     </div>
-    <div class="am-u-sm-12" style="background-color: white;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding-bottom:10px;margin-top: 10px;line-height: 3em;padding-right:0">
+    <div class="am-u-sm-12" style="background-color: white;padding-bottom:10px;margin-top: 10px;line-height: 3em;width: 95%;padding:0; margin:10px 2.5% 10px;">
         <b>第二种分润：分享分润20%</b>
-        <div class="am-u-sm-12" style="background-color: lightgray;height: 1px;margin-bottom: 10px;"></div>
         <span>消费者把平台分享给别人，拿20%；</span>
     </div>
-    <div class="am-u-sm-12" style="background-color: white;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding-bottom:10px;margin-top: 10px;line-height: 3em;padding-right:0">
+    <div class="am-u-sm-12" style="background-color: white;padding-bottom:10px;margin-top: 10px;line-height: 3em;width: 95%;padding:0; margin:10px 2.5% 10px;">
         <b>第三种分润：推荐分润1%；</b>
-        <div class="am-u-sm-12" style="background-color: lightgray;height: 1px;margin-bottom: 10px;"></div>
         <span>（地推人员和商家）推荐商家入驻我们平台，就会获得1%的利润，永久有效。</span>
     </div>
-    <div class="am-u-sm-12" style="background-color: white;border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;padding-bottom:10px;margin-top: 10px;line-height: 3em;padding-right:0">
+    <div class="am-u-sm-12" style="background-color: white;padding-bottom:10px;margin-top: 10px;line-height: 3em;width: 95%;padding:0; margin:10px 2.5% 10px;">
         <b>第四种分润：管理分润（3%、4、%5%）</b>
-        <div class="am-u-sm-12" style="background-color: lightgray;height: 1px;margin-bottom: 10px;"></div>
         <span>区代理：5%（全区所有商家利润的5%）</span>
         <span>市代理：4%（全市所有商家利润的4%）</span>
         <span>省代理：3%（全省所有商家利润的3%）</span>
@@ -193,6 +194,9 @@
                         token: token
                     },
                     success: function(json) {
+                    	if(!checktoken(json)){
+                    		return; 
+                    	}
                         if (json.success) {
                             $('#errmsg').text("成功取消收藏");
                             $('#my-alert').modal();

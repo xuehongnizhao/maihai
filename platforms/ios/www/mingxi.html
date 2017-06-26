@@ -66,14 +66,14 @@
         height: 0;
         bottom: 0;
         left: 28%;
-        border: 1px solid deepskyblue;
+        border: 1px solid #d74d2d;
         content: "";
         z-index: 1;
     }
     
     .am-tabs-d2 .am-tabs-nav>.am-active a {
         line-height: 42px;
-        color: deepskyblue;
+        color:#d74d2d;
         background: #ffff;
     }
     
@@ -209,7 +209,7 @@ jQuery(document).ready(function() {
 function loadData1() {
     $.ajax({
         type: "post ",
-        url: baseurl("APPCHONGZHI.do"),
+        url: baseurl("APPCHONGZHIJILU.do"),
         dataType: "jsonp",
         jsonp: "callback",
         jsonpCallback: "irld1",
@@ -226,6 +226,7 @@ function loadData1() {
                 json.imgurl = imgurl;
                 var html = template('s_sale_1', json);
                 $("#u_sale_1").html(html);
+                getzongjia("jiage");
             } else {
                 $('#errmsg').text(json.message);
                 $('#my-alert').modal();
@@ -243,7 +244,7 @@ function loadData1() {
 function loadData2() {
     $.ajax({
         type: "post ",
-        url: baseurl("APPCHONGZHI.do"),
+        url: baseurl("APPCHONGZHIJILU.do"),
         dataType: "jsonp",
         jsonp: "callback",
         jsonpCallback: "irld2",
@@ -260,6 +261,7 @@ function loadData2() {
                 json.imgurl = imgurl;
                 var html = template('s_sale_2', json);
                 $("#u_sale_2").html(html);
+                getzongjia("jiage");
             } else {
                 $('#errmsg').text(json.message);
                 $('#my-alert').modal();

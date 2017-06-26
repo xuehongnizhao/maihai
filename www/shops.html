@@ -18,9 +18,15 @@
         margin: 0 15%;
     }
     
-    .zhuye-title {
-        background: rgba(0, 0, 0, .2)
-    }
+
+    .zhuye-title2 {
+	background-color: #d74d2d;
+	position: fixed;
+}
+.zhuye-title {
+	background:rgba(0,0,0,.5);
+	position: fixed;
+}
     
     .doc-pannel {
         width: 100%;
@@ -89,7 +95,7 @@
     
     .icon-dianhua {
         float: right;
-        color: #2698f1;
+        color: #c62d1e;
         margin-top: 8px;
         padding-left: 20px;
         margin-right: 20px;
@@ -113,11 +119,30 @@
         padding-top: 49px;
         padding-bottom: 50px;
     }
+    .status-button {
+    height: 2em;
+    float:right;
+    width: 20%;
+    border:none;
+    border-radius: 4px;
+    background-color: #c62d1e;
+    line-height: 2em;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    margin-right: 10px;
+    font-weight: 700;
+    }
+    .am-slider-a1 .am-control-nav li a.am-active {
+    background-color: #c62d1e;
+    cursor: default;
+    border: 1px solid #c62d1e;
+	}
     </style>
 </head>
 
 <body>
-    <header data-am-widget="header" class="am-header am-header-default am-header-fixed zhuye-title">
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed zhuye-title" id="main2head">
         <div class="am-header-left am-header-nav">
             <a href="javascript:mi_exit(-1);" style="text-align: left">
                 <i class="iconfont icon-fanhuijiantou1"></i>
@@ -132,35 +157,40 @@
         </ul>
     </div>
     <div class="am-g" style="background-color: white;">
-        <div id="name1" style="color:#353535;height: 3em;font-weight:bold;line-height: 3em;padding-left: 1em;"></div>
+        <div id="name1" style="color:#353535;height: 3em;font-weight:bold;line-height: 3em;padding-left: 1em;float:left;"></div>
+        <input type="button" value="到店付" onclick="daodianfu()" class="status-button" >
         <div class="am-u-sm-12" style="height:1px;background: #f8f8f8;border-bottom: 1px solid #eeeeee"></div>
-        <div class="am-u-sm-12" id="" style="color:red;height: 3em;font-size:16px;    line-height: 3em;padding-left: 1em;">消费满<span id="jine"></span>元可使用<span id="jifen"></span>个积分</div>
+        <div class="am-u-sm-12" id="" style="color:red;height: 3em;font-size:16px;    line-height: 3em;padding-left: 1em;">消费满<span id="jine"></span>元可使用<span id="jifen"></span>个积分
+        	
+        </div>
         <div class="am-u-sm-12" style="height:1px;background: #f8f8f8;border-bottom: 1px solid #eeeeee"></div>
         <div style="color:black;height: 3em;padding-left: 1em;">
             <i class="iconfont icon-fujindingwei-fill" style="color:#b5b3ac;line-height:3em;font-size:1.5rem;margin-top:2px;margin-right:5px;float: left"></i>
             <div id="address" style="font-size: 16px;float: left;line-height:3em;" onclick="goToMap()"></div>
+            <div style="float: right;width: 4em;line-height:3em;" onclick="tel()">
             <i class="iconfont icon-dianhua"></i>
+            </div>
         </div>
     </div>
     <div class="am-u-sm-12" style="height:1px;background: #f8f8f8;border-bottom: 1px solid #eeeeee;"></div>
     <div class="am-u-sm-12" style="height: 3em;line-height: 3em ;font-size: 16px;background-color: white;">
-        <div style="float: left;color:#343434;font-weight: bold;"><i class="tuan">团</i>本店套餐</div>
+        <div style="float: left;color:#343434;font-weight: bold;"><i class="tuan">团</i>买嗨特惠套餐</div>
         <!--  <div style="float: right;color:#989898;font-size: 1rem;">全部套餐<i class="iconfont icon-fanhuijiantou" style="display: inline;font-size: 0.8rem;font-weight: bold;margin-left: 5px;"></i></div>-->
     </div>
     <div id="d_taocan" class="am-u-sm-12" style="background-color: white;">
         <script id="s_taocan" type="text/html">
             {{each Goodlist as val i}}
             <div class="am-g" onclick="goToRiceDetail('{{val.shanghuID}}','{{val.goodsID}}')" style="background-color: white;border-bottom:1px solid #e5e5e5; margin-top: 10px;padding-bottom:5px;border-radius: 4px;">
-                <div class="am-u-sm-4" style="height:8rem;padding: 0;width: 25%;">
-                    <img style="width:100%;height:6rem;border:none;margin-top:14px;" src="{{imgurl+val.tupiandizhi}}">
+                <div class="am-u-sm-3" style="padding: 0;width: 20%;">
+                    <img style="width:100%;border:none;margin-top:10px;" src="{{imgurl+val.tupiandizhi}}">
                 </div>
-                <div class="am-u-sm-8" style="padding:0 0 0 0.5em; float:left;width: 60%;">
-                    <div style="color:#000;font-size: 1.1em; height: 1.5em;float:left;margin-bottom:5px;margin-top:8px">{{val.mingcheng}}</div>
+                <div class="am-u-sm-9" style="padding:0 0 0 0.5em; float:left;width: 60%;">
+                    <div style="color:#000;font-size: 16px; height: 1.5em;float:left;margin-bottom:5px;margin-top:8px">{{val.mingcheng}}</div>
                     <div style="line-height: 1em;clear: both;margin-bottom:5px">
                         <span style="font-size: 0.8em;color:#999999;">{{val.miaoshu}}</span>
                     </div>
                     <div style="line-height: 1em;clear: both;margin-bottom:5px;position: relative;">
-                        <span style="font-size: 1.2em;color:#2698f1;">￥{{val.xiaoshoujiage}}</span>
+                        <span style="font-size: 1.2em;color:#c62d1e;">￥{{val.xiaoshoujiage}}</span>
                         <span style="font-size: 0.6em;color:#999999;">门市价￥{{val.yuanjiage}}</span>
                     </div>
                 </div>
@@ -183,10 +213,20 @@
             </div>
         </div>
     </div>
+    <div class="am-modal am-modal-prompt" tabindex="-1" id="my-phone">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd">商家电话</div>
+            <div class="am-modal-bd" id="mobel"></div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn" style="color:#7cc5a7;" data-am-modal-cancel>取消</span>
+                <span class="am-modal-btn" style="color:#7cc5a7;" data-am-modal-confirm>拨打</span>
+            </div>
+        </div>
+    </div>
     <div class="am-modal am-modal-prompt" tabindex="-1" id="my-prompt">
         <div class="am-modal-dialog">
             <div class="am-modal-hd">是否取消收藏</div>
-            <div class="am-modal-bd" id="mobel"></div>
+            <div class="am-modal-bd" id="shoucang"></div>
             <div class="am-modal-footer">
                 <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-cancel>取消</span>
                 <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-confirm>确定</span>
@@ -211,13 +251,27 @@ if (userid == null || userid == "null" || userid == "") {
 jQuery(document).ready(function() {
     getNeirong();
 });
-
+window.onscroll= function(){
+    //变量t是滚动条滚动时，距离顶部的距离
+    var t = document.documentElement.scrollTop||document.body.scrollTop;
+    //当滚动到距离顶部200px时，返回顶部的锚点显示
+    if(t>=40){
+   	 var header = document.getElementById('main2head'); 
+   	 header.setAttribute("class", "am-header am-header-default am-header-fixed zhuye-title2"); 
+    }else{          //恢复正常
+   	 var header = document.getElementById('main2head'); 
+   	 header.setAttribute("class", "am-header am-header-default am-header-fixed zhuye-title"); 
+    }
+}
 function messageclick() {
     if (shoucangStatus) {
         qvxiaoshoucang();
     } else {
         shoucang();
     }
+}
+function daodianfu(){
+	window.location.href = "daodianfu.html?shanghuID=" + shanghuID;
 }
 
 function shoucang() {
@@ -286,6 +340,7 @@ function getNeirong() {
                 var jine = json.jine;
                 var jifen = json.jifen;
                 var message = json.message;
+                var tel = json.dianhua;
                 jingdu = json.jingdu;
                 weidu = json.weidu;
                 if (message == "已关注") {
@@ -301,6 +356,7 @@ function getNeirong() {
                 $('#address').html(dizhi);
                 $('#jine').html(jine);
                 $('#jifen').html(jifen);
+                $('#mobel').html(tel);
                 var width = screen.width;
                 var height = width / 8 * 4;
                 var html = template('s_taocan', json);
@@ -317,7 +373,7 @@ function getNeirong() {
                 $('#yhb-advert').flexslider({
                     directionNav: false,
                     controlNav: true,
-                    playAfterPaused: 1000,
+                    playAfterPaused: 3000,
                     before: function(slider) {
                         if (slider._pausedTimer) {
                             window
@@ -366,6 +422,7 @@ function getNeirong() {
                 var jine = json.jine;
                 var jifen = json.jifen;
                 var message = json.message;
+                var tel = json.dianhua;
                 jingdu = json.jingdu;
                 weidu = json.weidu;
                 if (message == "已关注") {
@@ -381,6 +438,7 @@ function getNeirong() {
                 $('#address').html(dizhi);
                 $('#jine').html(jine);
                 $('#jifen').html(jifen);
+                $('#mobel').html(tel);
                 var width = screen.width;
                 var height = width / 8 * 4;
                 var html = template('s_taocan', json);
@@ -448,6 +506,9 @@ function qvxiaoshoucang() {
                     token: token
                 },
                 success: function(json) {
+                	if(!checktoken(json)){
+                		return; 
+                	}
                     if (json.success) {
                         $('#errmsg').text("成功取消收藏");
                         $('#my-alert').modal();
@@ -475,7 +536,24 @@ function qvxiaoshoucang() {
     });
 
 }
+function tel() {
+    var callcenter = $('#mobel').html();
+    $('#my-phone').modal({
+        relatedTarget: this,
+        onConfirm: function(e) {
+            window.PhoneCaller.call(callcenter, callsucc, callfail);
+        },
+        onCancel: function(e) {
 
+        }
+    });
+}
+function callsucc() {
+        
+}
+function callfail() {
+    
+}
 function goToRiceDetail(shanghuID, shangpinID) {
     window.location.href = "shopInfo.html?shanghuID=" + shanghuID + "&shangpinID=" + shangpinID;
 }

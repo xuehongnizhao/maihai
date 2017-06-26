@@ -63,14 +63,14 @@
         height: 0;
         bottom: 0;
         left: 28%;
-        border: 1px solid deepskyblue;
+        border: 1px solid #c62d1e;
         content: "";
         z-index: 1;
     }
     
     .am-tabs-d2 .am-tabs-nav>.am-active a {
         line-height: 42px;
-        color: deepskyblue;
+        color: #c62d1e;
         background: #ffff;
     }
     
@@ -88,9 +88,9 @@
         width: 100%;
         height: 3em;
         font-size: 1em;
-        color: #3291f9;
+        color: white;
         outline: none;
-        background-color: #d8ebff;
+        background-color: #c62d1e;
         background-size: cover;
         background-repeat: no-repeat;
     }
@@ -111,7 +111,7 @@
         <div data-am-widget="tabs" class="am-tabs am-tabs-d2" style="margin:0px;">
             <ul class="am-tabs-nav am-cf ul-fixed" style="width:100%;height:3em">
                 <li class="am-active" style="height:3em;"><a href="[data-tab-panel-0]" style="height:2em;width:100%; margin:0.5em auto;line-height:2em;">密码登录</a></li>
-                <li class="" style="height:3em;"><a href="[data-tab-panel-1]" style="border-left: 1px solid #cdcdd2; height:2em;width:100%; margin:0.5em auto;line-height:2em;">手机快速登录</a></li>
+                <li class="" style="height:3em;"><a href="[data-tab-panel-1]" style="border-left: 1px solid #c62d1e; height:2em;width:100%; margin:0.5em auto;line-height:2em;">手机快速登录</a></li>
             </ul>
             <div class="am-tabs-bd" style="border: none;margin-top:1em;">
                 <div data-tab-panel-0 class="am-tab-panel am-active">
@@ -128,11 +128,11 @@
                             <div style="width: 100%;background-color: lightgray;height: 1px"></div>
                         </div>
                     </div>
-                    <div style=" margin: 0em; padding: 0 1em;margin-top: 2em;" class="am-u-sm-12">
+                    <div style=" margin: 0em; padding: 0;margin-top: 2em;" class="am-u-sm-12">
                         <input type="button" name="" value="登 录" onclick="loginP()" class="am-btn am-btn-sm am-fl" style="outline: none;">
                     </div>
                     <div class="am-u-sm-12" style="padding:0">
-                        <span style="font-size: 14px">登录即视为同意</span><a href="userAgreement.html" style="font-size: 14px">《"买嗨"用户协议》</a>
+                        <span style="font-size: 14px">登录即视为同意</span><a href="userAgreement.html" style="font-size: 14px;color: #c62d1e">《"买嗨"用户协议》</a>
                     </div>
                 </div>
                 <div data-tab-panel-1 class="am-tab-panel am-active">
@@ -145,16 +145,16 @@
                             <input id="insertCode" type="text" style="padding-left: 1em;border: none;width: 50%;height: 100%;outline: none;background: transparent;" class="am-radius" name="mobile" placeholder="请输入您的验证码" value="" />
                             <div style="float: right; width: 30%; text-align: center; line-height: 2.5em; height: 2.5em; " align="center">
                                 <!--input type="button" onclick="getCode()" class="" style="border: 0px solid transparent;background-color: transparent; color: lightskyblue;outline: none;" value="获取验证码"-->
-            					<input type="button" value="获取验证码" class="ma" style="border: 0px solid transparent;background-color: transparent; color: lightskyblue;outline: none;"  onclick="clickButton(this)" />
+                                <input type="button" value="获取验证码" class="ma" style="border: 0px solid transparent;background-color: transparent; color: #c62d1e;outline: none;" onclick="clickButton(this)" />
                             </div>
                             <div style="width: 100%;background-color: lightgray;height: 1px"></div>
                         </div>
                     </div>
-                    <div style=" margin: 0em; padding: 0 1em;;margin-top: 2em;" class="am-u-sm-12">
+                    <div style=" margin: 0em; padding: 0;;margin-top: 2em;" class="am-u-sm-12">
                         <input type="button" name="" value="登 录" onclick="loginC()" class="am-btn am-btn-sm am-fl" style="outline: none;">
                     </div>
                     <div style="padding:0" class="am-u-sm-12">
-                        <span style="font-size: 14px">登录即视为同意</span><a href="main.html" style="font-size: 14px">《"买嗨"用户协议》</a>
+                        <span style="font-size: 14px">登录即视为同意</span><a href="userAgreement.html" style="font-size: 14px;color: #c62d1e">《"买嗨"用户协议》</a>
                     </div>
                 </div>
             </div>
@@ -264,7 +264,7 @@
                 url: baseurl("APPCREATEYANZHENGMA.do"),
                 data: {
                     phone: phoneNumber,
-                    type:"denglu",
+                    type: "denglu",
                 },
                 dataType: "jsonp",
                 jsonp: "callback",
@@ -286,6 +286,9 @@
 
                 }
             });
+        }else{
+             $('#errmsg').text("请检查您的手机或密码是否正确");
+            $('#my-alert').modal();
         }
 
     }
@@ -336,20 +339,30 @@
     }
     </script>
     <script type="text/javascript">
-			function clickButton(obj) {
-				var obj = $(obj);
-				obj.attr("disabled", "disabled"); /*按钮倒计时*/
-				var time = 60;
-				var set = setInterval(function() {
-					obj.val(--time + "(s)");
-				}, 1000); /*等待时间*/
-				setTimeout(function() {
-					obj.attr("disabled", false).val("重新获取"); /*倒计时*/
-					clearInterval(set);
-				}, 60000);
-                getCode();
-			}
-		</script>
+    function clickButton(obj) {
+        phoneNumber = $("#phoneNumber").val();
+        if (checkMobile(phoneNumber)) {
+            var obj = $(obj);
+            if (s) {
+                expression
+            }
+            obj.attr("disabled", "disabled"); /*按钮倒计时*/
+            var time = 60;
+            var set = setInterval(function() {
+                obj.val(--time + "(s)");
+            }, 1000); /*等待时间*/
+            setTimeout(function() {
+                obj.attr("disabled", false).val("重新获取"); /*倒计时*/
+                clearInterval(set);
+            }, 60000);
+            getCode();
+        }else{
+             $('#errmsg').text("请检查您的手机号是否正确");
+            $('#my-alert').modal();
+        }
+
+    }
+    </script>
 </body>
 
 </html>

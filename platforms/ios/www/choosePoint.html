@@ -24,14 +24,13 @@
         font-family: "微软雅黑";
     }
     </style>
-    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=R9LB3lwD1kNycjPuH4xkPmOu9345ButI"></script>
     <style type="text/css">
     .am-header .am-header-title {
         margin: 0 15%;
     }
     
     .am-header-default .am-header-nav {
-        color: #87bef9;
+        color: #fff;
     }
     
     hr {
@@ -148,16 +147,22 @@
             </a>
         </div>
         <h1 class="am-header-title">点击选择地址</h1>
+        <a id="message" class="am-header-right am-header-nav" onclick="goBack()">
+                确定
+            </a>
     </header>
     <div id="allmap"></div>
 </body>
 
 </html>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=R9LB3lwD1kNycjPuH4xkPmOu9345ButI"></script>
 <script type="text/javascript">
 // 百度地图API功能
+var shopMarker;
 var map = new BMap.Map("allmap");
 var point = new BMap.Point(myLongitude, myLatitude);
-
+var nearbyLongitude;
+var nearbyLatitude;
 map.centerAndZoom(point, 16);
 var myIcon1 = new BMap.Icon("img/myLocation.png", new BMap.Size(32, 32));
 var marker1 = new BMap.Marker(point, {
@@ -167,17 +172,36 @@ map.addOverlay(marker1); // 将标注添加到地图中
 var geoc = new BMap.Geocoder();
 
 map.addEventListener("click", function(e) {
+    map.removeOverlay(shopMarker);
     var pt = e.point;
-    localStorage.setItem("nearbyLongitude", pt.lng);
-    localStorage.setItem("nearbyLatitude", pt.lat);
+     nearbyLongitude = pt.lng;
+    nearbyLatitude = pt.lat;
+    shopMarker = new BMap.Marker(pt);
+    map.addOverlay(shopMarker);
+
     geoc.getLocation(pt, function(rs) {
         var addComp = rs.addressComponents;
 
         // alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
-        var nearbyArea = addComp.street + addComp.streetNumber;
+        var nearbyArea = "哈尔滨南岗区";
+        if (stringNull(addComp.street)) {
+             nearbyArea = addComp.city + addComp.district;
+        }
+        else if (stringNull(addComp.streetNumber)) {
+            nearbyArea = addComp.district+addComp.street ;
+        }else{
+            nearbyArea = addComp.street +addComp.streetNumber;
+        }
+
         localStorage.setItem("nearbyArea", nearbyArea);
-        window.history.back();
     });
 
+
 });
+
+function goBack() {
+    localStorage.setItem("nearbyLongitude", nearbyLongitude);
+    localStorage.setItem("nearbyLatitude", nearbyLatitude);
+    window.history.back();
+}
 </script>

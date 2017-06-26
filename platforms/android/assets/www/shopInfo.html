@@ -59,7 +59,6 @@ body, html {
 body, html {
 	width: 100%;
 	height: 100%;
-	background-image: url('img/mi_bg.png');
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -76,8 +75,6 @@ hr {
 }
 .pinglun{
    		border-bottom: 1px solid #e5e5e5;
-   		padding-bottom: 25px;
-   		padding-top:30px
    	}
    #name{
    	font-size: 18px; 
@@ -100,13 +97,13 @@ hr {
     line-height: 0;
 }
 .am-slider-a1 .am-control-nav li a.am-active {
-    background-color: #fff;
+    background-color: #c62d1e;
     cursor: default;
-    border: 1px solid #fff;
+    border: 1px solid #c62d1e;
 }
 .am-u-sm-12 .am-u-sm-8 .jiage-fuhao,
 .am-u-sm-12 .am-u-sm-8 .jiage-shuzi{
-	color:#3291f9;
+	color:#d74d2d;
 	font-weight: bold;
 }
 .am-u-sm-12 .am-u-sm-8 .jiage-fuhao{
@@ -156,9 +153,9 @@ hr {
 </head>
 
 <body>
-	<header data-am-widget="header" class="am-header am-header-default am-header-fixed mi-title">
+	<header data-am-widget="header" class="am-header am-header-default am-header-fixed mi-title" style="border-bottom: none;">
 		<div class="am-header-left am-header-nav">
-			<a href="javascript:mi_exit(-1);" style="text-align: left">
+			<a href="javascript:mi_exit(-1);" style="text-align: left;">
 				<i class="iconfont icon-fanhuijiantou1"></i> 
 			</a>
 		</div>
@@ -173,21 +170,23 @@ hr {
 	<div class="am-u-sm-12" style="background:rgba(0,0,0,.2);position: absolute;bottom:0px;z-index: 1000;padding: 0.5em 0;">
 		<div class="am-u-sm-8" style="width: 100%;">
 			<div class="zi"><span id="name"></span></div>
-			<div class="zi"><span id="jine"></span>元可换<span id="jifen"></span>个积分,免预约</div>
+			<div class="zi">消费满<span id="jine"></span>元可使用<span id="jifen"></span>个积分,免预约</div>
 		</div>
 		
 	</div>
 	</div>
-	<div class="am-u-sm-12" style="background-color: white;padding: 0.5em 0;">
+	
+	<div data-am-sticky="{top:40}">
+			<div class="am-u-sm-12" style="background-color: white;padding: 0.5em 0;">
 		<div class="am-u-sm-8">
 			<span class="jiage-fuhao">￥</span><span id="price1"  class="jiage-shuzi"></span>
 			<span class="jiage-fuhao-menshi" style="margin-left: 15px;">门市价 : ￥</span ><span id ="oldprice"class="jiage-shuzi-menshi"></span>
 		</div>
 		<div class="am-u-sm-4" id="goumai" onclick="goumai()">
-			<div>
-				立即购买
-			</div>							
+			<button class="am-btn am-btn-primary am-btn-block"  style="background-color: #d74d2d;border-color: #d74d2d;border-radius: 4px;">立即购买</button>						
 		</div>
+	</div>
+  			
 	</div>
 	<div class="am-u-sm-12" style="height:1px;background: #f8f8f8;border-bottom: 1px solid #eeeeee;"></div>
 	<div class="am-u-sm-12" style="background-color: #ffffff;position: relative;padding-top: 5px;padding-bottom: 5px;border-bottom:1px solid #e5e5e5">
@@ -211,22 +210,24 @@ hr {
 					<div class="am-u-sm-4" style="margin-top: 8px;font-weight:bold;padding-left:0;padding-right: 0;padding-bottom:8px">用户评价
 						<span style="color: #aaaaaa;margin-top: 8px;" id="zongji"></span>
 					</div>
-					<i class="iconfont icon-fanhuijiantou" style="font-size:1rem;float:right;margin-top:10px;color:#c6c6c6"></i>
 				</div>
 					
 				<div class="am-accordion-content" style="padding:0em;">
 					{{if pinglunliebiao}} {{each pinglunliebiao as val i}}
 					<div class="am-u-sm-12 pinglun" style="padding-top: 10px;padding-right:0">
     					<div class="am-u-sm-2" style="padding:3px;border:1px solid #8dc1f9;border-radius: 50%;width: 48px;float:left">
-        				<img id="userIcon" class="am-img-thumbnail am-circle" src="{{imgurl+val.icon}}"  style="border:1px solid #8dc1f9;width:40px;height:40px;" />
+        				<img id="userIcon" class="am-img-thumbnail am-circle" src="{{val.icon}}"  style="border:1px solid #8dc1f9;width:40px;height:40px;" />
 					</div>
 				<div class="am-u-sm-10" style="float:left;padding-right: 0;padding-left: 0;margin-left: 10px;">
 					<span style="color:#fbb111;font-size: 16px;font-weight: bold; display: inherit;">{{val.nickname}}</span>
 					<span style="color:#9e9e9e">{{val.pinglunDate}}</span>
 					<span style="display: block;margin-top:5px;text-align: justify;">{{val.pinglunneirong}}</span>
+					{{if val.tupiandizhi.length>0}}
+					<img src="{{val.tupiandizhi}}" style="width: 80%">
+					<div></div>
+					{{/if}}
 					{{if val.huifuneirong.length>0}}
-                	<br>
-                	<span style="color:#4887c7;font-weight: bold;margin-right: 10px; text-align: justify;">商家回复:</span><span>{{val.huifuneirong}}</span>
+                	<span style="color:#4887c7;font-weight: bold;margin-right: 10px;  text-align: justify;">商家回复:</span><span>{{val.huifuneirong}}</span>
                 	{{/if}}
 					<br>               	
 				</div>

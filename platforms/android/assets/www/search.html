@@ -137,13 +137,7 @@
         float: left;
     }
     
-    .icon-sousuo {
-        float: left;
-        margin-top: 2px;
-        color: #fff;
-        margin-left: 20px;
-        margin-right: 10px;
-    }
+    
     
     .icon-dingwei {
         color: #fff;
@@ -182,7 +176,13 @@
         margin-left: -50%;
     }
    
-    
+     .icon-sousuo {
+    float: left;
+    margin-top: 2px;
+    color: #C0C0C0;
+    margin-left: 20px;
+    margin-right: 10px;
+}
     li {
         list-style-type: none;
     }
@@ -197,6 +197,15 @@
     .am-u-sm-8 .am-g span{
     	font-size: 12px;
     }
+    input::-ms-input-placeholder{
+    	color:#c0c0c0
+    }
+    input::-moz-placeholder{
+    	color:#c0c0c0
+    }
+    input::-webkit-input-placeholder{
+    	color:#c0c0c0
+    }
 </style>
 </head>
 <body>
@@ -206,12 +215,12 @@
                 <i class="iconfont icon-fanhuijiantou1"></i>
             </a>
         </div>
-        <div style="margin-left:2em;margin-right:3rem;line-height:35px;background:white;overflow:hidden;border-radius: 30px;margin-top:6px; width: 70%;" onclick="">
-            <i class="iconfont icon-sousuo" style="color: lightgray"></i>
-            <input type="text" id="search1" name="search1" maxlength="15" required placeholder="输入要搜索的内容" style="border: none;outline: none;width: 70%;" />
+        <div style="margin-left:3.5rem;margin-right:3rem;line-height:32px;background:white;overflow:hidden;border-radius: 30px;margin-top:8px;width: 60%;height: 32px;margin-bottom: 10px" onclick="">
+            <i class="iconfont icon-sousuo"></i>
+            <input type="text" id="search1" name="search1" maxlength="15" required placeholder="输入要搜索的内容" style="border: none;outline: none;width: 70%;height: 32px;float:left;line-height: 32px; color: #C0C0C0;font-size: 14px;" />
         </div>
         <div class="am-header-right am-header-nav">
-        <input type="submit" onclick="search()" value="查询" style="float: right;background-color:#4384c6;color: white;border: none;outline: none;line-height:1.8em;height: 1.8em;margin-top:10px;padding:0 0.8em;border-radius: 30px" />
+        <input type="submit" onclick="search()" value="查询" style="float: right;background-color:white;color: #d84d2e;border: none;outline: none;line-height:32px;height:32px;margin-top:8px;padding:0 0.8em;border-radius: 30px" />
 		</div>
 		
 		
@@ -241,17 +250,17 @@
 	
 	
 
-	<div id="d-shanghulist" class="am-u-sm-12" style="    padding-left: 0;padding-right: 0;margin-top: 5em;">
+	<div id="d-shanghulist" class="am-u-sm-12" style="    padding-left: 0;padding-right: 0;margin-top: 5.5em;">
 			<script id='s-shanghulist' type="text/html">
 			{{if chaxunlist.length >0 }}
 			{{each chaxunlist as val i}}
 				<div class="am-g" onclick="goToRiceDetail('{{val.shanghuID}}')" style="background-color: white;border-bottom:1px solid #e5e5e4;border-radius: 4px;">
-					<div class="am-u-sm-4" style="height:8rem">
-					<img style="width:100%;height:6rem;border:none;margin-top:14px;" src="{{imgurl+val.tupiandizhi}}">
+					<div class="am-u-sm-3">
+					<img style="width:100%;border:none;margin-top:12px;margin-bottom: 12px;" src="{{imgurl+val.tupiandizhi}}">
 					</div>
-				<div class="am-u-sm-8" style="padding:0 0 0 0.5em;">
-				<div style="color:#000;font-size: 14px; height: 1.5em;float:left;margin-bottom:5px;margin-top:8px">{{val.dianpumingcheng}}</div>
-				<span style="font-size: 1em;color:#999999;float: right;margin-right: 10px;margin-top:10px">{{val.juli}}</span>
+				<div class="am-u-sm-9" style="padding:0;margin-top: 3px;">
+				<div style="color:#000;font-size:16px; height: 1.5em;float:left;margin-top:10px">{{val.dianpumingcheng}}</div>
+				<span style="font-size: 0.8em;color:#999999;float: right;margin-right: 10px;margin-top:10px">{{val.juli}}</span>
 				<div style="line-height: 1em;clear: both;margin-bottom:5px">
 				<span style="font-size: 0.8em;color: red;">{{val.jine}}元可抵扣{{val.jifen}}积分</span>			
 				</div>
@@ -295,6 +304,7 @@
 	}
 	
 	jQuery(document).ready(function() {
+		search();
 		$('input').keyup(function(){var oldv = $(this).val(); $(this).val(oldv.replace(/[\\\ud83d].*|[\\\ud83c].*/ig,''))});
 		$('textarea').keyup(function(){var oldv = $(this).val(); $(this).val(oldv.replace(/[\\\ud83d].*|[\\\ud83c].*/ig,''))});
 	});
@@ -469,7 +479,7 @@ $("#dropdown p").click(function(){
 		$('#ul_erji li').css("background","white");
 		$('#ul_yiji li').css("background","#e8e8e8");
 		$(item).css("background","#e8e8e8");
-		fenleiID = dd;
+		ejfenleiID = dd;
 		cityName = fenleimingcheng;
 		$('#quanbu').text(cityName);
 		$('#ul_erji').hide();

@@ -15,10 +15,13 @@
 <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
 <style type="text/css">
 .zhuye-title {
-	background-color: #84bcf9;
+	background-color: #d74d2d;
 	position: fixed;
 }
-
+.zhuye-title2 {
+	background:rgba(0,0,0,0);
+	position: fixed;
+}
 body,
 html {
 	width: 100%;
@@ -219,6 +222,10 @@ html {
 	border-radius: 4px;
 	border-top: 1px solid #e5e5e5;
 }
+.am-slider-a1 .am-control-nav li a.am-active {
+    background-color: #d74d2d;
+    border: 1px solid #d74d2d;
+}
 
 </style>
 </head>
@@ -226,7 +233,7 @@ html {
 <body>
 <!-- Header -->
 
-<header data-am-widget="header" class="am-header am-header-default am-header-fixed zhuye-title" style="position: fixed;">
+<header data-am-widget="header" class="am-header am-header-default am-header-fixed zhuye-title2" style="position: fixed;" id="main2head"><!-- 半透明是zhuye-title2样式-->
 	<div class="am-header-left am-header-nav">
 		<a href="javascript:mi_exit(-1);" style="text-align: left">
 			<i class="iconfont icon-fanhuijiantou1"></i>
@@ -236,27 +243,22 @@ html {
 		<i class="iconfont icon-sousuo"></i>
 		<div style="height: 35px;line-height: 35px; color: #fff;">关键词</div>
 	</div>
-	<div id="message" class="am-header-right am-header-nav">
+	<!--div id="message" class="am-header-right am-header-nav">
 		<i class="iconfont icon-dingwei"></i>
-	</div>
+	</div-->
 </header>
-<div data-am-widget="slider" id="yhb-advert" class="am-slider am-slider-a1" data-am-slider='{&quot;directionNav&quot;:false}' style="">
+<div data-am-widget="slider" id="yhb-advert" class="am-slider am-slider-a1" data-am-slider='{&quot;directionNav&quot;:false}' style="margin-top: -49px;">
 	<ul id="l_gg" class="am-slides">
 
 	</ul>
 </div>
+<div data-am-widget="slider" id="yhb-fenlei" class="am-slider am-slider-a1" data-am-slider='{&quot;directionNav&quot;:false}' style="background-color: white;">
+	<ul id="l_feilei" class="am-slides">
 
-<div class="am-u-sm-12" id="d-leixing">
-	<script id='s-leixing' type="text/html">
-		{{each erjifenleiList as val i}}
-		<div class="am-u-sm-3" align="center" style="float: left;padding: 0;" onclick="mainonc('{{val.fenleiID}}')">
-			<img src="{{imgurl+val.tupiandizhi}}" class="img-leixing">
-			<p class="leixing-mingzi">{{val.fenleimingcheng}}</p>
-		</div>
-		{{/each}}
-	</script>
-
+	</ul>
 </div>
+
+
 <div id="d-huodongList" class="am-u-sm-12">
 	<script id='s-huodongList' type="text/html">
 		{{each erjihuodongmiddlelist as val i}} {{if i%2 ==0}} {{if val.huodongID == null || val.huodongID == ""}}
@@ -283,12 +285,12 @@ html {
 	<script id="s_tab" type="text/html">
 		{{each erjishanghulist as val i}}
 		<div class="am-g" onclick="goToRiceDetail('{{val.shanghuID}}')" >
-			<div class="am-u-sm-4" style="height:8rem">
-				<img style="width:100%;height:6rem;border:none;margin-top:14px;" src="{{imgurl+val.tupiandizhi}}">
+			<div class="am-u-sm-3">
+				<img style="width:100%;border:none;margin-top:12px;margin-bottom: 12px;" src="{{imgurl+val.tupiandizhi}}">
 			</div>
-			<div class="am-u-sm-8" style="padding:0 0 0 0.5em;">
-				<div style="color:#000;font-size: 1.3em; height: 1.5em;float:left;margin-bottom:5px;margin-top:8px">{{val.dianpumingcheng}}</div>
-				<span style="font-size: 1em;color:#999999;float: right;margin-right: 10px;margin-top:10px">{{val.juli}}</span>
+			<div class="am-u-sm-9" style="padding:0;margin-top: 3px;">
+				<div style="color:#000;font-size:16px; height: 1.5em;float:left;margin-top:10px;margin-bottom: 4px;">{{val.dianpumingcheng}}</div>
+				<span style="font-size: 0.8em;color:#999999;float: right;margin-right: 10px;margin-top:10px">{{val.juli}}</span>
 				<div style="line-height: 1em;clear: both;margin-bottom:5px">
 					<span style="font-size: 0.8em;color:red;">{{val.jine}}元可抵扣{{val.jifen}}积分</span>
 				</div>
@@ -322,6 +324,19 @@ html {
 		}
 		getNeirong();
 	});
+	 window.onscroll= function(){
+         //变量t是滚动条滚动时，距离顶部的距离
+         var t = document.documentElement.scrollTop||document.body.scrollTop;
+         //当滚动到距离顶部200px时，返回顶部的锚点显示
+         if(t>=40){
+        	 var header = document.getElementById('main2head'); 
+        	 header.setAttribute("class", "am-header am-header-default am-header-fixed zhuye-title"); 
+         }else{          //恢复正常
+        	 var header = document.getElementById('main2head'); 
+        	 header.setAttribute("class", "am-header am-header-default am-header-fixed zhuye-title2"); 
+         }
+     }
+
 	function getNeirong(){
 
 		$.ajax({
@@ -333,6 +348,12 @@ html {
 				"cityCode": cityCode,
 				"jingdu": myLongitude,
 				"weidu" : myLatitude
+				/**
+				"fenleiID":'f257a8455c1eb7a0015c1edb70340002',
+				"cityCode": 230100,
+				"jingdu": 116.331398,
+				"weidu" : 39.897445
+				*/
 			},
 			jsonp: "callback",
 			jsonpCallback: "fenlei",
@@ -341,13 +362,69 @@ html {
 				json.imgheight = screen.width / 4;
 				json.imgurl = imgurl;
 				var width = screen.width;
-				var height = width / 8 * 4;
-				var html = template('s-leixing', json);
-				$("#d-leixing").html(html);
+				var height = width / 8 * 4;			
 				var html = template('s-huodongList', json);
 				$("#d-huodongList").html(html);
 				var html = template('s_tab', json);
 				$("#d-shanghulist").html(html);
+				
+				var erjifenleiList = json.erjifenleiList;
+				
+				var str = "";
+				json.erjifenleiList.forEach(function(e,index) {
+					if(index %8 == 0 ){
+						str  += "<li><div class='am-u-sm-12' style='margin-top: 10px;padding-top: 20px;padding-bottom: 20px;'> ";
+						str += "<div class='am-u-sm-3' align='center' style='float: left;padding: 0;' onclick=mainonc('"+e.fenleiID+"')>"
+								+"<img src='"+imgurl+e.tupiandizhi+"' class='img-leixing'>"
+								+"<p class='leixing-mingzi'>"+e.fenleimingcheng+"</p></div>";
+						
+					}else if(index %8 == 7){
+						str +="<div class='am-u-sm-3' align='center' style='float: left;padding: 0;' onclick=mainonc('"+e.fenleiID+"')>"
+								+"<img src='"+imgurl+e.tupiandizhi+"' class='img-leixing'>"
+								+"<p class='leixing-mingzi'>"+e.fenleimingcheng+"</p></div>"
+						str += "</div></li>";
+					}else{
+						str +="<div class='am-u-sm-3' align='center' style='float: left;padding: 0;' onclick=mainonc('"+e.fenleiID+"')>"
+								+"<img src='"+imgurl+e.tupiandizhi+"' class='img-leixing'>"
+								+"<p class='leixing-mingzi'>"+e.fenleimingcheng+"</p></div>";
+					}
+					
+					
+				});
+				
+			$("#l_feilei").append(str);
+				$('#yhb-fenlei').flexslider(
+						{
+							slideshow: false,
+							directionNav : false,
+							controlNav : true,
+							//playAfterPaused : 1000000,
+							before : function(slider) {
+								if (slider._pausedTimer) {
+									window
+											.clearTimeout(slider._pausedTimer);
+									slider._pausedTimer = null;
+								}
+							},
+							after : function(slider) {
+								var pauseTime = slider.vars.playAfterPaused;
+								if (pauseTime
+										&& !isNaN(pauseTime)
+										&& !slider.playing) {
+									if (!slider.manualPause
+											&& !slider.manualPlay
+											&& !slider.stopped) {
+										slider._pausedTimer = window
+												.setTimeout(
+											function() {
+													slider.play();
+														},
+											pauseTime);
+									}
+								}
+							}
+						// 设置其他参数
+						});
 				var erjihuodongTOPlist = json.erjihuodongTOPlist;
 				if(erjihuodongTOPlist == null || erjihuodongTOPlist == "" || erjihuodongTOPlist == undefined){
 					$('#l_gg').append("<li style='width: 100%; float: left;margin-top: 3em; ' class='am-active-slide'><a ><img src='img/zanwu.jpg'/></a></li>");

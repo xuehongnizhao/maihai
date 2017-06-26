@@ -99,12 +99,12 @@
                         <span style="font-size: 0.8em;color:#999999;">{{val.dizhi}}</span>
                     </div>
                     <div class="am-u-sm-7" style="font-size: 0.8em;padding:8px 0;margin-bottom:10px;">
-                        <div onclick="cancelLove('{{val.shanghuID}}')" style=" background-color: orange;height: 2.5em;width: 8em;border-radius: 4px;line-height: 2.5em;color: white;text-align: center;">
+                        <div onclick="cancelLove('{{val.shanghuID}}')" style=" background-color: #c62d1e;height: 2.5em;width: 8em;border-radius: 4px;line-height: 2.5em;color: white;text-align: center;">
                             取消收藏
                         </div>
                     </div>
                     <div class="am-u-sm-5" style="font-size: 0.8em;padding:0; margin-top: 1.5em;">
-                        <div style="font-size: 1em;color:#999999;">
+                        <div style="font-size: 1em;color:#c62d1e;">
                             已售: <span>{{if val.yishou == "" }} 0 {{else}} {{val.yishou}}{{/if}}
                         </span>
                         </div>
@@ -195,6 +195,9 @@
                         token: token
                     },
                     success: function(json) {
+                    	if(!checktoken(json)){
+                    		return; 
+                    	}
                         if (json.success) {
                             $('#errmsg').text("成功取消收藏");
                             $('#my-alert').modal();

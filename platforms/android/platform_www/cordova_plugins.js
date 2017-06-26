@@ -227,6 +227,34 @@ module.exports = [
         "clobbers": [
             "CameraPopoverHandle"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-alipay-v2/www/alipay.js",
+        "id": "cordova-plugin-alipay-v2.alipay",
+        "clobbers": [
+            "cordova.plugins.alipay"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-wechat/www/wechat.js",
+        "id": "cordova-plugin-wechat.Wechat",
+        "clobbers": [
+            "Wechat"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-phonecaller/www/phonecaller.js",
+        "id": "cordova-plugin-phonecaller.PhoneCaller",
+        "clobbers": [
+            "PhoneCaller"
+        ]
+    },
+    {
+        "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+        "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+        "clobbers": [
+            "cordova.plugins.barcodeScanner"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -239,7 +267,12 @@ module.exports.metadata =
     "cordova-plugin-file": "4.1.1",
     "cordova-plugin-device": "1.1.6",
     "com.percolatestudio.cordova.fileupload": "0.2.0",
-    "cordova-plugin-camera": "2.1.1"
+    "cordova-plugin-camera": "2.1.1",
+    "cordova-plugin-alipay-v2": "0.0.3",
+    "cordova-plugin-wechat": "1.4.0",
+    "cordova-plugin-phonecaller": "0.0.2",
+    "cordova-plugin-compat": "1.1.0",
+    "phonegap-plugin-barcodescanner": "6.0.6"
 };
 // BOTTOM OF METADATA
 });

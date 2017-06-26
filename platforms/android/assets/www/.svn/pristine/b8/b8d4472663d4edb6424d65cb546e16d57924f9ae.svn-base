@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>Insert title here</title>
+    <script src="js/include.js"></script>
+    <link>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    hr {
+        margin: 0.3em 0em;
+        padding: 0px;
+        border-top: 1px solid #e8e8e8;
+    }
+    
+    .item {
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    .icon-fanhuijiantou1 {
+        color: #fff;
+        line-height: 49px;
+        margin-left: 10px;
+    }
+    
+    .am-img-thumbnail {
+        border: 5px solid #b2d7ff;
+        width: 74px;
+        height: 74px;
+        margin: 0 auto;
+        display: block;
+    }
+    
+    .am-g {
+        position: relative;
+    }
+    
+    .after {
+        background: url(img/bg-2.png) repeat-x;
+        width: 100%;
+        height: 32px;
+        position: absolute;
+        bottom: -15px;
+        left: 0
+    }
+    
+    .pinglun {
+        border-bottom: 1px solid #cccbc8;
+        padding-bottom: 25px;
+        padding-top: 30px
+    }
+    
+    .dingdan {
+        background-color: #f5f4f0;
+        border-radius: 5px;
+        margin-top: 25px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    
+    .dingdan .am-u-sm-2 {
+        height: 50px;
+        width: 50px;
+        display: block;
+        float: left;
+        margin-right: 10px;
+        border-radius: 5px;
+    }
+    
+    .am-u-sm-3 {
+        position: absolute;
+        top: 50%;
+        margin-top: -15px;
+        right: 0;
+        font-weight: bold
+    }
+    
+    .am-u-sm-3 p {
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body style="background:#fff;">
+    <header>
+        <div data-am-widget="header" class="am-g" style="height: 11em;background-color:#84bcf9">
+            <div class="am-header-left am-header-nav">
+                <a href="javascript:mi_exit(-1);" style="text-align: left">
+                    <i class="iconfont icon-fanhuijiantou1"></i>
+                </a>
+            </div>
+            <img id="userIcon" class="am-img-thumbnail am-circle" src='' />
+            <span id="nickName" style="margin: 0 auto;padding-top:10px;color: white;display: block;text-align: center;font-weight: bold;text-shadow: 1px 1px 0 #577ba3; "></span>
+        </div>
+    </header>
+    <div class="after">
+        <p></p>
+    </div>
+    <div id="d_comment">
+      <script id="s_comment" type="text/html">
+      {{if  wodepingjiaList.size >0}}
+        {{each wodepingjiaList as val i}}
+         <div class="am-u-sm-12 pinglun" style="padding-top: 40px;">
+            <div class="am-u-sm-2" style="padding:3px;border:1px solid #8dc1f9;border-radius: 50%;width: 48px;float:left">
+                <img id="userIcon" class="am-img-thumbnail am-circle" src="{{userIcon}}" style="border:1px solid #8dc1f9;width:40px;height:40px;" />
+            </div>
+            <div class="am-u-sm-10" style="float:left;padding-right: 0;">
+                <span style="color:#fbb111;font-size: 18px;font-weight: bold; display: inherit;margin-top: 10px;margin-bottom: 10px;">{{nickName}}</span>
+                <span style="display: block;text-align: justify;">{{val.pinglunneirong}}</span>
+                <br>
+                <span style="color:#4887c7;font-weight: bold;margin-right: 10px; text-align: justify;">商家回复:</span><span>{{val.huifuneirong}}</span>
+                <div class="am-u-sm-12 dingdan">
+                    <div class="am-u-sm-2" style="padding:0 0 0 0;float:left">
+                        <img style="width: 50px;height: 50px" src="{{imgurl+val.tupiandizhi}}">
+                    </div>
+                    <div class="am-u-sm-6" style="padding:0 0 0 0px;float:left;width: 70%;">
+                        <span style="font-size: 8px"> {{val.mingcheng}}}</span>
+                        <br>
+                        <span style="font-size: 8px;color:#9b9b9b"> 下单时间 : {{val.xiadanriqi}}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="am-u-sm-12" style="font-size: 16px;text-align: center;margin-top: 3em">暂无评论</div>
+        {{/if}}
+      </script>
+    </div>
+     
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsg"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript ">
+    var token = localStorage.getItem("token");
+    var userid = localStorage.getItem("userid");
+    jQuery(document).ready(function() {
+        if (localStorage.getItem("userIcon")=="") {
+            
+            localStorage.setItem("userIcon","touxiang.jpg")
+        }
+        $("#userIcon").attr('src', imgurl + localStorage.getItem("userIcon"));
+        $("#nickName").html(localStorage.getItem("nickName"));
+        loadData();
+    });
+
+    function loadData() {
+        $.ajax({
+            type: "post ",
+            url: baseurl("APPWODEPINGJIA.do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "mcld",
+            data: {
+                yonghuID: userid,
+                token: token
+            },
+            success: function(json) {
+                 if (!checktoken(json)) {
+                    return;
+                }
+                if (json.success) {
+                    json.imgurl = imgurl;
+                    json.userIcon = imgurl + localStorage.getItem("userIcon");
+                    json.nickName = localStorage.getItem("nickName")
+                   
+                    var html = template('s_comment', json);
+                    $("#d_comment").html(html);
+                } else {
+                    $('#errmsg').text(json.message);
+                    $('#my-alert').modal();
+
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试 ");
+                $('#my-alert').modal();
+
+            }
+        });
+    }
+    </script>
+</body>
+
+</html>

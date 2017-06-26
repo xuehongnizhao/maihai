@@ -58,6 +58,7 @@
         outline: none;
         padding-left: 1em;
         width: 73%;
+        float:left;
     }
     
     .item-label {
@@ -74,7 +75,7 @@
     }
     
     .am-header-default .am-header-nav {
-        color: #87bef9;
+        color: #fff;
     }
     
     input[type=checkbox],
@@ -147,10 +148,9 @@
     }
     
     .item-label {
-        text-align: justify;
-        text-align-last: justify;
         width: 65px;
         float: left;
+        text-align: left;
     }
     </style>
 </head>
@@ -165,35 +165,30 @@
         <h1 class="am-header-title" style="font-size: 16px;">修改收货地址</h1>
         <div class="am-header-right am-header-nav" onclick="addAddrSubmit()">确定</div>
     </header>
-    <div class="am-u-sm-12" style="border: none; background: white">
-        <div class="am-u-sm-12 " style="background:white;padding-left: 0px; padding-right: 0px; padding-top: 0.5em; padding-bottom: 0.5em; padding-left: 0.5em;border:border-bottom:1px #eee solid">
+    <div class="am-u-sm-12"style="background-color: white;padding-bottom:10px;margin-top: 10px;line-height: 3em;width: 95%;padding:0; margin:10px 2.5% 10px;">
+        <div class="am-u-sm-12 " style="background:white;padding-top: 0.5em;border-bottom:1px solid #e0e3e5;padding-left:10px;padding-bottom: 0.5em;">
             <label for="addrdetails" class="item-label">收货人</label>
             <input name="contact" placeholder="最少两个字" id="contact" class="item-input">
         </div>
-        <div class="am-u-sm-12 line" style="margin-left:2.5vw;width:100%;border-top:1px #e4e4e4 solid;border-bottom:none"></div>
-        <div class="am-u-sm-12 " style="background:white;padding-left: 0px; padding-right: 0px; padding-top: 0.5em; padding-bottom: 0.5em; padding-left: 0.5em;border:border-bottom:1px #eee solid">
+        <div class="am-u-sm-12 " style="background:white;padding-top: 0.5em;border-bottom:1px solid #e0e3e5;padding-left:10px;padding-bottom: 0.5em;">
             <label for="addrdetails" class="item-label">手机号</label>
             <input name="phone" placeholder="不少于11位" id="phone" class="item-input">
         </div>
-        <div class="am-u-sm-12 line" style="margin-left:2.5vw;width:100%;border-top:1px #e4e4e4 solid;border-bottom:none"></div>
-        <div class="am-u-sm-12 " style="padding-left: 0px; padding-right: 0px; padding-top: 0.5em; padding-bottom: 0.5em; padding-left: 0.5em;border:none;">
+        <div class="am-u-sm-12 "  style="background:white;padding-top: 0.5em;border-bottom:1px solid #e0e3e5;padding-left:10px;padding-bottom: 0.5em;">
             <label for="prov" class="item-label">省份</label>
             <input id="prov" class="select_class " value="" readonly>
         </div>
-        <div class="am-u-sm-12 line" style="margin-left:2.5vw;width:100%;border-top:1px #e4e4e4 solid;border-bottom:none"></div>
-        <div class="am-u-sm-12 " style="padding-left: 0px; padding-right: 0px; padding-top: 0.5em; padding-bottom: 0.5em; padding-left: 0.5em;border:none;">
+        <div class="am-u-sm-12 " style="background:white;padding-top: 0.5em;border-bottom:1px solid #e0e3e5;padding-left:10px;padding-bottom: 0.5em;">
             <label for="city" class="item-label">城市</label>
             <input id="city" class="select_class" value="" readonly>
         </div>
-        <div class="am-u-sm-12 line" style="margin-left:2.5vw;width:100%;border-top:1px #e4e4e4 solid;border-bottom:none"></div>
-        <div class="am-u-sm-12 " style="padding-left: 0px; padding-right: 0px; padding-top: 0.5em; padding-bottom: 0.5em; padding-left: 0.5em;border:none;">
+        <div class="am-u-sm-12 " style="background:white;padding-top: 0.5em;border-bottom:1px solid #e0e3e5;padding-left:10px;padding-bottom: 0.5em;">
             <label for="dist" class="item-label">地区</label>
             <input id="dist" areaid="" value="" class="select_class" readonly>
         </div>
-        <div class="am-u-sm-12 line" style="margin-left:2.5vw;width:100%;border-top:1px #e4e4e4 solid;border-bottom:none"></div>
-        <div class="am-u-sm-12 " style="background:white;padding-left: 0px; padding-right: 0px; padding-top: 0.5em; padding-bottom: 0.5em; padding-left: 0.5em;border:border-bottom:1px #eee solid">
-            <label for="addrdetails" class="item-label">详细地址</label>
-            <input name="addrdetails" placeholder="输入详细地址" id="addrdetails" class="item-input">
+        <div class="am-u-sm-12 " style="background:white;padding-top: 0.5em;padding-left:10px;padding-bottom: 0.5em;">
+            <label for="addrdetails" class="item-label">地址</label>
+            <input name="addrdetails" placeholder="输入详细地址" id="addr" class="item-input">
         </div>
     </div>
     <div id="d_prov">
@@ -210,23 +205,21 @@
                     </ul>
                 </div>
             </div>
-            </script>
-            </div>
-            <div class="am-modal-actions" id="modal_city" style="max-height: 80%;overflow:auto;">
-                <div class="am-modal-actions-group margin">
-                    <ul id="u-city" class="am-list">
-                        
-                    </ul>
-                </div>
-            </div>
-            <div class="am-modal-actions" id="modal_dist" style="max-height: 80%;overflow:auto;">
-                <div class="am-modal-actions-group margin">
-                    <ul id="u-dist" class="am-list">
-                        
-                    </ul>
-                </div>
-            </div>
-            <span class="am-form-caret"></span>
+        </script>
+    </div>
+    <div class="am-modal-actions" id="modal_city" style="max-height: 80%;overflow:auto;">
+        <div class="am-modal-actions-group margin">
+            <ul id="u-city" class="am-list">
+            </ul>
+        </div>
+    </div>
+    <div class="am-modal-actions" id="modal_dist" style="max-height: 80%;overflow:auto;">
+        <div class="am-modal-actions-group margin">
+            <ul id="u-dist" class="am-list">
+            </ul>
+        </div>
+    </div>
+    <span class="am-form-caret"></span>
     <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
         <div class="am-modal-dialog">
             <div class="am-modal-hd"></div>
@@ -243,9 +236,9 @@
 var token = localStorage.getItem("token");
 var userid = localStorage.getItem("userid");
 var shangpinID = getParameter("goodsID");
-var provID = 0;
-var cityID = 0;
-var areaID = 0;
+var provID = 230000;
+var cityID = 230100;
+var areaID = 230101;
 
 jQuery(document).ready(function() {
     loadData();
@@ -262,18 +255,24 @@ function loadData() {
         data: {
             yonghuID: userid,
             token: token,
-            shangpinID:shangpinID
+            shangpinID: shangpinID
         },
         success: function(json) {
             if (!checktoken(json)) {
                 return;
             }
             if (json.success) {
+
                 areaID = json.AreaId;
                 provID = json.ProId;
                 cityID = json.CityId;
-                defaultCityList(json.ProId);
-                defaultDistList(json.CityId);
+                if (stringNull(areaID) || stringNull(provID) || stringNull(cityID)) {
+                    provID = 230000;
+                    cityID = 230100;
+                    areaID = 230101;
+                }
+                defaultCityList(provID);
+                defaultDistList(cityID);
                 $("#contact").val(json.lianxiren);
                 $("#phone").val(json.lianxidianhua);
                 if (stringNull(json.prov)) {
@@ -283,18 +282,18 @@ function loadData() {
                 }
 
                 $("#city").val(json.city);
-                  if (stringNull(json.city)) {
+                if (stringNull(json.city)) {
                     $("#city").val("哈尔滨");
                 } else {
                     $("#city").val(json.city);
                 }
                 $("#dist").val(json.area);
-                  if (stringNull(json.area)) {
-                    $("#dist").val("南岗区");
+                if (stringNull(json.area)) {
+                    $("#dist").val("市辖区");
                 } else {
                     $("#dist").val(json.area);
                 }
-                $("#addrdetails").val(json.dizhi);
+                $("#addr").val(json.xiangxidizhi);
 
             }
         },
@@ -318,7 +317,7 @@ function getAddrInfo() {
             var html = template('s_prov', json)
 
             $('#d_prov').html(html);
-            
+
         },
         error: function() {}
     });
@@ -344,7 +343,7 @@ function addAddrSubmit() {
         showalert("手机号不能为空!");
         return;
     }
-    if (isNull("#addrdetails")) {
+    if (isNull("#addr")) {
         showalert("详细地址不能为空!");
         return;
     }
@@ -359,7 +358,7 @@ function addAddrSubmit() {
         showalert("所在地区不能为空!");
         return;
     }
-    
+
     if (!(/^1[3|4|5|7|8][0-9]\d{4,8}$/.test($("#phone").val()))) {
         showalert("请输入正确的手机号");
         return;
@@ -376,16 +375,16 @@ function addAddrSubmit() {
             proId: provID,
             cityId: cityID,
             areaId: areaID,
-            dizhi: $("#addrdetails").val(),
+            dizhi: $("#addr").val(),
             lianxiren: $("#contact").val(),
             lianxidianhua: $("#phone").val()
 
         },
         success: function(json) {
             if (json.success) {
-               window.history.back();
-            }else{
-                showalert("json.message"); 
+                window.history.back();
+            } else {
+                showalert("json.message");
             }
         },
         error: function() {
@@ -420,6 +419,7 @@ function defaultCityList(pid) {
     });
 
 }
+
 function defaultDistList(cid) {
     $.ajax({
         type: "post",

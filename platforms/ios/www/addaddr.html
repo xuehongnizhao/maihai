@@ -49,6 +49,7 @@ body, html {
 }
 
 .item-input {
+	float:left;
 	height: 2.5em;
 	line-height: 2.5em;
 	border: 0px;
@@ -67,7 +68,7 @@ body, html {
 	text-align: center;
 	line-height: 2.5em;
 	font-weight: normal;
-	color: #72777a;
+	color: #6a6e71;
 	margin-bottom: 0;
 }
 
@@ -75,7 +76,7 @@ body, html {
 margin: 0 15%;
 }
 .am-header-default .am-header-nav {
-	color: #87bef9;
+	color: #fff;
 }
 
 input[type=checkbox],
@@ -147,11 +148,19 @@ input[type=checkbox],
     	
     }
     .item-label{
-    	text-align: justify;
-    	text-align-last: justify;
+    	text-align: left;
     	width: 65px;
     	float:left;
     }
+    input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #d3d3d3;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #d3d3d3;
+}
 </style>
 
 </head>
@@ -164,20 +173,19 @@ input[type=checkbox],
 			</a>
 		</div>
 		<h1 class="am-header-title" style="font-size: 16px;">新增收货地址</h1>
-		<div class="am-header-right am-header-nav" onclick="addAddrSubmit()">保存</div>
+		<div class="am-header-right am-header-nav" onclick="addAddrSubmit()">确定</div>
 	</header>
-	<div class="am-u-sm-12" style="border: none; background: white">
-		<div class="am-u-sm-12 " style="background:white;padding-left: 0px; padding-right: 0px; padding-top: 0.5em; padding-bottom: 0.5em; padding-left: 0.5em;border:border-bottom:1px #eee solid">
+	<div class="am-u-sm-12" style="background-color: white;padding-bottom:10px;margin-top: 10px;line-height: 3em;width: 95%;padding:0; margin:10px 2.5% 10px;">
+		<div class="am-u-sm-12 " style="background:white;padding-top: 0.5em;border-bottom:1px solid #e0e3e5;padding-left:10px;padding-bottom: 0.5em;">
 			<label for="addrdetails" class="item-label">收货人</label> 
 			<input name="contact" placeholder="最少两个字" id="contact" areaid="" class="item-input">
 		</div>
-		<div class="am-u-sm-12 line" style="margin-left:2.5vw;width:100%;border-top:1px #e4e4e4 solid;border-bottom:none"></div>
-		<div class="am-u-sm-12 " style="background:white;padding-left: 0px; padding-right: 0px; padding-top: 0.5em; padding-bottom: 0.5em; padding-left: 0.5em;border:border-bottom:1px #eee solid">
+		
+		<div class="am-u-sm-12 " style="background:white;padding-top: 0.5em;border-bottom:1px solid #e0e3e5;padding-left:10px;padding-bottom: 0.5em;">
 			<label for="addrdetails" class="item-label">手机号</label> 
 			<input name="phone" placeholder="不少于11位" id="phone" areaid="" class="item-input" >
 		</div>
-		<div class="am-u-sm-12 line" style="margin-left:2.5vw;width:100%;border-top:1px #e4e4e4 solid;border-bottom:none"></div>
-		<div class="am-u-sm-12 " style="padding-left: 0px; padding-right: 0px; padding-top: 0.5em; padding-bottom: 0.5em; padding-left: 0.5em;border:none;">
+		<div class="am-u-sm-12 " style="background:white;padding-top: 0.5em;border-bottom:1px solid #e0e3e5;padding-left:10px;padding-bottom: 0.5em;">
 			<label for="prov" class="item-label">地区</label> 
 			<input id="prov" class="select_class " value="" readonly>
 		</div>
@@ -189,13 +197,11 @@ input[type=checkbox],
 			<label for="dist" class="item-label">地区</label> 
 			<input name="areaid" id="dist" areaid="" class="select_class" readonly>
 		</div>
-		<div class="am-u-sm-12 line" style="margin-left:2.5vw;width:100%;border-top:1px #e4e4e4 solid;border-bottom:none"></div>
-		<div class="am-u-sm-12 " style="background:white;padding-left: 0px; padding-right: 0px; padding-top: 0.5em; padding-bottom: 0.5em; padding-left: 0.5em;border:border-bottom:1px #eee solid">
+		<div class="am-u-sm-12 " style="background:white;padding-top: 0.5em;border-bottom:1px solid #e0e3e5;padding-left:10px;padding-bottom: 0.5em;">
 			<label for="addrdetails" class="item-label">详细地址</label> 
 			<input name="addrdetails" placeholder="输入详细地址" id="addrdetails" areaid="" class="item-input">
 		</div>
-		<div class="am-u-sm-12 line" style="margin-left:2.5vw;width:100%;border-top:1px #e4e4e4 solid;border-bottom:none"></div>
-		<div class="am-u-sm-12 " style="background:white;padding-left: 0px; padding-right: 0px; padding-top: 0.5em; padding-bottom: 0.5em; padding-left: 0.5em;border:border-bottom:1px #eee solid">
+		<div class="am-u-sm-12 " style="background:white;padding-top: 0.5em;padding-left:10px;padding-bottom: 0.5em;">
 			<label for="addrdetails" class="item-label">邮编</label> 
 			<input name="zipcode" placeholder="6位邮政编码" id="zipcode" areaid="" class="item-input">
 		</div>

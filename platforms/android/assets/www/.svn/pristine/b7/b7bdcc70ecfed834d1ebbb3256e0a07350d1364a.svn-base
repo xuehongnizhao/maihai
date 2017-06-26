@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <title>integralshop</title>
+    <script src="js/include.js"></script>
+    <link>
+    <link href="css/star-rating.css" media="all" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <link href="icon/iconfont.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    .am-header .am-header-title {
+        margin: 0 15%;
+    }
+    
+    hr {
+        margin: 0.3em 0em;
+        padding: 0px;
+        border-top: 1px solid #e8e8e8;
+    }
+    
+    .item {
+        margin-top: 1em;
+        width: 100%;
+    }
+    
+    .small {
+        font-size: 1em;
+        padding-left: 1.5em;
+        color: #7a7a7a;
+        line-height: 2em;
+    }
+    
+    .margin {
+        margin: 0em;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav {
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav a {
+        line-height: 42px;
+        color: lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active {
+        position: relative;
+        background-color: white;
+        border-bottom: 1px solid lightgray;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active:after {
+        position: absolute;
+        width: 50%;
+        height: 0;
+        bottom: 0;
+        left: 28%;
+        border: 1px solid deepskyblue;
+        content: "";
+        z-index: 1;
+    }
+    
+    .am-tabs-d2 .am-tabs-nav>.am-active a {
+        line-height: 42px;
+        color: deepskyblue;
+        background: #ffff;
+    }
+    
+    .icon-jilu,
+    .icon-jifen {
+        color: #84bcf9;
+        font-size: 1.8rem;
+        margin-right: 5px;
+        display: inline;
+    }
+    
+    .shangpin {
+        background-color: white;
+        padding: 10px 10px 10px 10px;
+        border-bottom: 1px solid #e5e5e5;
+        border-left: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5;
+        height: 11.5;
+    }
+    
+    .shangpin img {
+        width: 100%;
+        height: 100px;
+        margin-top: 10px
+    }
+    
+    .shangpin:nth-child(odd) {
+        border-left: none;
+    }
+    </style>
+</head>
+
+<body>
+    <header data-am-widget="header" class="am-header am-header-default am-header-fixed yhb-title">
+        <div class="am-header-left am-header-nav">
+            <a href="javascript:mi_exit(-1);" style="text-align: left">
+                <i class="iconfont icon-fanhuijiantou1"></i>
+            </a>
+        </div>
+        <h1 class="am-header-title" style="font-size: 16px;">积分商城</h1>
+    </header>
+    <div class="am-g" style="background-color: white">
+        <div class="am-u-sm-6" style="height: 2em;padding: 0;text-align:center;border-right: 1px solid #e5e5e5;margin-top: 1em">
+            <i class="iconfont icon-jifen"></i>
+            <span>积分</span>
+            <span id="integralForShop" style="color: red;font-size: 14px"></span>
+        </div>
+        <div class="am-u-sm-6" style="height: 2.5em;text-align:center;margin-top: 1em">
+            <i class="iconfont icon-jilu"></i><span onclick="goToRecord()">兑换记录</span>
+        </div>
+    </div>
+    <div id="d_goods_list" class="am-g" style="background-color: white;margin-top: 1em;border-bottom:1px solid #e5e5e5;">
+        <span style="padding-top: 10px;padding-left:10px;color:#626262;line-height: 3em;height: 3em;">大家都在兑</span>
+    </div>
+    <script type="text/html" id="s_goods_list">
+        {{each jifenshangpinList as val i}}
+        <div onclick="goToDetail({{val.jifenshangpinID}})" class="am-u-sm-6 shangpin">
+            <span style="height: 2em;">
+            &nbsp;&nbsp;{{val.mingcheng}}
+        </span>
+            <br>
+            <span style="color: red;">
+        &nbsp;&nbsp;{{val.jifenjiage}}
+        </span>
+            <span style="color: gray">积分</span>
+            <br>
+            <img src="{{imgurl+val.tupiandizhi}}">
+        </div>
+        {{/each}}
+    </script>
+    <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
+        <div class="am-modal-dialog">
+            <div class="am-modal-hd"></div>
+            <div class="am-modal-bd">
+                <a id="errmsg"></a>
+            </div>
+            <div class="am-modal-footer">
+                <span class="am-modal-btn">确定</span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    var integral = localStorage.getItem("integral");
+    var token = localStorage.getItem("token");
+    var userid = localStorage.getItem("userid");
+    jQuery(document).ready(function() {
+
+        $("#integralForShop").html(integral);
+        loadData();
+    });
+
+    function loadData() {
+        $.ajax({
+            type: "post ",
+            url: baseurl("APPJIFENSHANGCHENG.do"),
+            dataType: "jsonp",
+            jsonp: "callback",
+            jsonpCallback: "isld",
+            data: {
+                pageNO: 1,
+                yonghuID: userid,
+                token: token
+            },
+            success: function(json) {
+                if (!checktoken(json)) {
+                    return;
+                }
+                if (json.success) {
+                    json.imgurl = imgurl;
+                    var html = template('s_goods_list', json);
+                    $("#d_goods_list").html(html);
+                } else {
+                    $('#errmsg').text(json.message);
+                    $('#my-alert').modal();
+
+                }
+            },
+            error: function() {
+                $('#errmsg').text("网络通讯错误,请稍后重试 ");
+                $('#my-alert').modal();
+
+            }
+        });
+    }
+
+    function goToRecord() {
+        window.location.href = "exchangerecord.html";
+    }
+    function goToDetail(goodsID) {
+        window.location.href = "integraldetail.html?goodsID="+goodsID;
+    }
+    </script>
+</body>
+
+</html>

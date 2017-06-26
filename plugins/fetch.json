@@ -82,5 +82,52 @@
         },
         "is_top_level": true,
         "variables": {}
+    },
+    "cordova-plugin-alipay-v2": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-alipay-v2"
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_ID": "2017052607353342"
+        }
+    },
+    "cordova-plugin-wechat": {
+        "source": {
+            "type": "git",
+            "url": "https://github.com/xu-li/cordova-plugin-wechat.git",
+            "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {
+            "WECHATAPPID": "wx26ffe4a65c004585"
+        }
+    },
+    "cordova-plugin-phonecaller": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-phonecaller"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "phonegap-plugin-barcodescanner": {
+        "source": {
+            "type": "registry",
+            "id": "phonegap-plugin-barcodescanner"
+        },
+        "is_top_level": true,
+        "variables": {
+            "CAMERA_USAGE_DESCRIPTION": "扫描二维码"
+        }
+    },
+    "cordova-plugin-compat": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-compat"
+        },
+        "is_top_level": false,
+        "variables": {}
     }
 }

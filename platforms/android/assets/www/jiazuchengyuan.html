@@ -24,10 +24,7 @@
         padding: 0px;
         border-top: 1px solid #e8e8e8;
     }
-    .yhb-title {
-	background:#fff;
-}
-    
+   
     
     .item {
         margin-top: 1em;
@@ -91,7 +88,7 @@
                 <i class="iconfont icon-fanhuijiantou1" style=""></i>
             </a>
         </div>
-        <h1 class="am-header-title" style="font-size: 16px;color: black">家族成员</h1>
+        <h1 class="am-header-title" style="font-size: 16px;color: white">家族成员</h1>
         <div class="am-header-right am-header-nav" onclick="jiazushuoming()">
             <p  style="text-align: left;color: #fff">
             	    家族说明
@@ -99,14 +96,14 @@
         </div>
         
     </header>
-    <div class="am-u-sm-12" style="background-color: #ffffff;">
+    <div class="am-u-sm-12" style="background-color: #ffffff;padding: 0;">
 		<div class="am-u-sm-6" style="border-right: 1px solid #efeeea;margin-top: 10px;margin-bottom: 10px;">
-			<div class="am-u-sm-12">我的成员</div>
-			<div class="am-u-sm-12"><span id = "jiazu" style="color: #ff0000"></span>位</div>
+			<div class="am-u-sm-12" style="text-align: center;">我的成员(位)</div>
+			<div class="am-u-sm-12" style="text-align: center;"><span id = "jiazu" style="color: #ff0000"></span></div>
 		</div>
 		<div class="am-u-sm-6" style="margin-top: 10px;margin-bottom: 10px;">
-			<div class="am-u-sm-12">带来收益</div>
-			<div class="am-u-sm-12"><span id = "shouyi" style="color: #ff0000"></span>积分</div>
+			<div class="am-u-sm-12" style="text-align: center;">带来收益(积分)</div>
+			<div class="am-u-sm-12" style="text-align: center;"><span id = "shouyi" style="color: #ff0000"></span></div>
 		</div>
 	
 	</div>
@@ -116,17 +113,13 @@
 	</div>
 	  
 	  
-	<div class="am-modal-actions" id="modal_city" style="max-height: 80%;overflow:auto;">
+	<div class="am-modal-actions" id="modal_share" style="max-height: 80%;overflow:auto;">
                 <div class="am-modal-actions-group margin">
                     <ul id="u-list" class="am-list">
-                        <li style = "height:3em;line-height:3em;border-bottom:1px #ededed solid;border-top:none;" onclick="weixin()"> 
-                        <span style = "display:block;">微信</span>
-                        </li>
-                        <li style = "height:3em;line-height:3em;border-bottom:1px #ededed solid;border-top:none;" onclick="pengyou()"> 
-                        <span style = "display:block;">朋友圈</span>
-                        </li>
+                        <li style = "height:3em;line-height:3em;border-bottom:1px #ededed solid;border-top:none;" val="分享给好友" onclick="shareTypeitemClick('0')"> <span style = "display:block;">分享给好友</span></li>
+					<li style = "height:3em;line-height:3em;border-bottom:1px #ededed solid;border-top:none;" val="分享到朋友圈" onclick="shareTypeitemClick('1')"> <span style = "display:block;">分享到朋友圈</span></li>
                         <li style="border: none;">
-                        	<button class="am-btn am-btn-secondary am-btn-block" style = "height:3em;background:white;color:#4489ce;border:none;" onclick="closemodal()">
+                        	<button class="am-btn am-btn-secondary am-btn-block" style = "height:3em;background:white;color:#4489ce;border:none;" onclick="closemodal('#modal_share')">
                         	取消</button>
                         </li>
                     </ul>
@@ -134,7 +127,7 @@
      </div>
     <header id="hid2" class="am-topbar am-topbar-inverse am-topbar-fixed-bottom " style="border-top: 1px #dfdfdf solid ; background-color;">
 			<div data-am-widget="navbar" class="am-navbar  am-navbar-default " onclick="fenxiang()">
-				<img class="am-img-responsive" alt="" src="img/cy.png" style="height: inherit;">
+				<img class="am-img-responsive" alt="" src="img/cy.png" style="height:100%;width: 100%;">
 			</div>
 	</header>
     
@@ -167,7 +160,7 @@
     				<tr style="border: none;">
 						<td>{{val.createDate}}</td>
 						<td>{{val.phone}}</td>
-						<td style="color:#ff0000">{{val.jifen}}</td>
+						<td style="color:#ff0000">{{val.jifen}} 积分</td>
 					</tr>					
 				{{/each}}
 				</tbody>
@@ -180,20 +173,34 @@
     <script type="text/javascript">
     var token = localStorage.getItem("token");
     var userid = localStorage.getItem("userid");
+    var shareUrl=baseurl("APPSHARE.do?yaoqingrenID=") + userid+ "&type=yonghu";
+    var actIntroduce = "邀请注册";
     jQuery(document).ready(function() {
     	jiazu();
     	jiazushouyi();
     });
-    
-    
-    function fenxiang() {
-    	$('#modal_city').modal();
-	}
-    function jiazushuoming() {
-    	$('#errmsg').text("收藏成功");
-        $('#my-alert').modal();
-	}
-    
+    var wechatInstalled = 0;
+	document.addEventListener("deviceready", onDeviceReady, false);
+	function onDeviceReady(){
+		Wechat.isInstalled(function (installed) {
+		    if(installed){
+		    	wechatInstalled = 1;
+		    }else{
+		    	wechatInstalled = 0;
+		    }
+		}, function (reason) {
+			wechatInstalled = 0;
+		});
+	}   
+    $('#hid2').click(function () {
+		if(wechatInstalled == 0){
+			$('#errmsg').text("暂无分享路径 ");
+            $('#my-alert').modal();
+			return ;
+		}
+		$('#modal_share').modal();
+		
+	});
     function jiazu() {
         $.ajax({
             type: "post",
@@ -245,10 +252,39 @@
             }
         });
     };
-    function closemodal() {
-    	$('#modal_city').modal('close');
-    }
-
+    function closemodal(id) {
+		$(id).modal('close');
+	}
+    function shareTypeitemClick(shareType){
+		share(shareType,userid,actIntroduce,shareUrl);	
+	}
+    function share(type,userid,wxdesc,wxurl){
+		var wxscene = Wechat.Scene.TIMELINE;
+		if(type == 2){		
+			return;
+		}else{
+			if (type == 0){wxscene = Wechat.Scene.SESSION}
+			if (type == 1){wxscene = Wechat.Scene.TIMELINE}
+		}
+		Wechat.share({
+		    message: {
+		    	title: wxdesc,
+				description: wxdesc,
+		        thumb: baseurl('img/thumb.jpg'),
+				messageExt: "邀请分享",
+		        media: {
+		        	type: Wechat.Type.WEBPAGE,
+		        	webpageUrl:wxurl	        	
+		        }
+		    },
+		    scene: wxscene   // share to Timeline
+		}, function () {
+			$('#errmsg').text("分享成功");
+            $('#my-alert').modal();	
+		}, function (reason) {
+		});
+		closemodal('#modal_share');
+	}
     </script>
 </body>
 
