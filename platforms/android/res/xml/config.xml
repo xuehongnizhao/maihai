@@ -1,44 +1,47 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.feishang.maihai" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="FileUpload">
+        <param name="android-package" value="com.percolatestudio.cordova.fileupload.PSFileUpload" />
+    </feature>
+    <feature name="alipay">
+        <param name="android-package" value="cn.hhjjj.alipay.alipay" />
+    </feature>
+    <feature name="BaiduMapLocation">
+        <param name="android-package" value="com.aruistar.cordova.baidumap.BaiduMapLocation" />
+    </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
     <feature name="Notification">
         <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <feature name="PhoneCaller">
+        <param name="android-package" value="io.codebakery.phonecaller.PhoneCaller" />
     </feature>
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="Wechat">
+        <param name="android-package" value="xu.li.cordova.wechat.Wechat" />
+    </feature>
+    <preference name="WECHATAPPID" value="wx26ffe4a65c004585" />
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="BaiduMapLocation">
-        <param name="android-package" value="com.aruistar.cordova.baidumap.BaiduMapLocation" />
-    </feature>
-    <feature name="File">
-        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Device">
-        <param name="android-package" value="org.apache.cordova.device.Device" />
-    </feature>
-    <feature name="FileUpload">
-        <param name="android-package" value="com.percolatestudio.cordova.fileupload.PSFileUpload" />
-    </feature>
-    <feature name="Camera">
-        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
-    </feature>
-    <feature name="alipay">
-        <param name="android-package" value="cn.hhjjj.alipay.alipay" />
-    </feature>
-    <feature name="Wechat">
-        <param name="android-package" value="xu.li.cordova.wechat.Wechat" />
-    </feature>
-    <feature name="PhoneCaller">
-        <param name="android-package" value="io.codebakery.phonecaller.PhoneCaller" />
-    </feature>
     <feature name="BarcodeScanner">
         <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
     </feature>
+    <allow-intent href="market:*" />
     <name>买嗨</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -54,9 +57,6 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <allow-intent href="market:*" />
-    <preference name="loglevel" value="DEBUG" />
-    <preference name="WECHATAPPID" value="wx26ffe4a65c004585" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Orientation" value="portrait" />

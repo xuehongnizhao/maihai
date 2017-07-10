@@ -25,19 +25,20 @@ function getParameter(param){
 } 
 
 
-
+//ios中删除以下内容
 var updateUrl ;
 var serverVersion;
 function checkUpdate(curversion){
 	$.ajax({
 		type : "post",
-		url : url("AppVersion.getVersion"),
+		url : baseurl("APPHUOQUBANBENXINXI.do?leixing=maihai"),
 		dataType : "jsonp",
 		jsonp : "callback",
 		jsonpCallback : "version",
 		success : function(json) {
-			updateUrl = json.ver[0].file;
-			serverVersion = json.ver[0].versioncode;
+			updateUrl = json.huqubanbenxinxi[0].filepath+json.huqubanbenxinxi[0].filename;
+			serverVersion = json.huqubanbenxinxi[0].versioncode;
+			console.log(updateUrl + serverVersion);
 			if (serverVersion > curversion) {
 				showAppUpdateConfirm();
 			}
@@ -60,10 +61,13 @@ function showAppUpdateConfirm() {
    navigator.notification.confirm(
        '有新版本，是否升级？',  // message
        updateApp,            // callback function
-       '优惠宝',               // title
+       '买嗨',               // title
        '是,否'              // confirm 選項，用逗號隔開
 	);
 }
+//ios中删除以上内容
+
+
 function initPush(){
 	
 }

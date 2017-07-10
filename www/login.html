@@ -132,7 +132,7 @@
                         <input type="button" name="" value="登 录" onclick="loginP()" class="am-btn am-btn-sm am-fl" style="outline: none;">
                     </div>
                     <div class="am-u-sm-12" style="padding:0">
-                        <span style="font-size: 14px">登录即视为同意</span><a href="userAgreement.html" style="font-size: 14px;color: #c62d1e">《"买嗨"用户协议》</a>
+                        <span style="font-size: 14px">登录即视为同意</span><a onclick="goToUserAgreement()" style="font-size: 14px;color: #c62d1e">《"买嗨"用户协议》</a>
                     </div>
                 </div>
                 <div data-tab-panel-1 class="am-tab-panel am-active">
@@ -154,7 +154,7 @@
                         <input type="button" name="" value="登 录" onclick="loginC()" class="am-btn am-btn-sm am-fl" style="outline: none;">
                     </div>
                     <div style="padding:0" class="am-u-sm-12">
-                        <span style="font-size: 14px">登录即视为同意</span><a href="userAgreement.html" style="font-size: 14px;color: #c62d1e">《"买嗨"用户协议》</a>
+                        <span style="font-size: 14px">登录即视为同意</span><a onclick="goToUserAgreement()" style="font-size: 14px;color: #c62d1e">《"买嗨"用户协议》</a>
                     </div>
                 </div>
             </div>
@@ -337,15 +337,15 @@
             }
         });
     }
+    function goToUserAgreement() {
+        window.location.href =baseurl("app/userAgreement.html");
+    }
     </script>
     <script type="text/javascript">
     function clickButton(obj) {
         phoneNumber = $("#phoneNumber").val();
         if (checkMobile(phoneNumber)) {
             var obj = $(obj);
-            if (s) {
-                expression
-            }
             obj.attr("disabled", "disabled"); /*按钮倒计时*/
             var time = 60;
             var set = setInterval(function() {

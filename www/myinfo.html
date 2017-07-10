@@ -115,7 +115,7 @@
             <div style="font-size: 12px;width: 100%;color:white ;float: left;margin: 42px 0 0 2em">
                 <b id="yu_e" hidden>余额:  </b>
                 <div></div>
-                <b id="integral" hidden>积分:  </b>
+                <b id="integral" hidden>嗨币:  </b>
             </div>
 
         </div>
@@ -146,11 +146,13 @@
         <div class="am-u-sm-6" onclick="familyMenber()" style="border-right: 1px solid gray;height: 85%;width: 50%;margin-top: 2.5%">
             <i class="iconfont icon-chengyuan haicolor" style="font-size: 2.5em; float: left;margin-left: 10px"></i>
             <div style="float: right; margin-top: 10px;margin-right: 20px ;font-size: 14px">家族成员</div>
+            <br>
             <div style="float: right; margin-right: 20px ;"><span class="haicolor" id="jiazuchengyuan">0</span> 位</div>
         </div>
         <div class="am-u-sm-6" style="height: 85%;width: 50%;margin-top: 2.5%" onclick="growFamily()">
             <i class="iconfont icon-jiazu haicolor" style="font-size: 2.5em; float: left;"></i>
             <div style="float: left; font-size: 14px;margin-top: 10px;margin-left: 5px">壮大家族</div>
+            <br>
             <u style="float: left; font-size: 12px;margin: 5px">如何壮大家族?</u>
         </div>
     </div>
@@ -186,19 +188,19 @@
     </div>
     <div class="doc-group " style="background-color: white;padding-bottom:10px;margin-top: 10px;line-height: 3em;width: 95%;padding:0; margin:10px 2.5% 0px;border-bottom:1px solid #e0e3e5">
         <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="integralshop() ">
-            <i class="iconfont icon-shangcheng left haicolor"></i>积分商城
+            <i class="iconfont icon-shangcheng left haicolor"></i>嗨币商城
             <i class="iconfont icon-fanhuijiantou "></i>
         </div>
     </div>
     <div class="doc-group " style="background-color: white;padding-bottom:10px;margin-top: 10px;line-height: 3em;width: 95%;padding:0; margin:0px 2.5% 0px;border-bottom:1px solid #e0e3e5">
         <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="integralrule() ">
-            <i class="iconfont icon-jifenshuoming left haicolor"></i>积分规则
+            <i class="iconfont icon-jifenshuoming left haicolor"></i>嗨币规则
             <i class="iconfont icon-fanhuijiantou "></i>
         </div>
     </div>
     <div class="doc-group " style="background-color: white;padding-bottom:10px;margin-top: 10px;line-height: 3em;width: 95%;padding:0; margin:0px 2.5% 10px;">
         <div id="p " style="margin-left:1em;height:3em;line-height:3em;color: black " onclick="jifenzhuanrang() ">
-            <i class="iconfont icon-duihuan left haicolor"></i>积分转让
+            <i class="iconfont icon-duihuan left haicolor"></i>嗨币转让
             <i class="iconfont icon-fanhuijiantou "></i>
         </div>
     </div>
@@ -312,7 +314,7 @@
                 <input id='beizhuanrangren' class="am-jifenzhuanyi-input" placeholder="被转让人手机号">
             </div>
             <div class="am-u-sm-12">
-                <input id='beizhuanrangjifen' onkeyup="this.value=this.value.replace(/\D/g,'')" class="am-jifenzhuanyi-input" placeholder="转让积分额度">
+                <input id='beizhuanrangjifen' onkeyup="this.value=this.value.replace(/\D/g,'')" class="am-jifenzhuanyi-input" placeholder="转让嗨币额度">
             </div>
             <div class="am-modal-footer">
                 <span class="am-modal-btn" style="color:#0e90d2;" data-am-modal-cancel>取消</span>
@@ -453,7 +455,7 @@
                     }
                     $("#xiaofeifenhong").html('分润: ￥ ' + json.xiaofeiyongjin);
                     $("#userIcon").attr('src', json.touxiang);
-                    $("#integral").html('积分: ' + json.zhanghujifen);
+                    $("#integral").html('嗨币: ' + json.zhanghujifen);
                     var jine = json.jine;
                     if (!/\./.test(jine)) {
                         jine += '.00';

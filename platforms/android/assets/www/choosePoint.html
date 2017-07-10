@@ -163,6 +163,7 @@ var map = new BMap.Map("allmap");
 var point = new BMap.Point(myLongitude, myLatitude);
 var nearbyLongitude;
 var nearbyLatitude;
+var nearbyArea = "哈尔滨市南岗区";
 map.centerAndZoom(point, 16);
 var myIcon1 = new BMap.Icon("img/myLocation.png", new BMap.Size(32, 32));
 var marker1 = new BMap.Marker(point, {
@@ -183,7 +184,7 @@ map.addEventListener("click", function(e) {
         var addComp = rs.addressComponents;
 
         // alert(addComp.province + ", " + addComp.city + ", " + addComp.district + ", " + addComp.street + ", " + addComp.streetNumber);
-        var nearbyArea = "哈尔滨南岗区";
+
         if (stringNull(addComp.street)) {
              nearbyArea = addComp.city + addComp.district;
         }
@@ -193,13 +194,14 @@ map.addEventListener("click", function(e) {
             nearbyArea = addComp.street +addComp.streetNumber;
         }
 
-        localStorage.setItem("nearbyArea", nearbyArea);
+        
     });
 
 
 });
 
 function goBack() {
+    localStorage.setItem("nearbyArea", nearbyArea);
     localStorage.setItem("nearbyLongitude", nearbyLongitude);
     localStorage.setItem("nearbyLatitude", nearbyLatitude);
     window.history.back();

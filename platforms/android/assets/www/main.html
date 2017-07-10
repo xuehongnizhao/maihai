@@ -42,10 +42,11 @@
         }, [{
             timeout: 3000
         }]);
-
+		//ios中删除此方法
         cordova.getAppVersion.getVersionCode(function(version) {
             checkUpdate(version);
         });
+		//ios中删除以上方法
         console.log("JPushPlugin:Device ready!")
         initiateUI();
     }
@@ -636,6 +637,8 @@ function getTuList() {
 function main2(fenleiID) {
     if(fenleiID == "maihai"){
         window.location.href = "search.html";
+    }else if(fenleiID == "jifenshangcheng"){
+    	window.location.href = "integralshop.html";
     }else{
         window.location.href = "main2page.html?fenleiID=" + fenleiID;
     }

@@ -179,7 +179,7 @@
     </div>
     <div style="font-size: 14px;margin-top: 1em" class="am-u-sm-12">
     	<label>
-	        <input checked id="confirmagreement" type="checkbox" name="" style="margin-left:5px;"> <span>我已阅读并同意</span><a href="registerAgreement.html" style="color: #c62d1e ">《"买嗨"用户协议》</a>
+	        <input checked id="confirmagreement" type="checkbox" name="" style="margin-left:5px;"> <span>我已阅读并同意</span><a onclick="goToUserAgreement()" style="color: #c62d1e ">《"买嗨"注册协议》</a>
 	    </label>
     </div>
     <div class="am-modal am-modal-alert" tabindex="-1" id="my-alert">
@@ -381,6 +381,9 @@
             });
 
         }
+    }
+    function goToUserAgreement() {
+        window.location.href = baseurl + "app/registerAgreement.html"
     }
     </script>
 </body>

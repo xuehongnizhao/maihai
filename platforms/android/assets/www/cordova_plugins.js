@@ -1,34 +1,6 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
-        "id": "cordova-plugin-dialogs.notification",
-        "merges": [
-            "navigator.notification"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-dialogs/www/android/notification.js",
-        "id": "cordova-plugin-dialogs.notification_android",
-        "merges": [
-            "navigator.notification"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
-        "id": "cordova-plugin-splashscreen.SplashScreen",
-        "clobbers": [
-            "navigator.splashscreen"
-        ]
-    },
-    {
-        "file": "plugins/cordova-plugin-baidumaplocation/www/baidumap_location.js",
-        "id": "cordova-plugin-baidumaplocation.baidumap_location",
-        "clobbers": [
-            "baidumap_location"
-        ]
-    },
-    {
         "file": "plugins/cordova-plugin-file/www/DirectoryEntry.js",
         "id": "cordova-plugin-file.DirectoryEntry",
         "clobbers": [
@@ -180,13 +152,6 @@ module.exports = [
         "runs": true
     },
     {
-        "file": "plugins/cordova-plugin-device/www/device.js",
-        "id": "cordova-plugin-device.device",
-        "clobbers": [
-            "device"
-        ]
-    },
-    {
         "file": "plugins/com.percolatestudio.cordova.fileupload/www/FileUploadError.js",
         "id": "com.percolatestudio.cordova.fileupload.FileUploadError",
         "clobbers": [
@@ -198,6 +163,20 @@ module.exports = [
         "id": "com.percolatestudio.cordova.fileupload.FileUpload",
         "clobbers": [
             "window.FileUpload"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-alipay-v2/www/alipay.js",
+        "id": "cordova-plugin-alipay-v2.alipay",
+        "clobbers": [
+            "cordova.plugins.alipay"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-baidumaplocation/www/baidumap_location.js",
+        "id": "cordova-plugin-baidumaplocation.baidumap_location",
+        "clobbers": [
+            "baidumap_location"
         ]
     },
     {
@@ -229,17 +208,24 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/cordova-plugin-alipay-v2/www/alipay.js",
-        "id": "cordova-plugin-alipay-v2.alipay",
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "id": "cordova-plugin-device.device",
         "clobbers": [
-            "cordova.plugins.alipay"
+            "device"
         ]
     },
     {
-        "file": "plugins/cordova-plugin-wechat/www/wechat.js",
-        "id": "cordova-plugin-wechat.Wechat",
-        "clobbers": [
-            "Wechat"
+        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+        "id": "cordova-plugin-dialogs.notification",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-dialogs/www/android/notification.js",
+        "id": "cordova-plugin-dialogs.notification_android",
+        "merges": [
+            "navigator.notification"
         ]
     },
     {
@@ -247,6 +233,20 @@ module.exports = [
         "id": "cordova-plugin-phonecaller.PhoneCaller",
         "clobbers": [
             "PhoneCaller"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+        "id": "cordova-plugin-splashscreen.SplashScreen",
+        "clobbers": [
+            "navigator.splashscreen"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-wechat/www/wechat.js",
+        "id": "cordova-plugin-wechat.Wechat",
+        "clobbers": [
+            "Wechat"
         ]
     },
     {
@@ -260,18 +260,18 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-dialogs": "1.2.1",
-    "cordova-plugin-splashscreen": "3.2.0",
-    "cordova-plugin-whitelist": "1.3.2",
-    "cordova-plugin-baidumaplocation": "2.0.3",
     "cordova-plugin-file": "4.1.1",
-    "cordova-plugin-device": "1.1.6",
     "com.percolatestudio.cordova.fileupload": "0.2.0",
-    "cordova-plugin-camera": "2.1.1",
     "cordova-plugin-alipay-v2": "0.0.3",
-    "cordova-plugin-wechat": "1.4.0",
-    "cordova-plugin-phonecaller": "0.0.2",
+    "cordova-plugin-baidumaplocation": "2.0.3",
+    "cordova-plugin-camera": "2.1.1",
     "cordova-plugin-compat": "1.1.0",
+    "cordova-plugin-device": "1.1.6",
+    "cordova-plugin-dialogs": "1.2.1",
+    "cordova-plugin-phonecaller": "0.0.2",
+    "cordova-plugin-splashscreen": "3.2.0",
+    "cordova-plugin-wechat": "1.4.0",
+    "cordova-plugin-whitelist": "1.3.2",
     "phonegap-plugin-barcodescanner": "6.0.6"
 };
 // BOTTOM OF METADATA
